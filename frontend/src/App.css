@@ -16,6 +16,10 @@ body{
     width: 90%;
     margin: 0 auto;
 }
+.my-container-small{
+    width: 70%;
+    margin: 0 auto;
+}
 .my-container-footer{
     width: 97%;
     margin: 0 auto;
@@ -55,11 +59,13 @@ body{
 }
 /* ------------------------ Header*/
 header{
-  background-size: cover;
-    
+    background-size: cover;
+    background-position: top;
     height: 100vh;
+
 }
 nav > div{
+  color: rgb(243, 231, 231);
   font-size: 1.5rem;
   margin-left: 1rem;
 }
@@ -71,6 +77,7 @@ nav > div i{
   margin-right: .4rem;
 }
 div.navbar-color{
+    background-color: rgb(248, 245, 245);
     width: 100%;
     border-radius: 0 0 30px 30px ;
 }
@@ -82,12 +89,24 @@ div.navbar-color{
     align-items: center;
 }
 img.logo{
-    width: 8rem;
+    width: 6rem;
 }
 h1{
   font-family: var(--fontTitulos);
   font-size: 5rem;
+  color: white;
 }
+div.content-welcome{
+  padding-top: 6rem;
+}
+div.content-welcome > p{
+  padding: 3.5rem;
+  font-size: 2rem;
+}
+/* Hero --------------- */
+/* div.hero{
+    displa;
+} */
 /* footer-------- */
 footer{
     background-color: #F6F6F6  ;
@@ -120,4 +139,19 @@ div.footer-info{
         grid-template-columns: repeat(3, 1fr);
         gap: 1rem;
     }
+}
+/* call to action  */
+.call-to-action{
+    padding: 4rem 0;
+}
+.travel-image{
+    padding-left: 1rem;
+    width: 30rem;
+}
+div.call-content > p{
+    font-size: 1.5rem;
+    color: #0094ef;
+}
+div.call-content h2{
+    font-size: 4.3rem;
 }

@@ -1,11 +1,19 @@
 import React, {Fragment} from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import CallToAction from '../components/CallToAction';
+import Hero from '../components/Hero';
 const Home = () => {
-
+    var imagen = [
+        {logo: 'logo3.png'},
+        {portada: 'portada3.jpg'},
+        {imagenTravel: 'callToAction.PNG'}
+      ]
     return( 
         <Fragment>
-                <Header/>
+                <Header imagen={imagen}/>
+                <Hero />
+                <CallToAction imagenTravel={imagen[2].imagenTravel}/>
                 <Footer />
         </Fragment>
     )  
