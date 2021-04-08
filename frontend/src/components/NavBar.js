@@ -3,6 +3,7 @@ import {
   Collapse,
   Navbar,
   NavbarToggler,
+  NavbarBrand,
   Nav,
   NavItem,
   NavLink,
@@ -10,9 +11,10 @@ import {
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
+  NavbarText
 } from 'reactstrap';
 
-const NavBar = (props) => {
+const Example = (props) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
@@ -20,6 +22,7 @@ const NavBar = (props) => {
   return (
     <div>
       <Navbar color="light" light expand="md">
+        <NavbarBrand href="/"><p className="title">MyTinerary</p></NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
@@ -27,9 +30,8 @@ const NavBar = (props) => {
               <NavLink href="/components/"><i className="fas fa-map-marker-alt"></i>Home</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="/components/"><i className="fas fa-map-marker-alt"></i>Cities</NavLink>
+              <NavLink href="https://github.com/reactstrap/reactstrap"><i className="fas fa-map-marker-alt"></i>Cities</NavLink>
             </NavItem>
-
             <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav caret>
                 Options
@@ -54,4 +56,6 @@ const NavBar = (props) => {
   );
 }
 
-export default NavBar;
+export default Example;
+
+

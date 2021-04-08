@@ -58,12 +58,7 @@ body{
     text-align: center;
 }
 /* ------------------------ Header*/
-header{
-    background-size: cover;
-    background-position: top;
-    height: 100vh;
 
-}
 nav > div{
   color: rgb(243, 231, 231);
   font-size: 1.5rem;
@@ -91,11 +86,7 @@ div.navbar-color{
 img.logo{
     width: 6rem;
 }
-h1{
-  font-family: var(--fontTitulos);
-  font-size: 5rem;
-  color: white;
-}
+
 div.content-welcome{
   padding-top: 6rem;
 }
@@ -103,10 +94,43 @@ div.content-welcome > p{
   padding: 3.5rem;
   font-size: 2rem;
 }
-/* Hero --------------- */
-/* div.hero{
-    displa;
-} */
+/* hero----------------- */
+p.title{
+    font-size: 2rem;
+}
+.hero{
+    width: 100vw;
+    height: 100vh;
+    background-size: cover;
+    border-radius: 0 0  20% 0;
+}
+h1.tittle-hero{
+    font-family: var(--fontTitulos);
+    font-size: 4.5rem !important;
+    color: white;
+  }
+div.contenedor-hero{
+    width: 60vw;
+    margin-top: 2vh;
+}
+
+div.content-hero > p{
+    text-align: center;
+    font-size: 1.6rem;
+}
+@media (min-width: 764px) {
+    div.contenedor-hero{
+        width: 50vw;
+        margin-top: 10vh;
+    }
+    div.content-hero > p{
+    font-size: 1.8rem !important;
+}
+    h1.tittle-hero{
+        font-size: 6rem !important;
+    }
+}
+
 /* footer-------- */
 footer{
     background-color: #F6F6F6  ;
