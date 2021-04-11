@@ -1,52 +1,47 @@
 import React, { useState } from 'react';
+import {NavLink} from 'react-router-dom'
 import {
   Collapse,
   Navbar,
   NavbarToggler,
-  NavbarBrand,
   Nav,
   NavItem,
-  NavLink,
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
-  NavbarText
 } from 'reactstrap';
 
-const Example = (props) => {
+const NavBar = ({logo: {logo}}) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
 
   return (
-    <div>
+    <div className="nav-header">
       <Navbar color="light" light expand="md">
-        <NavbarBrand href="/"><p className="title">MyTinerary</p></NavbarBrand>
+        <NavLink exact to="/"><img className="logo" src={`./assets/${logo}`} alt="logo" /></NavLink>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
             <NavItem>
-              <NavLink href="/components/"><i className="fas fa-map-marker-alt"></i>Home</NavLink>
+              <NavLink exact to="/"><i className="fas fa-home"></i>Home</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="https://github.com/reactstrap/reactstrap"><i className="fas fa-map-marker-alt"></i>Cities</NavLink>
+              <NavLink to="/cities"><i className="fas fa-map-marker-alt"></i>Cities</NavLink>
             </NavItem>
             <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav caret>
-                Options
+              <i className="fas fa-user"></i>
               </DropdownToggle>
               <DropdownMenu right>
                 <DropdownItem>
-                  Option 1
+                  Sign In
                 </DropdownItem>
                 <DropdownItem>
-                  Option 2
+                  Sign out
                 </DropdownItem>
                 <DropdownItem divider />
-                <DropdownItem>
-                  Reset
-                </DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>
           </Nav>
@@ -56,6 +51,6 @@ const Example = (props) => {
   );
 }
 
-export default Example;
+export default NavBar;
 
 

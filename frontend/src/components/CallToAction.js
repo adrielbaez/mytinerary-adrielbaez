@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button } from 'reactstrap';
+import {NavLink} from 'react-router-dom'
 
 const CallToAction = ({imagenTravel}) => {
     return(
@@ -9,7 +10,7 @@ const CallToAction = ({imagenTravel}) => {
                 <p>ABOUT MYTINERARY</p>
                 <h2 className="flex-grow">We Provide The Best Experience for You Travel.</h2>
                 <p>With age, comes wisdom. With travel, comes understanding.</p>
-                <Button  color="info">Show Cities</Button>{' '}
+                <NavLink to='/cities' ><Button  color="info">Show Cities</Button>{' '}</NavLink>
             </div>
             <img className="travel-image" src={`./assets/${imagenTravel}`} alt="imagen travel"/>
         </div>

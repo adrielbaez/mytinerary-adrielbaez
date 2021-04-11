@@ -23,6 +23,7 @@ body{
 .my-container-footer{
     width: 97%;
     margin: 0 auto;
+    padding: 1rem 0;
 }
 .d-flex{
     display: flex;
@@ -58,33 +59,18 @@ body{
     text-align: center;
 }
 /* ------------------------ Header*/
+nav a, footer div a {
+    font-size: 1.4rem !important;
+    text-decoration: none !important;
+    margin-right: .5rem;
+    color: black;
+}
+nav i{
+    margin-right: .2rem;
+}
 
-nav > div{
-  color: rgb(243, 231, 231);
-  font-size: 1.5rem;
-  margin-left: 1rem;
-}
-nav > div:hover{
-  color: rgb(255, 82, 82);
-  cursor: pointer;
-}
-nav > div i{
-  margin-right: .4rem;
-}
-div.navbar-color{
-    background-color: rgb(248, 245, 245);
-    width: 100%;
-    border-radius: 0 0 30px 30px ;
-}
-.header-nav{
-    width: 90%;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
 img.logo{
-    width: 6rem;
+    width: 4rem;
 }
 
 div.content-welcome{
@@ -99,71 +85,98 @@ p.title{
     font-size: 2rem;
 }
 .hero{
-    width: 100vw;
+    width: 100%;
     height: 100vh;
     background-size: cover;
+    background-position: center center;
     border-radius: 0 0  20% 0;
 }
 h1.tittle-hero{
     font-family: var(--fontTitulos);
-    font-size: 4.5rem !important;
+    font-size: 5rem !important;
     color: white;
   }
 div.contenedor-hero{
-    width: 60vw;
-    margin-top: 2vh;
+    width: 80vw;
+    margin-top: 18vh;
+    background-color: rgba(0, 0, 0, 0.507);
+    padding: 1rem;
+    border-radius: 4rem;
 }
 
 div.content-hero > p{
     text-align: center;
-    font-size: 1.6rem;
+    font-size: 2rem;
+    color: white;
+    
 }
+.content-hero button{
+    font-size: 1.4rem;
+}
+
 @media (min-width: 764px) {
     div.contenedor-hero{
-        width: 50vw;
-        margin-top: 10vh;
+        width: 80vw;
+        margin-top: 5vh;
+        background-color: rgba(0, 0, 0, 0.507);
+        padding: 1rem 0;
+        border-radius: 4rem;
     }
     div.content-hero > p{
-    font-size: 1.8rem !important;
+    font-size: 3rem !important;
 }
     h1.tittle-hero{
-        font-size: 6rem !important;
+        font-size: 8rem !important;
     }
 }
 
 /* footer-------- */
 footer{
-    background-color: #F6F6F6  ;
+    background-color: #d6d6d6  ;
 
 }
+div.footer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@media (min-width: 764px) {
+    div.footer{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: flex-start;
+    }
+}
 div.footer-copyrigth{
-    padding: 2rem 0;
+    padding: .5rem 0;
+    border-top: 1px solid black;
 }
 div.footer-copyrigth p{
     font-size: 1.5rem;
 }
-div.footer-copyrigth i{
+footer div.social-media i{
     font-size: 2rem;
-    margin-left: .5rem;
+    margin-top: .5rem;
+}
+div.social-media i:hover{
+    cursor: pointer;
+    color: #0094ef;
 }
 div.footer-info{
-    font-size: 2rem;
+    font-size: 1.4rem;
+    width: 15rem;
+    
+}
+li{
+    display: flex;
+    align-items: center;
+}
+li a{
+    color: black;
 }
 
-@media (min-width: 540px) {
-    .footer{
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1rem;
-    }
-}
-@media (min-width: 760px) {
-    .footer{
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 1rem;
-    }
-}
 /* call to action  */
 .call-to-action{
     padding: 4rem 0;
@@ -179,3 +192,47 @@ div.call-content > p{
 div.call-content h2{
     font-size: 4.3rem;
 }
+/* carrusel----------- */
+.contenedor-carrusel{
+    background-color: #2487f1;
+    padding: 2rem 0;
+}
+.contenedor-carrusel h2{
+    color: white;
+}
+div.carrusel{
+    width: 75%;
+    margin: 0 auto;
+}
+.slide-container{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.slide{
+    min-height: 18rem;
+    background-size: cover;
+    display: flex;
+    align-items: flex-end;
+    border-radius: 1rem !important;
+
+}
+
+.container-slider{
+  width: 25rem !important;
+  margin: 1rem;
+}
+.container-slider:hover{
+    cursor: pointer;
+}
+h3.cities-title{
+    width: 25rem;
+    background-color: #0000009f;
+    color: rgba(255, 255, 255, 0.774);
+    text-align: center;
+    border-radius: 1rem !important;
+}
+.under-construction{
+    width: 25rem;
+}
+

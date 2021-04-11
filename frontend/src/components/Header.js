@@ -4,7 +4,7 @@ import NavBar from './NavBar';
 const Header = ({imagen}) => {
     return (  
         <>
-          <NavBar/>
+          <NavBar logo={imagen[0]}/>
           <Hero portada={imagen[1].portada}/>
         </>  
     );
