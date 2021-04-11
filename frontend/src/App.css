@@ -272,37 +272,96 @@ div.call-content h2{
 .contenedor-carrusel h2{
     color: white;
 }
-div.carrusel{
-    width: 85vw;
-    margin: 0 auto;
-}
 .slide-container{
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
 }
-.slide{
+.imagen{
     min-height: 18rem;
     background-size: cover;
     display: flex;
     align-items: flex-end;
+    justify-content: center;
     border-radius: 1rem !important;
 
 }
 
-.container-slider{
-  width: 25rem !important;
-  margin: 1rem;
+div.carrusel{
+    width: 85vw;
+    margin: 0 auto;
 }
-.container-slider:hover{
-    cursor: pointer;
+.contenedor-imagen{
+    width: 15rem !important;
+    margin: 1rem;
 }
 h3.cities-title{
-    width: 25rem;
+    width: 15rem;
     background-color: #0000009f;
     color: rgba(255, 255, 255, 0.774);
     text-align: center;
     border-radius: 1rem !important;
+}
+.contenedor-imagen:hover{
+    cursor: pointer;
+}
+h3.cities-title{
+    width: 15rem;
+    background-color: #0000009f;
+    color: rgba(255, 255, 255, 0.774);
+    text-align: center;
+    border-radius: 1rem !important;
+}
+@media (min-width: 1100px) {
+    div.carrusel{
+        width: 90vw !important;
+        margin: 0 auto;
+    }
+    div.contenedor-imagen{
+        width: 25rem !important;
+        margin: 1rem !important;
+    }
+    h3.cities-title{
+        width: 25rem !important;
+        background-color: #0000009f;
+        color: rgba(255, 255, 255, 0.774);
+        text-align: center;
+        border-radius: 1rem !important;
+    }
+}
+@media (min-width: 900px) {
+    div.carrusel{
+        width: 90vw !important;
+        margin: 0 auto;
+    }
+    .contenedor-imagen{
+        width: 22rem !important;
+        margin: 1rem;
+    }
+    h3.cities-title{
+        width: 22rem !important;
+        background-color: #0000009f;
+        color: rgba(255, 255, 255, 0.774);
+        text-align: center;
+        border-radius: 1rem !important;
+    }
+}
+@media (min-width: 475px) {
+    div.carrusel{
+        width: 90vw !important;
+        margin: 0 auto;
+    }
+    .contenedor-imagen{
+        width: 22rem !important;
+        margin: 1rem;
+    }
+    h3.cities-title{
+        width: 22rem !important;
+        background-color: #0000009f;
+        color: rgba(255, 255, 255, 0.774);
+        text-align: center;
+        border-radius: 1rem !important;
+    }
 }
 /* .----- */
 .under-construction{
