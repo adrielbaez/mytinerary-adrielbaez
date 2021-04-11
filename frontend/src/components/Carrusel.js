@@ -82,7 +82,7 @@ const Carrusel = (props) => {
   const [animating, setAnimating] = useState(false);
 
   const next = () => {
-    if (animating) return;
+    if (animating) return; 
     const nextIndex = activeIndex === items.length - 1 ? 0 : activeIndex + 1;
     setActiveIndex(nextIndex);
   }
@@ -117,6 +117,7 @@ const Carrusel = (props) => {
       activeIndex={activeIndex}
       next={next}
       previous={previous}
+      interval={4000}
     >
       <CarouselIndicators items={keyCity} activeIndex={activeIndex} onClickHandler={goToIndex} />
       {slides}
