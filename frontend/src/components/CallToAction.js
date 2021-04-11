@@ -4,7 +4,7 @@ import {NavLink} from 'react-router-dom'
 
 const CallToAction = ({imagenTravel}) => {
     return(
-        <div className="call-to-action d-flex  my-container-small">
+        <div className="call-to-action d-flex flex-colum my-container-small">
             
             <div className="call-content d-flex flex-colum2">
                 <p>ABOUT MYTINERARY</p>

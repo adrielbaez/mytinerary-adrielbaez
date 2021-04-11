@@ -17,7 +17,7 @@ body{
     margin: 0 auto;
 }
 .my-container-small{
-    width: 70%;
+    width: 90%;
     margin: 0 auto;
 }
 .my-container-footer{
@@ -58,6 +58,7 @@ body{
 .text-center{
     text-align: center;
 }
+
 /* ------------------------ Header*/
 nav a, footer div a {
     font-size: 1.4rem !important;
@@ -113,7 +114,16 @@ div.content-hero > p{
 .content-hero button{
     font-size: 1.4rem;
 }
-
+@media (min-width: 320px) {
+    h1.tittle-hero{
+        font-size: 3rem !important;
+    }
+}
+@media (min-width: 400px) {
+    h1.tittle-hero{
+        font-size: 4rem !important;
+    }
+}
 @media (min-width: 764px) {
     div.contenedor-hero{
         width: 80vw;
@@ -135,6 +145,17 @@ footer{
     background-color: #d6d6d6  ;
 
 }
+@media (min-width: 400px) {
+    .my-container-footer2{
+        width: 90% !important;
+    }
+    .footer-info{
+        font-size: 2rem !important;
+    }
+    .footer-info a{
+        font-size: 2rem !important;
+    }
+}
 div.footer{
     display: flex;
     flex-direction: column;
@@ -147,6 +168,9 @@ div.footer{
         flex-direction: row;
         justify-content: space-around;
         align-items: flex-start;
+    }
+    .footer-info{
+        font-size: 1.4rem !important;
     }
 }
 div.footer-copyrigth{
@@ -174,7 +198,7 @@ li{
     align-items: center;
 }
 li a{
-    color: black;
+    color: black; 
 }
 
 /* call to action  */
@@ -183,15 +207,47 @@ li a{
 }
 .travel-image{
     padding-left: 1rem;
-    width: 30rem;
+    width: 25rem;
+}
+.call-content{
+    text-align: center;
+}
+@media (min-width: 764px) {
+
+
+}
+@media (min-width: 895px) {
+    .call-to-action {
+        display: flex;
+        flex-direction: row;
+    }
+    .call-content{
+        text-align: left;
+    }
+}
+@media (min-width: 1200px) {
+    .call-to-action{
+        width: 80%;
+    }
 }
 div.call-content > p{
     font-size: 1.5rem;
     color: #0094ef;
 }
 div.call-content h2{
-    font-size: 4.3rem;
+    font-size: 3.5rem;
 }
+.call-content a{
+    text-align: center;
+}
+.call-content button{
+    width: 10rem !important;
+    animation: pulse 2s linear infinite alternate;
+}
+@keyframes pulse {
+    from {background-color: #033468}
+    to {background-color: #2487f1}
+    }
 /* carrusel----------- */
 .contenedor-carrusel{
     background-color: #2487f1;
@@ -235,4 +291,7 @@ h3.cities-title{
 .under-construction{
     width: 25rem;
 }
+/* .----- */
+
+
 

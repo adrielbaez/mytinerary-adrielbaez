@@ -5,14 +5,14 @@ import {NavLink} from 'react-router-dom'
 const Footer = ({logo}) => {
     return (  
         <footer>
-            <div className="my-container-footer">
+            <div className="my-container-footer my-container-footer2">
                 <div className=" footer">
                     <div className="d-flex flex-colum footer-info">
                         <img className="logo" src={`./assets/${logo}`} alt="logo"/>
                         <p className="text-center">Find your perfect trip, designed by insiders who know and love their cities!.</p>
                     </div>
                     <div className="d-flex flex-colum footer-info ">
-                        <h3>Acceso Rapido</h3>
+                        <h3>Quickly Access</h3>
                         <NavLink exact to="/"><i className="fas fa-home"></i>Home</NavLink>
                         <NavLink to="/cities"><i className="fas fa-map-marker-alt"></i>Cities</NavLink>
                     </div>
