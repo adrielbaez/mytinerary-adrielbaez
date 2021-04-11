@@ -138,6 +138,7 @@ div.content-hero > p{
     h1.tittle-hero{
         font-size: 8rem !important;
     }
+
 }
 
 /* footer-------- */
@@ -146,11 +147,19 @@ footer{
 
 }
 @media (min-width: 400px) {
+    .footer{
+        width: 90%;
+        margin:  0 auto;
+    }
+    .footer h3{
+        color: #0094ef;
+    }
     .my-container-footer2{
         width: 90% !important;
     }
-    .footer-info{
+    .footer-info, .social-media{
         font-size: 2rem !important;
+        padding: 2rem 0;
     }
     .footer-info a{
         font-size: 2rem !important;
@@ -162,7 +171,7 @@ div.footer{
     align-items: center;
 }
 
-@media (min-width: 764px) {
+@media (min-width: 852px) {
     div.footer{
         display: flex;
         flex-direction: row;
@@ -177,8 +186,14 @@ div.footer-copyrigth{
     padding: .5rem 0;
     border-top: 1px solid black;
 }
+.footer-copyrigth{
+    background-color: rgba(107, 104, 104, 0.849);
+}
 div.footer-copyrigth p{
+    color: rgba(255, 255, 255, 0.788);
     font-size: 1.5rem;
+    padding: 0;
+    margin: 0;
 }
 footer div.social-media i{
     font-size: 2rem;
@@ -241,7 +256,8 @@ div.call-content h2{
     text-align: center;
 }
 .call-content button{
-    width: 10rem !important;
+    width: 14rem !important;
+    font-size: 1.6rem;
     animation: pulse 2s linear infinite alternate;
 }
 @keyframes pulse {
@@ -257,7 +273,7 @@ div.call-content h2{
     color: white;
 }
 div.carrusel{
-    width: 75%;
+    width: 85vw;
     margin: 0 auto;
 }
 .slide-container{
@@ -288,10 +304,10 @@ h3.cities-title{
     text-align: center;
     border-radius: 1rem !important;
 }
+/* .----- */
 .under-construction{
     width: 25rem;
 }
-/* .----- */
 
 
 

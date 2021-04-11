@@ -45,7 +45,7 @@ const Carrusel = (props) => {
         },
         {
           src: 'Shangai.jpg',
-          header: 'Shangai',
+          header: 'Shanghai',
           id: 8
         },
         {

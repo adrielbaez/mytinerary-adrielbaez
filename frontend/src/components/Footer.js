@@ -8,8 +8,9 @@ const Footer = ({logo}) => {
             <div className="my-container-footer my-container-footer2">
                 <div className=" footer">
                     <div className="d-flex flex-colum footer-info">
+                        <h3>MyTinerary</h3>
                         <img className="logo" src={`./assets/${logo}`} alt="logo"/>
-                        <p className="text-center">Find your perfect trip, designed by insiders who know and love their cities!.</p>
+                    
                     </div>
                     <div className="d-flex flex-colum footer-info ">
                         <h3>Quickly Access</h3>
@@ -17,16 +18,15 @@ const Footer = ({logo}) => {
                         <NavLink to="/cities"><i className="fas fa-map-marker-alt"></i>Cities</NavLink>
                     </div>
                     <div className="d-flex flex-colum social-media">
-                        <h3>Social Media</h3>
+                        <h3 className="text-center">Social NetWorks</h3>
                         <i className="fab fa-facebook"></i>
                         <i className="fab fa-instagram"></i>
                         <i className="fab fa-twitter"></i>
-                        <i className="fab fa-pinterest"></i>
                     </div>
                 </div>
             </div>
                 <div className="footer-copyrigth">
-                    <p className="text-center">&copy; 2021 MyTynerary. Designed by Adriel Baez. All rights reserved.</p>
+                    <p className="text-center">&copy; 2021 MyTynerary. All rights reserved.</p>
                 </div>
         </footer>
      );

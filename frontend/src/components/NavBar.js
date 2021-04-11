@@ -21,6 +21,7 @@ const NavBar = ({logo: {logo}}) => {
     <div className="nav-header">
       <Navbar color="light" light expand="md">
         <NavLink exact to="/"><img className="logo" src={`./assets/${logo}`} alt="logo" /></NavLink>
+  
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
@@ -30,20 +31,20 @@ const NavBar = ({logo: {logo}}) => {
             <NavItem>
               <NavLink to="/cities"><i className="fas fa-map-marker-alt"></i>Cities</NavLink>
             </NavItem>
-            <UncontrolledDropdown nav inNavbar>
+        <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav caret>
               <i className="fas fa-user"></i>
               </DropdownToggle>
               <DropdownMenu right>
                 <DropdownItem>
-                  Sign In
+                  Sign Up
                 </DropdownItem>
                 <DropdownItem>
-                  Sign out
+                  Log In
                 </DropdownItem>
                 <DropdownItem divider />
               </DropdownMenu>
-            </UncontrolledDropdown>
+          </UncontrolledDropdown>
           </Nav>
         </Collapse>
       </Navbar>

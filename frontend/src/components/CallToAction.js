@@ -8,8 +8,8 @@ const CallToAction = ({imagenTravel}) => {
             
             <div className="call-content d-flex flex-colum2">
                 <p>ABOUT MYTINERARY</p>
-                <h2 className="flex-grow">We Provide The Best Experience for You Travel.</h2>
-                <p>With age, comes wisdom. With travel, comes understanding.</p>
+                <h2 className="flex-grow">We Provide The Best Experience For You.</h2>
+                <p>With age, comes wisdom. With travel, comes understanding</p>
                 <NavLink to='/cities' ><Button  color="info">Show Cities</Button>{' '}</NavLink>
             </div>
             <img className="travel-image" src={`./assets/${imagenTravel}`} alt="imagen travel"/>
