@@ -220,18 +220,22 @@ li a{
 .call-to-action{
     padding: 4rem 0;
 }
-.travel-image{
-    padding-left: 1rem;
-    width: 25rem;
-}
+
 .call-content{
     text-align: center;
 }
-@media (min-width: 764px) {
-
+@media (min-width: 310px) {
+    .travel-image{
+        padding-left: 1rem;
+        width: 15rem !important;
+    }
 
 }
 @media (min-width: 895px) {
+    .travel-image{
+        padding-left: 1rem;
+        width: 25rem !important;
+    }
     .call-to-action {
         display: flex;
         flex-direction: row;
