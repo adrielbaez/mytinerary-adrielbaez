@@ -13,7 +13,7 @@ const Footer = ({logo}) => {
                     
                     </div>
                     <div className="d-flex flex-colum footer-info ">
-                        <h3>Quickly Access</h3>
+                        <h3>Navigation</h3>
                         <NavLink exact to="/"><i className="fas fa-home"></i>Home</NavLink>
                         <NavLink to="/cities"><i className="fas fa-map-marker-alt"></i>Cities</NavLink>
                     </div>
