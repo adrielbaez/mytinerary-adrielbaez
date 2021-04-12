@@ -97,9 +97,9 @@ const Carrusel = (props) => {
     if (animating) return;
     setActiveIndex(newIndex);
   }
-  let keyCity =[]
+  let keyCities =[]
   const slides = items.map((item, index) => {
-    keyCity.push(item[0].src)
+    keyCities.push(item[0].src)
     return (
       <CarouselItem
         onExiting={() => setAnimating(true)}
@@ -119,7 +119,7 @@ const Carrusel = (props) => {
       previous={previous}
       interval={4000}
     >
-      <CarouselIndicators items={keyCity} activeIndex={activeIndex} onClickHandler={goToIndex} />
+      <CarouselIndicators items={keyCities} activeIndex={activeIndex} onClickHandler={goToIndex} />
       {slides}
       <CarouselControl direction="prev" directionText="Previous" onClickHandler={previous} />
       <CarouselControl direction="next" directionText="Next" onClickHandler={next} />

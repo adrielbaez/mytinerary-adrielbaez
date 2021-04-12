@@ -286,7 +286,9 @@ div.call-content h2{
     border-radius: 1rem !important;
 
 }
-
+ol.carousel-indicators{
+    margin-bottom: 0;
+}
 div.carrusel{
     width: 85vw;
     margin: 0 auto;
