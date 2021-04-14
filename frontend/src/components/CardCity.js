@@ -19,7 +19,7 @@ const CardCity = ({ cities }) => {
                             </div>
                             <div className="card-hover">
                                 <h3>{city.name}</h3>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab laudantium accusamus consequuntur explicabo numquam, totam quia illum dicta? Quod, vitae?</p>
+                                <p>{city.description}</p>
                                 <button className="btn-city">Let`s go</button>
                             </div>
                         </div>
