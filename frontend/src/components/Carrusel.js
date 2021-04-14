@@ -8,7 +8,7 @@ import {
 import Slide from './Slide';
 
 
-const Carrusel = (props) => {
+const Carrusel = () => {
   const items = [
     [
         {
@@ -80,7 +80,7 @@ const Carrusel = (props) => {
 
   const [activeIndex, setActiveIndex] = useState(0);
   const [animating, setAnimating] = useState(false);
-
+  
   const next = () => {
     if (animating) return; 
     const nextIndex = activeIndex === items.length - 1 ? 0 : activeIndex + 1;

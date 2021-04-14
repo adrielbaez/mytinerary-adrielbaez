@@ -1,11 +1,11 @@
 import React from 'react';
 import Hero from './Hero';
 import NavBar from './NavBar';
-const Header = ({imagen}) => {
+const Header = ({imagenes}) => {
     return (  
         <>
-          <NavBar logo={imagen[0]}/>
-          <Hero portada={imagen[1].portada}/>
+          <NavBar logo={imagenes[0]}/>
+          <Hero portada={imagenes[1].portada}/>
         </>  
     );
 }

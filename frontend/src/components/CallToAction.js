@@ -7,7 +7,7 @@ const CallToAction = ({imagenTravel}) => {
         <div className="call-to-action d-flex flex-colum my-container-small">
             
             <div className="call-content d-flex flex-colum2">
-                <p>ABOUT MYTINERARY</p>
+                <p>LOOKING FOR ITINERARIES?</p>
                 <h2 className="flex-grow">We Provide The Best Experience For You.</h2>
                 <p>With age, comes wisdom. With travel, comes understanding</p>
                 <NavLink to='/cities' ><Button  color="info">Show Cities</Button>{' '}</NavLink>

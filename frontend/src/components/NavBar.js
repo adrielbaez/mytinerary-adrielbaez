@@ -26,7 +26,7 @@ const NavBar = ({logo: {logo}}) => {
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
             <NavItem>
-              <NavLink exact to="/"><i className="fas fa-home"></i>Home</NavLink>
+              <NavLink  to="/"><i className="fas fa-home"></i>Home</NavLink>
             </NavItem>
             <NavItem>
               <NavLink to="/cities"><i className="fas fa-map-marker-alt"></i>Cities</NavLink>

@@ -373,6 +373,142 @@ h3.cities-title{
 .under-construction{
     width: 25rem;
 }
+/* city page----------------------- */
+/* cities--------- */
+.main-cities{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.input-container input{
+    width: 60vw;
+    outline: none;
+    border: none;
+    border-bottom: 2px solid black;
+    text-align: center;
+}
+.input-container input:focus{
+    border-bottom: 2px solid rgb(45, 153, 241);
+
+}
+/* hero pages--------- */
+.hero-pages{
+    background-color: blue;
+    width: 100%;
+    height: 45vh;
+}
+/* card----------------- */
+.grid-card{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+.card {
+    width: 25rem;
+    margin: 1rem;
+    border-radius: 3px;
+    box-shadow: 0.2px 4px 5px rgba(0, 0, 0, 0.623);
+    background-color: #2487f1;
+    position:relative;
+    overflow: hidden;
+}
 
 
+.card img{
+    width:100%;
+}
 
+.card-info{
+    color:#eee;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 1rem 1rem;
+    letter-spacing: 0.5px;
+}
+
+.card-info h3{
+    margin-top: 0;
+    color: black;
+}
+
+.card-info span{
+    background-color: var(--primary-color);
+    padding: 0.25rem 0.5rem;
+    border-radius: 3px;
+    font-weight: bold;
+}
+
+.card-info span.green{
+    color:lightgreen;
+}
+
+.card-info span.orange{
+    color:orange;
+}
+
+.card-info span.red{
+    color:red;
+}
+
+.card-hover{
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:0;
+    background-color: #3a86d6;
+    padding: 1rem;
+    max-height: 100%;
+    transform:translateY(101%);
+    transition:transform 0.3s ease-in;
+}
+.card-hover h3, .card-hover p{
+    color: white;
+}
+.card-hover h3{
+    text-align: center;
+
+}
+
+.card:hover .card-hover{
+    transform:translateY(0)
+}
+
+.btn-city{
+    color: white;
+    background-color: rgb(98, 197, 98);
+    font-size: 1rem;
+    padding: .5rem 1rem;
+    border: none;
+    border-radius: 5px;
+}
+div.city-image{
+    width: 100%;
+    height: 20rem;
+    background-size: cover;
+}
+
+/* mensaje error Busqueda */
+.mensajeErrorBusqueda{
+    width: 80vw;
+    height: 70vh;
+    margin: 0 auto;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+}
+.mensajeContent{
+    width: 50vw;
+    padding: 1rem;
+    background-color: rgba(255, 255, 255, 0.795);
+}
+.mensajeContent h2{
+    font-size: 3rem;
+    font-weight: bold;
+}
+.mensajeContent p{
+    font-size: 1.5rem;
+    text-align: center;
+}

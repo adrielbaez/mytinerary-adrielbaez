@@ -9,9 +9,10 @@ const Home = () => {
         {portada: 'portada3.jpg'},
         {imagenTravel: 'callToAction.PNG'}
       ]
+      
     return( 
         <Fragment>
-                <Header imagen={imagenes}  portada={imagenes[1].portada}/>
+                <Header imagenes={imagenes}/>
                 <CallToAction  imagenTravel={imagenes[2].imagenTravel}/>
                 <div className="contenedor-carrusel">
                     <h2 className="text-center">Popular MYtineraries</h2>
