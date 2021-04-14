@@ -7,7 +7,8 @@ class FiltroCities extends React.Component{
             {
               src: 'ushuaia.jpg',
               name: 'Ushuaia',
-              id: 1
+              id: 1,
+              description: 'Is the capital and largest city of England and the United Kingdom. London is one of the worlds leading tourism destinations, and the city is home to an array of famous tourist attractions. The city attracted 20.42 million international visitors in 2018, making it one of the worlds most visited in terms of international visits.'
             },
             {
               src: 'roma.jpg',
@@ -82,13 +83,12 @@ class FiltroCities extends React.Component{
     render(){
         return ( 
             <>
-            {console.log(this.state.newCIties)}
                 <main className="main-cities">
                     <h1>Cities</h1>
                     <div className="input-container">
                         <input onChange={this.searchCities} type="text" placeholder="Search Cities" />
                     </div>
-                    <div className={this.state.newCIties.length > 0 && 'grid-card'}>
+                    <div className={this.state.newCIties.length > 0 ? 'grid-card' : ''}>
                     <CardCity cities ={this.state.newCIties} />
                     </div>
                 </main>
