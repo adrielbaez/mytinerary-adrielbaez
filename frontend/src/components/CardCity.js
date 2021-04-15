@@ -1,3 +1,4 @@
+import {NavLink} from 'react-router-dom'
 const CardCity = ({ cities }) => {
     return (
         <>
@@ -18,9 +19,9 @@ const CardCity = ({ cities }) => {
                                 <span className="green">bandera</span>
                             </div>
                             <div className="card-hover">
-                                <h3>{city.name}</h3>
+                                <h3>{city.name} - {city.country}</h3>
                                 <p>{city.description}</p>
-                                <button className="btn-city">Let`s go</button>
+                                <NavLink to={`/itineraries/${city.id}`}><button className="btn-city">Go to Itineraries</button></NavLink>
                             </div>
                         </div>
                     )

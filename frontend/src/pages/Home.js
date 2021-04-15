@@ -1,26 +1,26 @@
-import React, {Fragment} from 'react';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import React, {Fragment, useEffect} from 'react';
 import Carrusel from '../components/Carrusel';
 import CallToAction from '../components/CallToAction';
+import Hero from '../components/Hero'
 const Home = () => {
-    var imagenes = [
-        {logo: 'logo.png'},
-        {portada: 'portada3.jpg'},
-        {imagenTravel: 'callToAction.PNG'}
-      ]
-      
+    var imagenes = {
+        portada: 'portada3.jpg',
+        imagenTravel: 'callToAction.PNG'
+      }
+      useEffect(() =>{
+        document.title= 'Home | Mytinerary'
+    })
     return( 
         <Fragment>
-                <Header imagenes={imagenes}/>
-                <CallToAction  imagenTravel={imagenes[2].imagenTravel}/>
+            
+                <Hero portada={imagenes.portada}/>
+                <CallToAction imagenTravel={imagenes.imagenTravel}/>
                 <div className="contenedor-carrusel">
                     <h2 className="text-center">Popular MYtineraries</h2>
                     <div className="carrusel">
                         <Carrusel />
                     </div>
                 </div>
-                <Footer logo={imagenes[0].logo}/>
         </Fragment>
     )  
 }

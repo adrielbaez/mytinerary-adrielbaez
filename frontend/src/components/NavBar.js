@@ -12,7 +12,7 @@ import {
   DropdownItem,
 } from 'reactstrap';
 
-const NavBar = ({logo: {logo}}) => {
+const NavBar = ({logo}) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
