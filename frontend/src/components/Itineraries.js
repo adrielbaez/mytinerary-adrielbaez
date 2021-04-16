@@ -1,19 +1,28 @@
 import { useEffect, useState } from "react";
 
 const Intineraries = (props) => {
-    const [idCity, setIdCity] = useState(null)
+    const [stateCity, setstateCity] = useState(null)
 
     useEffect(() =>{
-        setIdCity(props.match.params.id)
-    },[])
-    
+        getCityAPI()
+   },[])
+
+   const getCityAPI = async () =>{
+        const data = await fetch(`http://localhost:4000/api/city/${props.match.params.id}`)
+        const city = await data.json()
+        setstateCity(city.respuesta)
+   }
+   console.log(stateCity);
     return ( 
         <>
-            <div className="itineraries-hero d-flex flex-centrado" style={{backgroundImage: `url('https://amadeus.com/images/en/air-transportation/ground-handlers/blue-suitcase-at-airport-airplane-in-background.jpg')`}}>
+            {stateCity === null
+                ? <h1>hola</h1>
+                :<div className="itineraries-hero d-flex flex-centrado" style={{backgroundImage: `url('/assets/${stateCity.src}')`}}>
                 <div className="content-hero-itineraries">
-                    <h1>hola soy el componente con el id {idCity}</h1>
+                    <h1>hola soy {stateCity.city} </h1>
                 </div>
             </div>
+            }
         </>
      );
 }

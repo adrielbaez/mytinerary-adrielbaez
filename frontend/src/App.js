@@ -12,9 +12,13 @@ function App() {
   var imagen = {
     logo: 'logo.png'
   }
+  const  haciaArriba = () =>{window.scroll({
+    top: 0,
+    left: 0
+})}
   return (
     <BrowserRouter>
-    <NavBar logo={imagen.logo} />
+    <NavBar logo={imagen.logo} haciaArriba={haciaArriba} />
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/cities" component={Cities} />
@@ -22,7 +26,7 @@ function App() {
         <Route  path="/error" component={Error} />
         <Redirect to="/error"/>
       </Switch>
-      <Footer logo={imagen.logo}/>
+      <Footer haciaArriba={haciaArriba} logo={imagen.logo}/>
     </BrowserRouter>
   );
 }

@@ -10,6 +10,8 @@ const Home = () => {
       useEffect(() =>{
         document.title= 'Home | Mytinerary'
     })
+
+
     return( 
         <Fragment>
             
