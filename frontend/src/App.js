@@ -18,7 +18,7 @@ function App() {
 })}
   return (
     <BrowserRouter>
-    <NavBar logo={imagen.logo} haciaArriba={haciaArriba} />
+    <NavBar logo={imagen.logo}/>
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/cities" component={Cities} />
@@ -26,7 +26,7 @@ function App() {
         <Route  path="/error" component={Error} />
         <Redirect to="/error"/>
       </Switch>
-      <Footer haciaArriba={haciaArriba} logo={imagen.logo}/>
+      <Footer logo={imagen.logo}/>
     </BrowserRouter>
   );
 }

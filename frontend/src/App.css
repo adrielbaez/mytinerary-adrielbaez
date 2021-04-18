@@ -10,6 +10,7 @@
 }
 body{
   background-color: #F6F6F6 ;
+  overflow-x: hidden;
 }
 /* reutilizables  */
 .my-container{
@@ -63,7 +64,7 @@ body{
 nav a, footer div a {
     font-size: 1.4rem !important;
     text-decoration: none !important;
-    margin-right: .5rem;
+    margin-right: 1rem;
     color: black;
 }
 nav i{
@@ -71,7 +72,7 @@ nav i{
 }
 
 img.logo{
-    width: 4rem;
+    width: 6rem;
 }
 
 div.content-welcome{
@@ -371,7 +372,11 @@ h3.cities-title{
 }
 /* .----- */
 .under-construction{
-    width: 25rem;
+    width: 20rem;
+    height:60vh;
+    background-position: center;
+    background-size: cover;
+    border-radius: 0 0 80px  5px;
 }
 /* city page----------------------- */
 /* cities--------- */
@@ -411,7 +416,7 @@ h3.cities-title{
 }
 @media screen and (min-width: 764px) {
     .grid-card{
-        padding: 4rem;
+        padding: 4rem 0;
         display: grid;
         grid-template-columns: repeat(2, 1fr);
     }
@@ -541,6 +546,31 @@ div.city-image{
     height:80vh;
     background-position: center;
     background-size: cover;
+    border-radius: 0 0 10rem  5px;
+}
+.content-hero-itineraries{
+    background-color: rgba(255, 255, 255, 0.747);
+    border-radius: 15px;
+    padding: 1rem;
+}
+.content-hero-itineraries h1 {
+    font-size: 4rem;
+    font-weight: bold;
+}
+.btn-go-back{
+    background-color: #0094ef;
+    color: #ffffff;
+    border: none;
+    margin-left: 1rem;
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+}
+.btn-go-back:hover{
+    background-color: #48b9ff;
+}
+.btn-go-back i{
+    margin-right: 1rem;
 }
 /* spinner--------------- */
 .spinner-container{

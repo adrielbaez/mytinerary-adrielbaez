@@ -1,4 +1,4 @@
-import React, {Fragment, useEffect} from 'react';
+import React, {Fragment} from 'react';
 import Carrusel from '../components/Carrusel';
 import CallToAction from '../components/CallToAction';
 import Hero from '../components/Hero'
@@ -7,14 +7,8 @@ const Home = () => {
         portada: 'portada3.jpg',
         imagenTravel: 'callToAction.PNG'
       }
-      useEffect(() =>{
-        document.title= 'Home | Mytinerary'
-    })
-
-
     return( 
-        <Fragment>
-            
+        <Fragment>           
                 <Hero portada={imagenes.portada}/>
                 <CallToAction imagenTravel={imagenes.imagenTravel}/>
                 <div className="contenedor-carrusel">
