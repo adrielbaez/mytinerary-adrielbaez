@@ -10,7 +10,7 @@ router.route('/cities')
 
 router.route('/city/:id')
 .get(getCity)
-.put(updateCity)
+.put(updateCity) 
 .delete(deleteCity)
 
 module.exports = router

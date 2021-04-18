@@ -1,6 +1,8 @@
 import React from 'react';
 import CardCity from '../components/CardCity';
 import axios from 'axios'
+import Swal from 'sweetalert2'
+
 class FiltroCities extends React.Component {
     state = {
         cities: [],
@@ -10,6 +12,16 @@ class FiltroCities extends React.Component {
     componentDidMount() {
         axios.get('http://localhost:4000/api/cities')
             .then(response => this.setState({ cities: response.data.respuesta, loading: false, newCIties: response.data.respuesta }))
+            .catch( error =>{
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Something went wrong!',
+                  })
+                  .then( ()=> {
+                      this.props.history.push('/error')
+                  })
+            })
     }
 
     searchCities = (e) => {

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Home from './pages/Home';
 import Cities from './pages/Cities'
 import Error from './components/Error'
@@ -8,14 +8,13 @@ import Footer from './components/Footer';
 import NavBar from './components/NavBar';
 import Itineraries from './components/Itineraries'
 
-function App() {
+const App = () => {
   var imagen = {
     logo: 'logo.png'
   }
-  const  haciaArriba = () =>{window.scroll({
-    top: 0,
-    left: 0
-})}
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
   return (
     <BrowserRouter>
     <NavBar logo={imagen.logo}/>

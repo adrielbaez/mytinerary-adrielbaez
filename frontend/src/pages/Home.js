@@ -1,4 +1,3 @@
-import React, {Fragment} from 'react';
 import Carrusel from '../components/Carrusel';
 import CallToAction from '../components/CallToAction';
 import Hero from '../components/Hero'
@@ -7,8 +6,9 @@ const Home = () => {
         portada: 'portada3.jpg',
         imagenTravel: 'callToAction.PNG'
       }
+
     return( 
-        <Fragment>           
+        <>           
                 <Hero portada={imagenes.portada}/>
                 <CallToAction imagenTravel={imagenes.imagenTravel}/>
                 <div className="contenedor-carrusel">
@@ -17,7 +17,7 @@ const Home = () => {
                         <Carrusel />
                     </div>
                 </div>
-        </Fragment>
+        </>
     )  
 }
 
