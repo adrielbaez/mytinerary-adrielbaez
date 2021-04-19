@@ -3,7 +3,7 @@ import CardCity from '../components/CardCity';
 import axios from 'axios'
 import Swal from 'sweetalert2'
 
-class FiltroCities extends React.Component {
+class Cities extends React.Component {
     state = {
         cities: [],
         newCIties: [],
@@ -68,4 +68,4 @@ class FiltroCities extends React.Component {
     }
 }
 
-export default FiltroCities;
+export default Cities;

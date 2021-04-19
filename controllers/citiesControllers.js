@@ -13,7 +13,7 @@ const citiesControllers = {
     addNewCity: async (req, res) => {
         try {
             const { city, country, description, src } = req.body
-            const citySave = new City({
+            const citySave = new City({ 
                 city: city,
                 country: country,
                 src: src,
@@ -23,7 +23,7 @@ const citiesControllers = {
             const allCities = await City.find()
             res.json({ success: true, respuesta: allCities })
         } catch (error) {
-            res.json({ success: false, respuesta: error })
+            res.json({ success: false, respuesta: 'error' })
         }
     },
     updateCity: async (req, res) => {
