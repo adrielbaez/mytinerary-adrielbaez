@@ -1,12 +1,12 @@
 const express = require('express')
 const router = express.Router()
 const citiesControllers = require('../controllers/citiesControllers')
-// const validator = require('../config/validator')
+const validator = require('../config/validator')
 
 const {getAllCities, addNewCity, updateCity, deleteCity, getCity} = citiesControllers
 router.route('/cities')
 .get(getAllCities)
-.post(addNewCity)
+.post(validator, addNewCity)
 
 router.route('/city/:id')
 .get(getCity)
