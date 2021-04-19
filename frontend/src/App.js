@@ -1,4 +1,3 @@
-import React, { useEffect } from 'react';
 import Home from './pages/Home';
 import Cities from './pages/Cities'
 import Error from './components/Error'
