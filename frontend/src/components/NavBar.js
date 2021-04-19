@@ -12,7 +12,7 @@ import {
   DropdownItem,
 } from 'reactstrap';
 
-const NavBar = ({logo, haciaArriba}) => {
+const NavBar = ({logo}) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
@@ -26,10 +26,10 @@ const NavBar = ({logo, haciaArriba}) => {
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
             <NavItem>
-              <NavLink  to="/"><i className="fas fa-home" onClick={() =>haciaArriba()} ></i>Home</NavLink>
+              <NavLink  to="/"><i className="fas fa-home"></i>Home</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink to="/cities"><i className="fas fa-map-marker-alt" onClick={() =>haciaArriba()}></i>Cities</NavLink>
+              <NavLink to="/cities"><i className="fas fa-map-marker-alt" ></i>Cities</NavLink>
             </NavItem>
         <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav caret>

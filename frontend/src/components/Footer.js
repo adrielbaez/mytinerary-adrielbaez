@@ -2,7 +2,7 @@ import React from 'react';
 import {NavLink} from 'react-router-dom'
 
 
-const Footer = ({logo, haciaArriba}) => {
+const Footer = ({logo}) => {
     return (  
         <footer>
             <div className="my-container-footer my-container-footer2">
@@ -14,8 +14,8 @@ const Footer = ({logo, haciaArriba}) => {
                     </div>
                     <div className="d-flex flex-colum footer-info ">
                         <h3>Navigation</h3>
-                        <NavLink exact to="/"><i className="fas fa-home" onClick={() =>haciaArriba()}></i>Home</NavLink>
-                        <NavLink to="/cities"><i className="fas fa-map-marker-alt" onClick={() =>haciaArriba()}></i>Cities</NavLink>
+                        <NavLink exact to="/"><i className="fas fa-home" ></i>Home</NavLink>
+                        <NavLink to="/cities"><i className="fas fa-map-marker-alt"></i>Cities</NavLink>
                     </div>
                     <div className="d-flex flex-colum social-media">
                         <h3 className="text-center">Social NetWorks</h3>

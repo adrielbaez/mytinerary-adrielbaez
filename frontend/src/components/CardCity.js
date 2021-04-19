@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom'
 const CardCity = ({ city}) => {
     return (
         <>
-            {<NavLink to={`/itineraries/${city._id}`}>
+            {<NavLink to={`/city/${city._id}`}>
                     <div key={city._id} className="card">
                         <div className="city-image" style={{ backgroundImage: `url('./assets/${city.src}')` }}></div>
                         <div className="card-info">

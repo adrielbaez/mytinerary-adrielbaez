@@ -666,3 +666,8 @@ div.city-image{
       opacity: 0; 
     }
   }
+/* cities */
+h1.tittle-cities{
+    font-family: var(--fontTitulos);
+    font-size: 5rem !important;
+}

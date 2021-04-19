@@ -12,7 +12,7 @@ class FiltroCities extends React.Component {
     componentDidMount() {
         axios.get('http://localhost:4000/api/cities')
             .then(response => this.setState({ cities: response.data.respuesta, loading: false, newCIties: response.data.respuesta }))
-            .catch( error =>{
+            .catch( error =>{ 
                 Swal.fire({
                     icon: 'error',
                     title: 'Oops...',
@@ -35,7 +35,7 @@ class FiltroCities extends React.Component {
         return (
             <>
                 <main className="main-cities">
-                    <h1>Cities</h1>
+                    <h1 className="tittle-cities">Cities</h1>
                     <div className="input-container">
                         <input onChange={this.searchCities} type="text" placeholder="Search Cities" />
                     </div>
