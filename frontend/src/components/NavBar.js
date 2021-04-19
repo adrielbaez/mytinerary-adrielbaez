@@ -20,7 +20,7 @@ const NavBar = ({logo}) => {
   return (
     <div className="nav-header">
       <Navbar color="light" light expand="md">
-        <NavLink exact to="/"><img className="logo" src={`./assets/${logo}`} alt="logo" /></NavLink>
+        <NavLink exact to="/"><img className="logo" src={`/assets/${logo}`} alt="logo" /></NavLink>
   
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>

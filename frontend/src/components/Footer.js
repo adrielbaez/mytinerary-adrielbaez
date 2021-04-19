@@ -9,7 +9,7 @@ const Footer = ({logo}) => {
                 <div className=" footer">
                     <div className="d-flex flex-colum footer-info">
                         <h3>MyTinerary</h3>
-                        <img className="logo" src={`./assets/${logo}`} alt="logo"/>
+                        <img className="logo" src={`/assets/${logo}`} alt="logo"/>
                     
                     </div>
                     <div className="d-flex flex-colum footer-info ">

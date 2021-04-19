@@ -12,7 +12,7 @@ const CallToAction = ({imagenTravel}) => {
                 <p>With age, comes wisdom. With travel, comes understanding</p>
                 <NavLink to='/cities' ><Button  color="info">Show Cities</Button>{' '}</NavLink>
             </div>
-            <img className="travel-image" src={`./assets/${imagenTravel}`} alt="imagen travel"/>
+            <img className="travel-image" src={`/assets/${imagenTravel}`} alt="imagen travel"/>
         </div>
     );
 }
