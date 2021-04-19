@@ -533,12 +533,17 @@ div.city-image{
     background-color: rgba(255, 255, 255, 0.795);
 }
 .mensajeContent h2{
-    font-size: 3rem;
+    font-size: 2rem;
     font-weight: bold;
 }
 .mensajeContent p{
     font-size: 1.5rem;
     text-align: center;
+}
+@media (min-width: 650px) {
+    .mensajeContent h2{
+        font-size: 3rem;
+    }
 }
 /* itineraries-------------- */
 .itineraries-hero{
