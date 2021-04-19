@@ -7,16 +7,16 @@ import {BrowserRouter, Route, Redirect, Switch} from 'react-router-dom'
 import Footer from './components/Footer';
 import NavBar from './components/NavBar';
 import Itineraries from './components/Itineraries'
+import ToTop from './components/ToTop';
 
 const App = () => {
   var imagen = {
     logo: 'logo.png'
   }
-  useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [])
+
   return (
     <BrowserRouter>
+    <ToTop />
     <NavBar logo={imagen.logo}/>
       <Switch>
         <Route exact path="/" component={Home} />
