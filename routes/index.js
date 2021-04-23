@@ -6,7 +6,7 @@ const validator = require('../config/validator')
 
 const {getAllCities, addNewCity, updateCity, deleteCity, getCity} = citiesControllers
 
-const {addItenerary,deleteItinerary, updateItinerary, getAllItineraries,getItinerary} = itinerariesControllers
+const {addItenerary,deleteItinerary, updateItinerary, getAllItineraries,getItinerary, getItinerariesCity} = itinerariesControllers
 
 router.route('/cities')
 .get(getAllCities)
@@ -27,5 +27,6 @@ router.route('/itinerary/:id')
 .delete(deleteItinerary)
 
 router.route('/city/itineraries/:id')
+.get(getItinerariesCity)
 
 module.exports = router

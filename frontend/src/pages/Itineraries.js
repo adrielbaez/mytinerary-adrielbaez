@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import {connect} from 'react-redux'
 import CardItinerary from '../components/CardItinerary'
+import itinerariesActions from '../redux/actions/itinerariesActions'
 
 class Intineraries extends React.Component {
 
@@ -12,11 +13,20 @@ class Intineraries extends React.Component {
         this.setState({
             cityDetails: this.props.cities.filter(city => city._id === this.props.match.params.id),
         })
+
+        this.props.loadItineraries(this.props.match.params.id)
     }
 
     render() {
         return (
             <>
+            <div>
+                {this.props.itineraries.length === 0 
+                ? <h1>nada</h1>
+                : this.props.itineraries.map(itinerary =>{
+                    return (<CardItinerary key={itinerary._id} itinerary={itinerary} />)
+                })}
+            </div>
                 {this.state.cityDetails === null
                     ? <div className="spinner-container">
                         <div className="sk-folding-cube">
@@ -33,7 +43,7 @@ class Intineraries extends React.Component {
                                 <h1 className="text-center">Welcome to {this.state.cityDetails[0].city} </h1>
                             </div>
                         </div>
-                        <CardItinerary />
+                        
                         <div className="d-flex flex-centrado">
                             <NavLink exact to="/"><button className="btn-go-back"><i className="fas fa-arrow-left"></i>Home</button></NavLink>
                             <NavLink to="/cities"><button className="btn-go-back"><i className="fas fa-arrow-left"></i>Cities</button></NavLink>
@@ -47,7 +57,12 @@ class Intineraries extends React.Component {
 
 const mapStateToProps = (state) => {
     return{
-        cities: state.citiesReducers.allCities
+        cities: state.citiesReducers.allCities,
+        itineraries: state.itinerariesReducers.intinerariesCity
     }
 } 
-export default connect(mapStateToProps)(Intineraries)
+
+const mapDispatchToProps = {
+    loadItineraries: itinerariesActions.loadItineraries
+}
+export default connect(mapStateToProps,mapDispatchToProps)(Intineraries)

@@ -1,7 +1,7 @@
 import axios from 'axios'
 import Swal from 'sweetalert2'
 
-const citiesActions = {
+const citiesActions = { 
     loadCities: () => {
         return (dispatch, getState) =>{
             //codigo asincrono
