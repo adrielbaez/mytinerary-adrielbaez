@@ -7,7 +7,7 @@ const citiesControllers = {
             res.json({ success: true, respuesta: allCities })
         }
         catch (error) {
-            res.json({ success: false, respuesta: error })
+            res.json({ success: false, respuesta: 'Our servers are under maintenance' })
         }
     },
     addNewCity: async (req, res) => {
@@ -23,7 +23,7 @@ const citiesControllers = {
             const allCities = await City.find()
             res.json({ success: true, respuesta: allCities })
         } catch (error) {
-            res.json({ success: false, respuesta: 'error' })
+            res.json({ success: false, respuesta: 'Our servers are under maintenance' })
         }
     },
     updateCity: async (req, res) => {
@@ -32,7 +32,7 @@ const citiesControllers = {
             const cityUpdate = await City.findOneAndUpdate({ _id: idCity }, { ...req.body }, { new: true })
             res.json({ success: true, respuesta: cityUpdate })
         } catch (error) {
-            res.json({ success: false, respuesta: error })
+            res.json({ success: false, respuesta: 'Our servers are under maintenance' })
         }
     },
     deleteCity: async (req, res) => {
@@ -41,7 +41,7 @@ const citiesControllers = {
             await City.findOneAndRemove({ _id: idCity })
             res.json({ success: true })
         } catch (error) {
-            res.json({ success: false, respuesta: error })
+            res.json({ success: false, respuesta: 'Our servers are under maintenance' })
         }
 
     },
@@ -51,7 +51,7 @@ const citiesControllers = {
             const city = await City.findById(idCity)
             res.json({ success: true, respuesta: city })
         } catch (error) {
-            res.json({ success: false, respuesta: error })
+            res.json({ success: false, respuesta: 'Our servers are under maintenance' })
         }
     }
 }

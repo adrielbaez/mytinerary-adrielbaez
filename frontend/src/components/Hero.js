@@ -1,7 +1,7 @@
 
 const Hero = (props) => {
-    return(
-        <div className="hero d-flex flex-colum" style={{backgroundImage: `url('./assets/${props.portada}')`}}>
+    return (
+        <div className="hero d-flex flex-colum" style={{ backgroundImage: `url('./assets/${props.portada}')` }}>
             <div className="contenedor-hero ">
                 <div className="content-hero text-center">
                     <h1 className="tittle-hero">MyTinerary</h1>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {NavLink} from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import {
   Collapse,
   Navbar,
@@ -12,7 +12,7 @@ import {
   DropdownItem,
 } from 'reactstrap';
 
-const NavBar = ({logo}) => {
+const NavBar = ({ logo }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
@@ -21,19 +21,19 @@ const NavBar = ({logo}) => {
     <div className="nav-header">
       <Navbar color="light" light expand="md">
         <NavLink exact to="/"><img className="logo" src={`/assets/${logo}`} alt="logo" /></NavLink>
-  
+
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
             <NavItem>
-              <NavLink  to="/"><i className="fas fa-home"></i>Home</NavLink>
+              <NavLink to="/"><i className="fas fa-home"></i>Home</NavLink>
             </NavItem>
             <NavItem>
               <NavLink to="/cities"><i className="fas fa-map-marker-alt" ></i>Cities</NavLink>
             </NavItem>
-        <UncontrolledDropdown nav inNavbar>
+            <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav caret>
-              <i className="fas fa-user"></i>
+                <i className="fas fa-user"></i>
               </DropdownToggle>
               <DropdownMenu right>
                 <DropdownItem>
@@ -44,7 +44,7 @@ const NavBar = ({logo}) => {
                 </DropdownItem>
                 <DropdownItem divider />
               </DropdownMenu>
-          </UncontrolledDropdown>
+            </UncontrolledDropdown>
           </Nav>
         </Collapse>
       </Navbar>

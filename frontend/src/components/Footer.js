@@ -1,19 +1,19 @@
 import React from 'react';
-import {NavLink} from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 
-const Footer = ({logo}) => {
-    return (  
+const Footer = ({ logo }) => {
+    return (
         <footer>
             <div className="my-container-footer my-container-footer2">
                 <div className=" footer">
                     <div className="d-flex flex-colum footer-info">
                         <h3>MyTinerary</h3>
-                        <img className="logo" src={`/assets/${logo}`} alt="logo"/>
-                    
+                        <img className="logo" src={`/assets/${logo}`} alt="logo" />
+
                     </div>
                     <div className="d-flex flex-colum footer-info ">
-                        <h3>Navigation</h3>
+                        <h3>Site Map</h3>
                         <NavLink exact to="/"><i className="fas fa-home" ></i>Home</NavLink>
                         <NavLink to="/cities"><i className="fas fa-map-marker-alt"></i>Cities</NavLink>
                     </div>
@@ -25,11 +25,11 @@ const Footer = ({logo}) => {
                     </div>
                 </div>
             </div>
-                <div className="footer-copyrigth">
-                    <p className="text-center">&copy; 2021 MyTynerary. All rights reserved.</p>
-                </div>
+            <div className="footer-copyrigth">
+                <p className="text-center">&copy; 2021 MyTynerary. All rights reserved.</p>
+            </div>
         </footer>
-     );
+    );
 }
- 
+
 export default Footer;

@@ -11,78 +11,78 @@ import Slide from './Slide';
 const Carrusel = () => {
   const items = [
     [
-        {
-          src: 'ushuaia.jpg',
-          header: 'Ushuaia',
-          id: 1
-        },
-        {
-          src: 'roma.jpg',
-          header: 'Rome',
-          id: 2
-        },
-        {
-          src: 'london.jpg',
-          header: 'London',
-          id: 3
-        },
-        {
-          src: 'paris.jpg',
-          header: 'Paris',
-          id: 4
-        }
-      ],
+      {
+        src: 'ushuaia.jpg',
+        header: 'Ushuaia',
+        id: 1
+      },
+      {
+        src: 'roma.jpg',
+        header: 'Rome',
+        id: 2
+      },
+      {
+        src: 'london.jpg',
+        header: 'London',
+        id: 3
+      },
+      {
+        src: 'paris.jpg',
+        header: 'Paris',
+        id: 4
+      }
+    ],
     [
-        {
-          src: 'newYork.jpg',
-          header: 'New York',
-          id: 5
-        },
-        {
-          src: 'sydney.jpg',
-          header: 'Sydney',
-          id: 6
-        },
-        {
-          src: 'Shangai.jpg',
-          header: 'Shanghai',
-          id: 8
-        },
-        {
-          src: 'seattle.jpg',
-          header: 'Seattle',
-          id: 7
-        }
-      ],             
+      {
+        src: 'newYork.jpg',
+        header: 'New York',
+        id: 5
+      },
+      {
+        src: 'sydney.jpg',
+        header: 'Sydney',
+        id: 6
+      },
+      {
+        src: 'Shangai.jpg',
+        header: 'Shanghai',
+        id: 8
+      },
+      {
+        src: 'seattle.jpg',
+        header: 'Seattle',
+        id: 7
+      }
+    ],
     [
-        {
-          src: 'berlin.jpg',
-          header: 'Berlin',
-          id: 5
-        },
-        {
-          src: 'medellin.jpg',
-          header: 'Medellin',
-          id: 7
-        },
-        {
-          src: 'tokyo.jpg',
-          header: 'Tokyo',
-          id: 6
-        },
-        {
-          src: 'madrid.jpg',
-          header: 'Madrid',
-          id: 8
-        }
-      ]             
-];
+      {
+        src: 'berlin.jpg',
+        header: 'Berlin',
+        id: 5
+      },
+      {
+        src: 'medellin.jpg',
+        header: 'Medellin',
+        id: 7
+      },
+      {
+        src: 'tokyo.jpg',
+        header: 'Tokyo',
+        id: 6
+      },
+      {
+        src: 'madrid.jpg',
+        header: 'Madrid',
+        id: 8
+      }
+    ]
+  ];
 
   const [activeIndex, setActiveIndex] = useState(0);
   const [animating, setAnimating] = useState(false);
-  
+
   const next = () => {
-    if (animating) return; 
+    if (animating) return;
     const nextIndex = activeIndex === items.length - 1 ? 0 : activeIndex + 1;
     setActiveIndex(nextIndex);
   }
@@ -97,7 +97,7 @@ const Carrusel = () => {
     if (animating) return;
     setActiveIndex(newIndex);
   }
-  let keyCities =[]
+  let keyCities = []
   const slides = items.map((item, index) => {
     keyCities.push(item[0].src)
     return (
@@ -106,9 +106,9 @@ const Carrusel = () => {
         onExited={() => setAnimating(false)}
         key={index}
       >
-      <div className="slide-container">
-        <Slide item={item} />   
-      </div> 
+        <div className="slide-container">
+          <Slide item={item} />
+        </div>
       </CarouselItem>
     );
   });
@@ -126,4 +126,4 @@ const Carrusel = () => {
     </Carousel>
   );
 }
- export default Carrusel
+export default Carrusel

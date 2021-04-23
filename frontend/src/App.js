@@ -5,7 +5,7 @@ import './App.css';
 import {BrowserRouter, Route, Redirect, Switch} from 'react-router-dom'
 import Footer from './components/Footer';
 import NavBar from './components/NavBar';
-import Itineraries from './components/Itineraries'
+import Itineraries from './pages/Itineraries'
 import ToTop from './components/ToTop';
 
 const App = () => {
