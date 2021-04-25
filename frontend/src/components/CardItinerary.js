@@ -1,56 +1,44 @@
-import { useState } from "react";
+import React, { useState } from 'react';
+import { Collapse, Button } from 'reactstrap';
 
 const CardItinerary = ({itinerary}) => {
-    console.log(itinerary.hashtags);
-    const [botonToggle, setBotonToggle] = useState({ textBoton: 'View More', hidden: true })
+    const [isOpen, setIsOpen] = useState(false);
+    const [changeNameBtn, setChangeNameBtn] = useState('View More')
 
     const toggle = () => {
-        if (botonToggle.hidden) {
-            setBotonToggle({ textBoton: 'View More', hidden: false })
-            return;
+        setIsOpen(!isOpen);
+        if (!isOpen) {
+            setChangeNameBtn('View Less')
+            return
         }
-        setBotonToggle({ textBoton: 'View Less', hidden: true })
+        setChangeNameBtn('View More')
     }
+
     return (
-        <>
+        <div>
             <div className="container-itinerary">
                 <h2>{itinerary.title}</h2>
                 <div className="img-itinerary" style={{ backgroundImage: `url('https://i0.wp.com/post.medicalnewstoday.com/wp-content/uploads/sites/3/2020/03/GettyImages-1092658864_hero-1024x575.jpg?w=1155&h=1528')` }}></div>
                 <h3>{itinerary.authorName}</h3>
                 <div className="itinerary-details">
-                    <p>Price:{'💸'.repeat(itinerary.price)}</p>
-                    <p>duracion</p>
-                    <p>like</p>
+                    <p>Price:{'💵'.repeat(itinerary.price)}</p>
+                    <p>Duration: {itinerary.duration} hours</p>
+                    <p>Likes: {itinerary.likes}</p>
                 </div>
                 <div className="hashtags">
-                    {itinerary.hashtags.map((hashtag, index) =>{
-                        return(<p key={index}>{hashtag}</p>)
+                    {itinerary.hashtags.map((hashtag, index) => {
+                        return (<p key={index}>{hashtag}</p>)
                     })}
-                    
+
                 </div>
-                <div className={!botonToggle.hidden ? 'd-none' : 'container-itinerary-small'}>
-                   
-                        <h2>Activities</h2>
-                        <div className="container-img-activity">
-                            <div className="img-activity" style={{ backgroundImage: `url('https://mymodernmet.com/wp/wp-content/uploads/2020/12/nature-photographer-of-the-year-Contest-2020-thumbnail.jpg')` }}><h3>actividad de la ciudad</h3></div>
-                            <div className="img-activity" style={{ backgroundImage: `url('https://mymodernmet.com/wp/wp-content/uploads/2020/12/nature-photographer-of-the-year-Contest-2020-thumbnail.jpg')` }}></div>
-                            <div className="img-activity" style={{ backgroundImage: `url('https://mymodernmet.com/wp/wp-content/uploads/2020/12/nature-photographer-of-the-year-Contest-2020-thumbnail.jpg')` }}></div>
+                <Collapse isOpen={isOpen}>
+                        <div className="container-itinerary-small">
+                            <h2>Under Construction</h2>
                         </div>
-                        <h3>Name author</h3>
-                        <div className="itinerary-details">
-                            <p>price</p>
-                            <p>duracion</p>
-                            <p>like</p>
-                        </div>
-                        <div className="hashtags">
-                            <p>hashtags</p>
-                            <p>hashtags</p>
-                            <p>hashtags</p>
-                        </div>
-                    </div>
-            <button onClick={toggle}>{botonToggle.textBoton}</button>
+                </Collapse>
+                <Button color="primary" onClick={toggle} style={{ marginBottom: '1rem' }}>{changeNameBtn}</Button>
             </div>
-        </>
-    )
+        </div>    
+  );
 }
 export default CardItinerary

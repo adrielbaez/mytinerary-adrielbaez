@@ -2,7 +2,7 @@ import axios from 'axios'
 import Swal from 'sweetalert2'
 
 const citiesActions = { 
-    loadCities: () => {
+    loadCities: (props) => {
         return (dispatch, getState) =>{
             //codigo asincrono
             axios.get('http://localhost:4000/api/cities')
@@ -15,7 +15,7 @@ const citiesActions = {
                     text: 'Something went wrong!',
                   })
                   .then( ()=> {
-                    //  props.history.push('/error')
+                    props.history.push('/error')
                   })
             })
         }

@@ -678,14 +678,17 @@ h1.tittle-cities{
 }
 .itinerary-details, .hashtags{
     width: 50%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
 }
-
+@media (min-width: 600px) {
+    .itinerary-details, .hashtags{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
 .container-itinerary{
     margin: 6rem auto;
-    width: 70vw;
+    width: 90vw;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -706,7 +709,7 @@ h1.tittle-cities{
 
 }
 .container-itinerary-small{
-    width: 90%;
+    width: 90vw;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -736,4 +739,32 @@ h1.tittle-cities{
 }
 .d-none{
     display: none;
+}
+/* itinerary content */
+.content-itinerary{
+    background-color:  #0094ef;
+    clip-path: polygon(87% 0, 100% 50%, 84% 100%, 0% 100%, 6% 48%, 0% 0%);
+    padding: 1rem;
+    width: 90vw;
+    height:60vh;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+p.text-itinerary{
+    font-size: 1.3rem;
+    text-align: center;
+}
+@media (min-width: 764px) {
+    .content-itinerary{
+        width: 80vw;
+        height:60vh;
+    }
+    .content-itinerary h1{
+        font-size: 4rem !important;
+
+    }
 }
