@@ -677,13 +677,23 @@ h1.tittle-cities{
     font-size: 5rem !important;
 }
 .itinerary-details, .hashtags{
-    width: 50%;
+    width: 70%;
+    font-size: 1.2rem;
+}
+.hashtags{
+    color: #033468;
+    font-weight: bold;
 }
 @media (min-width: 600px) {
     .itinerary-details, .hashtags{
         display: flex;
         justify-content: space-between;
         align-items: center;
+    }
+    .hashtags{
+        color: #033468;
+        font-weight: bold;
+        justify-content: space-evenly;
     }
 }
 .container-itinerary{
@@ -694,10 +704,24 @@ h1.tittle-cities{
     justify-content: space-between;
     align-items: center;
     background-color: lightskyblue;
-    clip-path: polygon(87% 0, 100% 50%, 84% 100%, 0% 100%, 6% 48%, 0% 0%);
+    border-radius: 5px 80px 5px;
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
     padding: 1rem;
 }
-.container-itinerary h1{
+@media (min-width: 764px) {
+    .container-itinerary{
+        width: 75vw;
+    }
+}
+.container-itinerary h2{
+    font-size: 3rem;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+}
+.container-itinerary h3{
     text-align: center;
 }
 .img-itinerary{
@@ -709,7 +733,7 @@ h1.tittle-cities{
     background-repeat: no-repeat;
 }
 .container-itinerary-small{
-    width: 90vw;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -741,12 +765,15 @@ h1.tittle-cities{
 .d-none{
     display: none;
 }
+i.heart-icon{
+    color: red;
+}
 /* itinerary content */
 .content-itinerary{
     background-color:  #0094ef;
     clip-path: polygon(87% 0, 100% 50%, 84% 100%, 0% 100%, 6% 48%, 0% 0%);
     padding: 1rem;
-    width: 90vw;
+    width: 90vw !important;
     height:60vh;
     color: white;
     display: flex;

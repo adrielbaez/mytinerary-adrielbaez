@@ -1,7 +1,7 @@
 import React from 'react';
-import {connect} from 'react-redux'
-import CardCity from '../components/CardCity'
-import citiesActions from '../redux/actions/citiesActions'
+import {connect} from 'react-redux';
+import CardCity from '../components/CardCity';
+import citiesActions from '../redux/actions/citiesActions';
 class Cities extends React.Component {
    
     componentDidMount(){
@@ -26,7 +26,7 @@ class Cities extends React.Component {
                             </div>
                         </div>
                         : this.props.newCities.length === 0
-                            ? <div className="mensajeErrorBusqueda" style={{ backgroundImage: `url('https://amadeus.com/images/en/air-transportation/ground-handlers/blue-suitcase-at-airport-airplane-in-background.jpg')` }}>
+                            ? <div className="mensajeErrorBusqueda" style={{ backgroundImage: `url('/assets/suitcase.jpg')` }}>
                                 <div className="mensajeContent">
                                     <h2>Looks like the city that you're looking for is not yet...</h2>
                                     <p>Try another one!</p>

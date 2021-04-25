@@ -1,8 +1,8 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { connect } from 'react-redux'
-import CardItinerary from '../components/CardItinerary'
-import itinerariesActions from '../redux/actions/itinerariesActions'
+import { connect } from 'react-redux';
+import CardItinerary from '../components/CardItinerary';
+import itinerariesActions from '../redux/actions/itinerariesActions';
 
 class Intineraries extends React.Component {
 
@@ -39,16 +39,15 @@ class Intineraries extends React.Component {
                         <div>
                             {this.props.itineraries.length === 0
                                 ? <div className="itineraries-hero d-flex flex-centrado">
-                                <div className="content-itinerary" >
-                                    <h1 className="text-center">We don't have itineraries for {this.state.cityDetails[0].city} </h1>
-                                    <p className="text-itinerary">But you can make the first one! Or...go back to see more cities!</p>
+                                    <div className="content-itinerary" >
+                                        <h1 className="text-center">We don't have itineraries for {this.state.cityDetails[0].city} </h1>
+                                        <p className="text-itinerary">But you can make the first one! Or...go back to see more cities!</p>
+                                    </div>
                                 </div>
-                            </div>
                                 : this.props.itineraries.map(itinerary => {
                                     return (<CardItinerary key={itinerary._id} itinerary={itinerary} />)
                                 })}
                         </div>
-
                         <div className="d-flex flex-centrado">
                             <NavLink exact to="/"><button className="btn-go-back"><i className="fas fa-arrow-left"></i>Home</button></NavLink>
                             <NavLink to="/cities"><button className="btn-go-back"><i className="fas fa-arrow-left"></i>Cities</button></NavLink>
@@ -59,14 +58,12 @@ class Intineraries extends React.Component {
         )
     };
 }
-
 const mapStateToProps = (state) => {
     return {
         cities: state.citiesReducers.allCities,
         itineraries: state.itinerariesReducers.intinerariesCity
     }
 }
-
 const mapDispatchToProps = {
     loadItineraries: itinerariesActions.loadItineraries
 }

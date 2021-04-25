@@ -23,7 +23,7 @@ const CardItinerary = ({itinerary}) => {
                 <div className="itinerary-details">
                     <p>Price:{'💵'.repeat(itinerary.price)}</p>
                     <p>Duration: {itinerary.duration} hours</p>
-                    <p>Likes: {itinerary.likes}</p>
+                    <p><i className="far fa-heart heart-icon"></i> {itinerary.likes}</p>
                 </div>
                 <div className="hashtags">
                     {itinerary.hashtags.map((hashtag, index) => {
