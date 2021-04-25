@@ -2,7 +2,7 @@ const initialState = {
     intinerariesCity: []
 }
 
-const itinerariesReducers = (state = initialState, action) =>{
+const itinerariesReducer = (state = initialState, action) =>{
     switch(action.type) {
         case 'FETCH_ITINERARIES':
             return {
@@ -14,4 +14,4 @@ const itinerariesReducers = (state = initialState, action) =>{
     }
 }
 
-export default itinerariesReducers
+export default itinerariesReducer

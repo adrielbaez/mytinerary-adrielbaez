@@ -10,11 +10,13 @@ class Intineraries extends React.Component {
         cityDetails: null,
     }
     componentDidMount() {
+        let idCity = this.props.match.params.id
+        let history = this.props.history
+        let cityFilter = this.props.cities.filter(city => city._id === idCity)
         this.setState({
-            cityDetails: this.props.cities.filter(city => city._id === this.props.match.params.id),
+            cityDetails: cityFilter
         })
-
-        this.props.loadItineraries(this.props)
+        this.props.loadItineraries(idCity,history)
     }
 
     render() {
@@ -60,8 +62,8 @@ class Intineraries extends React.Component {
 }
 const mapStateToProps = (state) => {
     return {
-        cities: state.citiesReducers.allCities,
-        itineraries: state.itinerariesReducers.intinerariesCity
+        cities: state.citiesReducer.allCities,
+        itineraries: state.itinerariesReducer.intinerariesCity
     }
 }
 const mapDispatchToProps = {

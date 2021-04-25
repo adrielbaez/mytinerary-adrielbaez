@@ -680,8 +680,15 @@ h1.tittle-cities{
     width: 70%;
     font-size: 1.2rem;
 }
+.itinerary-details{
+    padding: 2rem;
+}
 .hashtags{
     color: #033468;
+    font-weight: bold;
+    padding-bottom: 1rem;
+}
+.itinerary-details p span{
     font-weight: bold;
 }
 @media (min-width: 600px) {
@@ -771,7 +778,10 @@ i.heart-icon{
 /* itinerary content */
 .content-itinerary{
     background-color:  #0094ef;
-    clip-path: polygon(87% 0, 100% 50%, 84% 100%, 0% 100%, 6% 48%, 0% 0%);
+    border-radius: 5px 80px 5px;
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
     padding: 1rem;
     width: 90vw !important;
     height:60vh;

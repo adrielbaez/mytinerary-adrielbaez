@@ -21,8 +21,8 @@ const CardItinerary = ({itinerary}) => {
                 <div className="img-itinerary" style={{ backgroundImage: `url('/assets/${itinerary.authorPicture}')` }}></div>
                 <h3>{itinerary.authorName}</h3>
                 <div className="itinerary-details">
-                    <p>Price:{'💵'.repeat(itinerary.price)}</p>
-                    <p>Duration: {itinerary.duration} hours</p>
+                    <p><span>Price:</span>{'💵'.repeat(itinerary.price)}</p>
+                    <p><span>Duration:</span> {itinerary.duration} hours</p>
                     <p><i className="far fa-heart heart-icon"></i> {itinerary.likes}</p>
                 </div>
                 <div className="hashtags">

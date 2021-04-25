@@ -1,0 +1,25 @@
+const initialState = {
+    allCities: [],
+    newCitiesCurrent:[],
+    loading: true
+}
+const citiesReducer = (state = initialState, action) => {
+    switch (action.type) {
+        case 'FETCH_CITIES': 
+            return {
+                ...state,
+                allCities:action.payload,
+                newCitiesCurrent:action.payload,
+                loading: false
+            }
+        case 'VALUE_INPUT':
+            return {
+                ...state,
+                newCitiesCurrent: state.allCities.filter(city => city.city.toLowerCase().trim().indexOf(action.payload.trim().toLowerCase()) === 0)
+            }
+        default:
+            return state
+    }
+}
+export default citiesReducer
+

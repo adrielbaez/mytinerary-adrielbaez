@@ -5,7 +5,7 @@ import citiesActions from '../redux/actions/citiesActions';
 class Cities extends React.Component {
    
     componentDidMount(){
-        this.props.loadCities(this.props)
+        this.props.loadCities(this.props.history)
     }
     
     render() {
@@ -16,7 +16,7 @@ class Cities extends React.Component {
                     <div className="input-container">
                         <input onChange={(e)=>this.props.searchCities(e.target.value)} type="text" placeholder="Search Cities" />
                     </div>
-                    {!this.props.newCities
+                    {this.props.loading
                         ? <div className="spinner-container">
                             <div className="sk-folding-cube">
                                 <div className="sk-cube1 sk-cube"></div>
@@ -47,7 +47,8 @@ class Cities extends React.Component {
 
 const mapStateToProps = state =>{
     return {
-        newCities: state.citiesReducers.newCitiesCurrent
+        newCities: state.citiesReducer.newCitiesCurrent,
+        loading: state.citiesReducer.loading
     }
 }
 const mapDispatchToProps ={
