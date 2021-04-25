@@ -695,6 +695,7 @@ h1.tittle-cities{
     align-items: center;
     background-color: lightskyblue;
     clip-path: polygon(87% 0, 100% 50%, 84% 100%, 0% 100%, 6% 48%, 0% 0%);
+    padding: 1rem;
 }
 .container-itinerary h1{
     text-align: center;
@@ -706,7 +707,6 @@ h1.tittle-cities{
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-
 }
 .container-itinerary-small{
     width: 90vw;
@@ -715,6 +715,7 @@ h1.tittle-cities{
     justify-content: space-between;
     align-items: center;
     background-color: lightgreen;
+    margin: 1rem;
 }
 .img-activity{
     width:12rem;

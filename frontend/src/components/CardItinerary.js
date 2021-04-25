@@ -18,7 +18,7 @@ const CardItinerary = ({itinerary}) => {
         <div>
             <div className="container-itinerary">
                 <h2>{itinerary.title}</h2>
-                <div className="img-itinerary" style={{ backgroundImage: `url('https://i0.wp.com/post.medicalnewstoday.com/wp-content/uploads/sites/3/2020/03/GettyImages-1092658864_hero-1024x575.jpg?w=1155&h=1528')` }}></div>
+                <div className="img-itinerary" style={{ backgroundImage: `url('/assets/${itinerary.authorPicture}')` }}></div>
                 <h3>{itinerary.authorName}</h3>
                 <div className="itinerary-details">
                     <p>Price:{'💵'.repeat(itinerary.price)}</p>
