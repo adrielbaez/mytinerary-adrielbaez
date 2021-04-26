@@ -12,11 +12,13 @@ const citiesReducer = (state = initialState, action) => {
                 newCitiesCurrent:action.payload,
                 loading: false
             }
+            break;
         case 'SEARCH_CITIES':
             return {
                 ...state,
                 newCitiesCurrent: state.allCities.filter(city => city.city.toLowerCase().trim().indexOf(action.payload.trim().toLowerCase()) === 0)
             }
+            break;
         default:
             return state
     }
