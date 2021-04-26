@@ -5,7 +5,9 @@ import citiesActions from '../redux/actions/citiesActions';
 class Cities extends React.Component {
    
     componentDidMount(){
-            this.props.loadCities(this.props.history)
+            if (this.props.newCities.length === 0) {
+                this.props.loadCities(this.props.history)
+            }
     }
     
     render() {
@@ -48,6 +50,7 @@ class Cities extends React.Component {
 const mapStateToProps = state =>{
     return {
         newCities: state.citiesReducer.newCitiesCurrent,
+        allCities: state.citiesReducer.allCities,
         loading: state.citiesReducer.loading
     }
 }

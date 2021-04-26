@@ -17,20 +17,23 @@ const CardItinerary = ({ itinerary }) => {
     return (
         <div>
             <div className="container-itinerary">
-                    <h2>{itinerary.title}</h2>
+                <h2>{itinerary.title}</h2>
+                <div className="author">
                     <div className="img-itinerary" style={{ backgroundImage: `url('/assets/${itinerary.authorPicture}')` }}></div>
                     <h3>{itinerary.authorName}</h3>
-                    <div className="itinerary-details">
-                        <p><span>Price:</span>{'💵'.repeat(itinerary.price)}</p>
-                        <p><span>Duration:</span> {itinerary.duration} hours</p>
-                    </div>
-                        <p className="likes"><i className="far fa-heart heart-icon"></i> {itinerary.likes}</p>
-                    <div className="hashtags">
-                        {itinerary.hashtags.map((hashtag, index) => {
-                            return (<p key={index}>{hashtag}</p>)
-                        })}
+                </div>
+                <div className="itinerary-details">
+                    <p><span>Price:</span>{'💵'.repeat(itinerary.price)}</p>
+                    <p className="likes"><i className="far fa-heart heart-icon"></i> {itinerary.likes}</p>
+                    <p><span>Duration:</span> {itinerary.duration} hours</p>
+                </div>
+               
+                <div className="hashtags">
+                    {itinerary.hashtags.map((hashtag, index) => {
+                        return (<p key={index}>{hashtag}</p>)
+                    })}
 
-                    </div>
+                </div>
                 <Collapse isOpen={isOpen}>
                     <div className="container-img-contruction" style={{ backgroundImage: `url('/assets/underconstruction.png')` }}>
                     </div>

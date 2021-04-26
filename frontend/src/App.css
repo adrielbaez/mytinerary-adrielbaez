@@ -677,10 +677,11 @@ h1.tittle-cities{
     font-size: 5rem !important;
 }
 .itinerary-details, .hashtags{
-    width: 70%;
+    width: 80%;
     font-size: 1.2rem;
 }
 .itinerary-details{
+    width: 90%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -730,11 +731,13 @@ h1.tittle-cities{
 }
 @media (min-width: 764px) {
     .container-itinerary{
-        width: 75vw;
+        width: 70vw;
     }
+    
 }
 .container-itinerary h2{
     font-size: 3rem;
+    margin: 0;
     font-weight: bold;
     color: white;
     text-align: center;
@@ -742,9 +745,20 @@ h1.tittle-cities{
 .container-itinerary h3{
     text-align: center;
 }
+.author{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: .5rem;
+}
+.author h3{
+    font-weight: bold;
+}
 .img-itinerary{
-    width: 10rem;
-    height: 10rem;
+    width: 5rem;
+    height: 5rem;
     clip-path: circle(50% at 50% 50%);
     background-size: cover;
     background-position: center;
@@ -829,5 +843,11 @@ p.text-itinerary{
     .content-itinerary h1{
         font-size: 4rem !important;
 
+    }
+    .author{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
     }
 }

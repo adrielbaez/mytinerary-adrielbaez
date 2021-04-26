@@ -43,7 +43,7 @@ class Intineraries extends React.Component {
                                 ? <div className="itineraries-hero d-flex flex-centrado">
                                     <div className="content-itinerary" >
                                         <h1 className="text-center">We don't have itineraries for {this.state.cityDetails[0].city} </h1>
-                                        <p className="text-itinerary">Go back to see more cities!</p>
+                                        <p className="text-itinerary">o back to see more cities!</p>
                                     </div>
                                 </div>
                                 : this.props.itineraries.map(itinerary => {
