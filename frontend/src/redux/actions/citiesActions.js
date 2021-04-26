@@ -6,7 +6,7 @@ const citiesActions = {
         return (dispatch, getState) =>{
             //codigo asincrono
             axios.get('http://localhost:4000/api/cities')
-            .then(response => dispatch({type: 'FETCH_CITIES', payload: response.data.respuesta
+            .then(response => dispatch({type: 'LOAD_CITIES', payload: response.data.respuesta
             }))           
             .catch( error =>{ 
                 Swal.fire({
@@ -22,7 +22,7 @@ const citiesActions = {
     },
     searchCities:(valueInput) =>{
         return (dispatch) =>{
-            dispatch({type: 'VALUE_INPUT', payload: valueInput})
+            dispatch({type: 'SEARCH_CITIES', payload: valueInput})
         }
     }
 }

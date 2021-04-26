@@ -5,14 +5,14 @@ const initialState = {
 }
 const citiesReducer = (state = initialState, action) => {
     switch (action.type) {
-        case 'FETCH_CITIES': 
+        case 'LOAD_CITIES': 
             return {
                 ...state,
                 allCities:action.payload,
                 newCitiesCurrent:action.payload,
                 loading: false
             }
-        case 'VALUE_INPUT':
+        case 'SEARCH_CITIES':
             return {
                 ...state,
                 newCitiesCurrent: state.allCities.filter(city => city.city.toLowerCase().trim().indexOf(action.payload.trim().toLowerCase()) === 0)
