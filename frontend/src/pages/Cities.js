@@ -5,9 +5,7 @@ import citiesActions from '../redux/actions/citiesActions';
 class Cities extends React.Component {
    
     componentDidMount(){
-        if (this.props.newCities.length === 0) {          
             this.props.loadCities(this.props.history)
-        }
     }
     
     render() {
