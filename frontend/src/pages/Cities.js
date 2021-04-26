@@ -28,7 +28,7 @@ class Cities extends React.Component {
                         : this.props.newCities.length === 0
                             ? <div className="mensajeErrorBusqueda" style={{ backgroundImage: `url('/assets/suitcase.jpg')` }}>
                                 <div className="mensajeContent">
-                                    <h2>Looks like the city that you're looking for is not yet...</h2>
+                                    <h2>We can't find the city...</h2>
                                     <p>Try another one!</p>
                                 </div>
                             </div>
