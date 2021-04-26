@@ -681,26 +681,37 @@ h1.tittle-cities{
     font-size: 1.2rem;
 }
 .itinerary-details{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
     padding: 2rem;
 }
 .hashtags{
     color: #033468;
     font-weight: bold;
     padding-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
 }
 .itinerary-details p span{
     font-weight: bold;
 }
-@media (min-width: 600px) {
+@media (min-width: 632px) {
     .itinerary-details, .hashtags{
-        display: flex;
-        justify-content: space-between;
+        flex-direction: row;
+        justify-content: space-between !important;
         align-items: center;
     }
     .hashtags{
         color: #033468;
         font-weight: bold;
-        justify-content: space-evenly;
+        justify-content: center !important;
+    }
+    .hashtags p{
+        margin: 0 1rem !important;
     }
 }
 .container-itinerary{
@@ -748,6 +759,16 @@ h1.tittle-cities{
     background-color: lightgreen;
     margin: 1rem;
 }
+.container-img-contruction{
+    width: 20rem;
+    height: 20rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-position: center;
+    background-size: cover;
+}
 .img-activity{
     width:12rem;
     height: 12rem;
@@ -774,6 +795,10 @@ h1.tittle-cities{
 }
 i.heart-icon{
     color: red;
+    font-size: 2rem;
+}
+p.likes{
+    font-size: 1.5rem;
 }
 /* itinerary content */
 .content-itinerary{
