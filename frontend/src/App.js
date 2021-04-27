@@ -7,6 +7,8 @@ import Footer from './components/Footer';
 import NavBar from './components/NavBar';
 import Itineraries from './pages/Itineraries'
 import ToTop from './components/ToTop';
+import SignUp from './pages/SignUp';
+import SignIn from './pages/SignIn';
 
 const App = () => {
   var imagen = {
@@ -21,6 +23,8 @@ const App = () => {
         <Route exact path="/" component={Home} />
         <Route exact path="/cities" component={Cities} />
         <Route  path="/city/:id" component={Itineraries} />
+        <Route  path="/signup" component={SignUp} />
+        <Route  path="/signin" component={SignIn} />
         <Route  path="/error" component={Error} />
         <Redirect to="/error"/>
       </Switch>

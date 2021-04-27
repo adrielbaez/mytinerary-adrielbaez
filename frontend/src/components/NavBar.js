@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom'
 import {
   Collapse,
   Navbar,
@@ -36,13 +36,16 @@ const NavBar = ({ logo }) => {
                 <i className="fas fa-user"></i>
               </DropdownToggle>
               <DropdownMenu right>
-                <DropdownItem>
-                  Sign Up
+                <Link to="/signup">
+                  <DropdownItem>
+                    Sign up
                 </DropdownItem>
-                <DropdownItem>
-                  Log In
+                </Link>
+                <Link to="/signin">
+                  <DropdownItem>
+                    Log In
                 </DropdownItem>
-                <DropdownItem divider />
+                </Link>
               </DropdownMenu>
             </UncontrolledDropdown>
           </Nav>
