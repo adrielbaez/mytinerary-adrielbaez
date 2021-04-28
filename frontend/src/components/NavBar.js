@@ -43,7 +43,7 @@ const NavBar = ({ logo }) => {
                 </Link>
                 <Link to="/signin">
                   <DropdownItem>
-                    Log In
+                    Sign In
                 </DropdownItem>
                 </Link>
               </DropdownMenu>

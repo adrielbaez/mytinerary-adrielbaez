@@ -20,13 +20,11 @@ const SignUp = () => {
             [field]: value
         })
     }
-    console.log(newUser);
     const sendDataNewUser = (e) => {
         e.preventDefault();
 
         setNewUser({ firstName: '', lastName: '', email: '', password: '', urlPicture: '', country: '' })
     }
-    console.log(newUser);
     return (
         <div className="container-all">
             <div className="call-to-action-form">
@@ -73,8 +71,12 @@ const SignUp = () => {
                         </select>
                     </div>
 
-                    <button className="btn-form solid" onClick={sendDataNewUser}>Sign In</button>
-                    <p className="social-text">Or Sign in with social platforms</p>
+                    <button className="btn-form solid" onClick={sendDataNewUser}>Sign Up</button>
+                    <p className="social-text">Or Sign up with Google</p>
+                    <div className="input-field googleAccount">
+                        <i className="fab fa-google"></i>
+                        <p>Create account with Google</p>
+                    </div>
                 </form>
             </div>
         </div>

@@ -35,7 +35,11 @@ const SignIn = () => {
                         <input type="password" name="password" placeholder="Password" value={user.password} onChange={readInput} />
                     </div>
                     <button className="btn-form solid" onClick={sendDataUser}>Sign In</button>
-                    <p className="social-text">Or Sign in with social platforms</p>
+                    <p className="social-text">Or Sign in with Google</p>
+                    <div className="input-field googleAccount">
+                        <i className="fab fa-google"></i>
+                        <p>Sign in with Google</p>
+                    </div>
                 </form>
             </div>
             <div className="call-to-action-form">
