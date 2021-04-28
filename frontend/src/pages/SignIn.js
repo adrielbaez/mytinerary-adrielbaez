@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import axios from 'axios';
+
 
 const SignIn = () => {
 
@@ -15,11 +17,12 @@ const SignIn = () => {
             [field]: value
         })
     }
-    const sendDataUser = (e) => {
+    const sendDataUser = async (e) => {
         e.preventDefault()
 
+        let response = await axios.post('http://localhost:4000/api/user/signin', user)
         setUser({ email: '', password: '' })
-
+        console.log(response);
     }
     return (
         <div className="container-all">
@@ -44,8 +47,8 @@ const SignIn = () => {
             </div>
             <div className="call-to-action-form">
                 <div className="content">
-                    <h3>New here ?</h3>
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis,ex ratione. Aliquid!</p>
+                    <h3>Hi! New here?</h3>
+                    <p>Don't have an account? please, go to Sign Up</p>
                     <Link to="/signup">
                         <button className="btn-redirect" id="sign-up-btn">Sign Up</button>
                     </Link>

@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-
+ 
 const itinerarySchema = new mongoose.Schema({
     title:{type: String, required: true},
     authorName:{type: String, required: true},

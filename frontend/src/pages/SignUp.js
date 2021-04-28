@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom'
 import axios from 'axios'
+// import { ToastContainer, toast } from 'react-toastify';
+// import 'react-toastify/dist/ReactToastify.css';
 
 const SignUp = () => {
 
-    const [newUser, setNewUser] = useState({ firstName: '', lastName: '', email: '', password: '', urlPicture: '', country: '' })
+    const [newUser, setNewUser] = useState({ firstName: '', lastName: '', email: '', password: '', userPicture: '', country: '' })
     const [countries, setCountries] = useState([])
     useEffect(() => {
         axios.get('https://restcountries.eu/rest/v2/all')
@@ -20,11 +22,16 @@ const SignUp = () => {
             [field]: value
         })
     }
-    const sendDataNewUser = (e) => {
+    const sendDataNewUser = async (e) => {
         e.preventDefault();
+        let response = await axios.post('http://localhost:4000/api/user/signup', newUser)
 
-        setNewUser({ firstName: '', lastName: '', email: '', password: '', urlPicture: '', country: '' })
+        setNewUser({ firstName: '', lastName: '', email: '', password: '', userPicture: '', country: '' })
+        console.log(response)
     }
+    // const notify = (e) => {
+    //     toast.error("Wow so easy !");
+    // }
     return (
         <div className="container-all">
             <div className="call-to-action-form">
@@ -57,7 +64,7 @@ const SignUp = () => {
                     </div>
                     <div className="input-field">
                         <i className="fas fa-image"></i>
-                        <input type="text" name="urlPicture" value={newUser.urlPicture} placeholder="URL of Your Picture" onChange={readDataNewUser} />
+                        <input type="text" name="userPicture" value={newUser.userPicture} placeholder="URL of Your Picture" onChange={readDataNewUser} />
                     </div>
                     <div className="input-field">
                         <i className="fas fa-globe-americas"></i>
