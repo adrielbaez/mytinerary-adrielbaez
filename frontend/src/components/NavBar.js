@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import { NavLink, Link } from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom';
+import {connect} from 'react-redux';
+import authActions from '../redux/actions/authActions'
 import {
   Collapse,
   Navbar,
@@ -12,16 +14,18 @@ import {
   DropdownItem,
 } from 'reactstrap';
 
-const NavBar = ({ logo }) => {
+const NavBar = (props) => {
+  let picture = props.userLogged ? `${props.userLogged.respuesta.userPicture}` : '/assets/userIcon.png'
+  // console.log(props.userLogged.userPicture);
   const [isOpen, setIsOpen] = useState(false);
-
+  
   const toggle = () => setIsOpen(!isOpen);
-
+  
   return (
     <div className="nav-header">
       <Navbar color="light" light expand="md">
-        <NavLink exact to="/"><img className="logo" src={`/assets/${logo}`} alt="logo" /></NavLink>
-
+        <NavLink exact to="/"><img className="logo" src={`/assets/logo.png`} alt="logo" /></NavLink>
+  
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
@@ -33,7 +37,7 @@ const NavBar = ({ logo }) => {
             </NavItem>
             <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav caret>
-                <i className="fas fa-user"></i>
+                <div className="userPicture" style={{ backgroundImage: `url(${picture})` }}></div>
               </DropdownToggle>
               <DropdownMenu right>
                 <Link to="/signup">
@@ -46,6 +50,9 @@ const NavBar = ({ logo }) => {
                     Sign In
                 </DropdownItem>
                 </Link>
+                  <DropdownItem>
+                    <h3>Sign Out</h3>
+                </DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>
           </Nav>
@@ -55,6 +62,16 @@ const NavBar = ({ logo }) => {
   );
 }
 
-export default NavBar;
+
+
+const mapStateToProps = state =>{
+  return{
+      userLogged: state.authReducer.userLogged
+  }
+}
+const mapDispatchToProps={
+  cerrarSesion: authActions.cerrarSesion
+}
+export default connect(mapStateToProps, mapDispatchToProps)(NavBar);
 
 

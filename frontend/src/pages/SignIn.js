@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import {connect} from 'react-redux';
+import authActions from '../redux/actions/authActions'
 
 
-const SignIn = () => {
+const SignIn = (props) => {
 
     const [user, setUser] = useState({ email: '', password: '' })
 
@@ -19,10 +22,8 @@ const SignIn = () => {
     }
     const sendDataUser = async (e) => {
         e.preventDefault()
-
-        let response = await axios.post('http://localhost:4000/api/user/signin', user)
+        props.iniciarSesion(user)
         setUser({ email: '', password: '' })
-        console.log(response);
     }
     return (
         <div className="container-all">
@@ -38,6 +39,7 @@ const SignIn = () => {
                         <input type="password" name="password" placeholder="Password" value={user.password} onChange={readInput} />
                     </div>
                     <button className="btn-form solid" onClick={sendDataUser}>Sign In</button>
+                    <ToastContainer />
                     <p className="social-text">Or Sign in with Google</p>
                     <div className="input-field googleAccount">
                         <i className="fab fa-google"></i>
@@ -58,5 +60,8 @@ const SignIn = () => {
     )
 }
 
+const mapDispatchToProps ={
+    iniciarSesion: authActions.iniciarSesion
+}
 
-export default SignIn
+export default connect(null, mapDispatchToProps)(SignIn)

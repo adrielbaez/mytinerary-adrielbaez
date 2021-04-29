@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom'
 import axios from 'axios'
-// import { ToastContainer, toast } from 'react-toastify';
-// import 'react-toastify/dist/ReactToastify.css';
+import {connect} from 'react-redux';
+import authActions from '../redux/actions/authActions'
+import { ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-const SignUp = () => {
+const SignUp = (props) => {
 
     const [newUser, setNewUser] = useState({ firstName: '', lastName: '', email: '', password: '', userPicture: '', country: '' })
     const [countries, setCountries] = useState([])
@@ -24,14 +26,12 @@ const SignUp = () => {
     }
     const sendDataNewUser = async (e) => {
         e.preventDefault();
-        let response = await axios.post('http://localhost:4000/api/user/signup', newUser)
-
+        
+        props.createNewUser(newUser)
+        
         setNewUser({ firstName: '', lastName: '', email: '', password: '', userPicture: '', country: '' })
-        console.log(response)
+     
     }
-    // const notify = (e) => {
-    //     toast.error("Wow so easy !");
-    // }
     return (
         <div className="container-all">
             <div className="call-to-action-form">
@@ -79,6 +79,7 @@ const SignUp = () => {
                     </div>
 
                     <button className="btn-form solid" onClick={sendDataNewUser}>Sign Up</button>
+                    <ToastContainer />
                     <p className="social-text">Or Sign up with Google</p>
                     <div className="input-field googleAccount">
                         <i className="fab fa-google"></i>
@@ -90,5 +91,8 @@ const SignUp = () => {
     )
 }
 
+const mapdispatchtoProps ={
+    createNewUser: authActions.createNewUser
+}
 
-export default SignUp
+export default connect(null, mapdispatchtoProps)(SignUp)

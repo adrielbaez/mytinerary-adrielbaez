@@ -70,6 +70,15 @@ nav a, footer div a {
 nav i{
     margin-right: .2rem;
 }
+.dropdown-toggle nav-link{
+    text-align: center;
+}
+.userPicture{
+    margin-top: 2rem;
+    width: 2rem;
+    height: 2rem;
+    background-size: cover;
+}
 
 img.logo{
     width: 6rem;
