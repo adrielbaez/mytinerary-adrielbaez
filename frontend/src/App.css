@@ -62,7 +62,7 @@ body{
 
 /* ------------------------ Header*/
 nav a, footer div a {
-    font-size: 1.4rem !important;
+    font-size: 1.6rem !important;
     text-decoration: none !important;
     margin-right: 1rem;
     color: black;
@@ -70,13 +70,16 @@ nav a, footer div a {
 nav i{
     margin-right: .2rem;
 }
-.dropdown-toggle nav-link{
-    text-align: center;
+h3.signout{
+    font-size: 1.4rem;
+}
+h3.signout:hover{
+    cursor: pointer;
 }
 .userPicture{
-    margin-top: 2rem;
-    width: 2rem;
-    height: 2rem;
+    margin-top: 1.5rem;
+    width: 3rem;
+    height: 3rem;
     background-size: cover;
 }
 

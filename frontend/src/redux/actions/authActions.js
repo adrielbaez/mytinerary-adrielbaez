@@ -21,7 +21,7 @@ const authActions={
         return async (dispatch, getState)=>{
             let response = await axios.post('http://localhost:4000/api/user/signin', user)
             if (response.data.success) {
-                toast.success('welcome bro')
+                toast.success(`Welcome ${response.data.respuesta.firstName}`)
             }
             dispatch({
                 type:'USER_LOG',

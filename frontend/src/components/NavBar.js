@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import authActions from '../redux/actions/authActions'
 import {
   Collapse,
@@ -18,14 +18,14 @@ const NavBar = (props) => {
   let picture = props.userLogged ? `${props.userLogged.respuesta.userPicture}` : '/assets/userIcon.png'
   // console.log(props.userLogged.userPicture);
   const [isOpen, setIsOpen] = useState(false);
-  
+
   const toggle = () => setIsOpen(!isOpen);
-  
+
   return (
     <div className="nav-header">
       <Navbar color="light" light expand="md">
         <NavLink exact to="/"><img className="logo" src={`/assets/logo.png`} alt="logo" /></NavLink>
-  
+
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
@@ -40,19 +40,27 @@ const NavBar = (props) => {
                 <div className="userPicture" style={{ backgroundImage: `url(${picture})` }}></div>
               </DropdownToggle>
               <DropdownMenu right>
-                <Link to="/signup">
-                  <DropdownItem>
-                    Sign up
-                </DropdownItem>
-                </Link>
-                <Link to="/signin">
-                  <DropdownItem>
-                    Sign In
-                </DropdownItem>
-                </Link>
-                  <DropdownItem>
-                    <h3>Sign Out</h3>
-                </DropdownItem>
+                {!props.userLogged
+                  ? (
+                    <>
+                      <Link to="/signup">
+                        <DropdownItem>
+                          Sign up
+                        </DropdownItem>
+                      </Link>
+                      <Link to="/signin">
+                        <DropdownItem>
+                          Sign In
+                        </DropdownItem>
+                      </Link>
+                    </>
+                  )
+                  : (
+                    <DropdownItem>
+                      <h3 className='signout' onClick={props.cerrarSesion}>Sign Out</h3>
+                    </DropdownItem>
+                  )
+                }
               </DropdownMenu>
             </UncontrolledDropdown>
           </Nav>
@@ -64,12 +72,12 @@ const NavBar = (props) => {
 
 
 
-const mapStateToProps = state =>{
-  return{
-      userLogged: state.authReducer.userLogged
+const mapStateToProps = state => {
+  return {
+    userLogged: state.authReducer.userLogged
   }
 }
-const mapDispatchToProps={
+const mapDispatchToProps = {
   cerrarSesion: authActions.cerrarSesion
 }
 export default connect(mapStateToProps, mapDispatchToProps)(NavBar);
