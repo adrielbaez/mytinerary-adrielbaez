@@ -9,8 +9,18 @@ import Itineraries from './pages/Itineraries'
 import ToTop from './components/ToTop';
 import SignUp from './pages/SignUp';
 import SignIn from './pages/SignIn';
+import {connect} from 'react-redux';
+import authActions from './redux/actions/authActions'
 
-const App = () => {
+const App = (props) => {
+  if (!props.userLogged && localStorage.getItem('token')) {
+    const dataUser = JSON.parse(localStorage.getItem('userLogged'))
+    const userLS = {
+      token: localStorage.getItem('token'),
+      ...dataUser
+    }
+    props.iniciarSesionLS(userLS)
+  }
   var imagen = {
     logo: 'logo.png'
   }
@@ -32,5 +42,14 @@ const App = () => {
     </BrowserRouter>
   );
 }
+const mapStateToProps = state => {
+  return {
+    userLogged: state.userLogged
+  }
+}
 
-export default App;
+const mapDispatchToProps = {
+  iniciarSesionLS: authActions.iniciarSesionLS
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)

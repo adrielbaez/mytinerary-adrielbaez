@@ -14,7 +14,7 @@ const {createNewAccount, logInUser} = usersControllers
 // rutas para las ciudades-----------
 router.route('/cities')
 .get(getAllCities)
-.post(validator, addNewCity)
+.post(addNewCity)
 
 router.route('/city/:id')
 .get(getCity)
@@ -36,7 +36,7 @@ router.route('/city/itineraries/:id')
 
 // rutas para las users---------
 router.route('/user/signup')
-.post(createNewAccount)
+.post(validator, createNewAccount)
 
 router.route('/user/signin')
 .post(logInUser)

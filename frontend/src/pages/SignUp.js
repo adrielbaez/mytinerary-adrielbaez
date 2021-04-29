@@ -27,9 +27,9 @@ const SignUp = (props) => {
     const sendDataNewUser = async (e) => {
         e.preventDefault();
         
-        props.createNewUser(newUser)
-        
-        setNewUser({ firstName: '', lastName: '', email: '', password: '', userPicture: '', country: '' })
+        await props.createNewUser(newUser)
+
+        // setNewUser({ firstName: '', lastName: '', email: '', password: '', userPicture: '', country: '' })
      
     }
     return (
@@ -90,9 +90,13 @@ const SignUp = (props) => {
         </div>
     )
 }
-
+const mapStateToProps = state =>{
+    return {
+        infoStatusUser: state.authReducer.userLogged
+    }
+}
 const mapdispatchtoProps ={
     createNewUser: authActions.createNewUser
 }
 
-export default connect(null, mapdispatchtoProps)(SignUp)
+export default connect(mapStateToProps, mapdispatchtoProps)(SignUp)

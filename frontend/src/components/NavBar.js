@@ -15,8 +15,8 @@ import {
 } from 'reactstrap';
 
 const NavBar = (props) => {
-  let picture = props.userLogged ? `${props.userLogged.respuesta.userPicture}` : '/assets/userIcon.png'
-  // console.log(props.userLogged.userPicture);
+  let picture = props.userLogged ? `${props.userLogged.userPicture}` : '/assets/userIcon.png'
+  console.log(props.userLogged);
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
