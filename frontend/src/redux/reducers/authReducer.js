@@ -1,21 +1,21 @@
-const initialState ={
+const initialState = {
     userLogged: null
 }
 
-const authReducer=(state= initialState, action)=>{
-    console.log(action.payload)
+const authReducer = (state = initialState, action) => {
     switch (action.type) {
         case 'USER_LOG':
-            console.log(action.payload);
-            localStorage.setItem('userLogged', JSON.stringify({firstName:action.payload.firstName, lastName: action.payload.lastName, userPicture: action.payload.userPicture}))
-            localStorage.setItem('token', action.payload.token)
+            if (action.payload) {
+                localStorage.setItem('userLogged', JSON.stringify({ firstName: action.payload.firstName, lastName: action.payload.lastName, userPicture: action.payload.userPicture }))
+                localStorage.setItem('token', action.payload.token)
+            }
             return {
                 ...state,
                 userLogged: action.payload
             }
-        case 'LOGOUT_USER': 
-        localStorage.clear()
-            return{
+        case 'LOGOUT_USER':
+            localStorage.clear()
+            return {
                 ...state,
                 userLogged: null
             }

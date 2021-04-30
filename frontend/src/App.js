@@ -24,7 +24,6 @@ const App = (props) => {
   var imagen = {
     logo: 'logo.png'
   }
-
   return (
     <BrowserRouter>
     <ToTop />
@@ -33,10 +32,10 @@ const App = (props) => {
         <Route exact path="/" component={Home} />
         <Route exact path="/cities" component={Cities} />
         <Route  path="/city/:id" component={Itineraries} />
-        <Route  path="/signup" component={SignUp} />
-        <Route  path="/signin" component={SignIn} />
+        {!props.userLogged && <Route  path="/signup" component={SignUp} />}
+        {!props.userLogged && <Route  path="/signin" component={SignIn} />}
         <Route  path="/error" component={Error} />
-        <Redirect to="/error"/>
+        <Redirect to="/"/>
       </Switch>
       <Footer logo={imagen.logo}/>
     </BrowserRouter>
@@ -44,7 +43,7 @@ const App = (props) => {
 }
 const mapStateToProps = state => {
   return {
-    userLogged: state.userLogged
+    userLogged: state.authReducer.userLogged
   }
 }
 

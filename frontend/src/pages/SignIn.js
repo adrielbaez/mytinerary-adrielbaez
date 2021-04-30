@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ToastContainer } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import authActions from '../redux/actions/authActions'
+import GoogleLogin from 'react-google-login';
 
 
 const SignIn = (props) => {
@@ -20,10 +21,21 @@ const SignIn = (props) => {
             [field]: value
         })
     }
-    const sendDataUser = async (e) => {
-        e.preventDefault()
-        props.iniciarSesion(user)
+    const sendDataUser = async (e = null, googleUser = null) => {
+        e && e.preventDefault();
+        let loginUser = e ? user : googleUser
+        if (!googleUser) {
+            if (user.email === '' || user.password === '') {
+                return toast.error(`All fields are required`, { position: toast.POSITION.TOP_CENTER })
+            }
+        }
+        props.iniciarSesion(loginUser)
+
         setUser({ email: '', password: '' })
+    }
+    const responseGoogle = (response) => {
+        const { email, googleId } = response.profileObj
+        sendDataUser(null, { email: email, password: "a" + googleId })
     }
     return (
         <div className="container-all">
@@ -41,10 +53,13 @@ const SignIn = (props) => {
                     <button className="btn-form solid" onClick={sendDataUser}>Sign In</button>
                     <ToastContainer />
                     <p className="social-text">Or Sign in with Google</p>
-                    <div className="input-field googleAccount">
-                        <i className="fab fa-google"></i>
-                        <p>Sign in with Google</p>
-                    </div>
+                    <GoogleLogin
+                        clientId="112919868081-jrnbtckjpmehq2v64aj4rrccs2mosics.apps.googleusercontent.com"
+                        buttonText="Sign Up with Google"
+                        onSuccess={responseGoogle}
+                        onFailure={responseGoogle}
+                        cookiePolicy={'single_host_origin'}
+                    />
                 </form>
             </div>
             <div className="call-to-action-form">
@@ -60,7 +75,7 @@ const SignIn = (props) => {
     )
 }
 
-const mapDispatchToProps ={
+const mapDispatchToProps = {
     iniciarSesion: authActions.iniciarSesion
 }
 

@@ -232,6 +232,7 @@ li a{
 /* call to action  */
 .call-to-action{
     padding: 4rem 0;
+    height: 90vh;
 }
 
 .call-content{

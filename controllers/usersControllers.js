@@ -10,46 +10,45 @@ const usersControllers = {
         password = bcryptjs.hashSync(password, 10)
         if (!emailExists) {
             try {
-                const userSave = new User({firstName, lastName, email, password, userPicture, country })
+                const userSave = new User({ firstName, lastName, email, password, userPicture, country })
                 await userSave.save()
-                const token = jwt.sign({...userSave}, process.env.SECRET_OR_KEY)
-                res.json({success: true, respuesta: {token, userPicture: userSave.userPicture, firstName: userSave.firstName, lastName: userSave.lastName }})
+                const token = jwt.sign({ ...userSave }, process.env.SECRET_OR_KEY)
+                res.json({ success: true, respuesta: { token, userPicture: userSave.userPicture, firstName: userSave.firstName, lastName: userSave.lastName } })
 
             } catch (error) {
-                res.json({success: false, respuesta: error + 'There was an error saving user, please retry again'})
+                res.json({ success: false, respuesta: error + 'There was an error saving user, please retry again' })
                 console.log(error);
             }
-        } else{
-            res.json({success: false, respuesta: 'The email already exists in our databases'})
+        } else {
+            res.json({ success: false, respuesta: 'The email already exists in our databases' })
         }
 
     },
-    logInUser: async (req, res) =>{
-        const {email, password} = req.body;
-         let respuesta;
-         let error;
+    logInUser: async (req, res) => {
+        const { email, password } = req.body;
+        let respuesta;
+        let error;
 
-         const userExists = await User.findOne({email: email})
-         if (userExists) {
-             const comparePassword = bcryptjs.compareSync(password, userExists.password)
-             if (comparePassword) {
-                 const token = jwt.sign({...userExists}, process.env.SECRET_OR_KEY)
-                 respuesta= token
-             } else {
-                 error = 'User and/or password failed'
-             }
-         } else {
+        const userExists = await User.findOne({ email: email })
+        if (userExists) {
+            const comparePassword = bcryptjs.compareSync(password, userExists.password)
+            if (comparePassword) {
+                const token = jwt.sign({ ...userExists }, process.env.SECRET_OR_KEY)
+                respuesta = token
+            } else {
+                error = 'User and/or password failed'
+            }
+        } else {
             error = 'User and/or password failed'
-         }
-         console.log(respuesta);
-         res.json({
-             success: !error ? true : false,
-             respuesta:{ token: respuesta, userPicture: userExists.userPicture,  firstName: userExists.firstName, lastName: userExists.lastName },
-             error: error
-         })
+        }
+        res.json({
+            success: !error ? true : false,
+            respuesta: { token: respuesta, userPicture: userExists.userPicture, firstName: userExists.firstName, lastName: userExists.lastName },
+            error: error
+        })
     },
-    loginForzado: (req, res) =>{
-       res.json({success: true, respuesta: {userPicture: req.user.userPicture,  firstName: req.user.firstName, lastName: req.user.lastName }})
+    loginForzado: (req, res) => {
+        res.json({ success: true, respuesta: { userPicture: req.user.userPicture, firstName: req.user.firstName, lastName: req.user.lastName } })
     }
 }
 

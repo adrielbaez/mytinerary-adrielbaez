@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom'
 import axios from 'axios'
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import authActions from '../redux/actions/authActions'
-import { ToastContainer} from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import GoogleLogin from 'react-google-login';
 
 const SignUp = (props) => {
 
@@ -24,13 +25,18 @@ const SignUp = (props) => {
             [field]: value
         })
     }
-    const sendDataNewUser = async (e) => {
-        e.preventDefault();
-        
-        await props.createNewUser(newUser)
+    const sendDataNewUser = async (e = null, googleUser = null) => {
+        e && e.preventDefault();
+        let user = e ? newUser : googleUser
+        let respuesta = await props.createNewUser(user)
+        setNewUser({ firstName: '', lastName: '', email: '', password: '', userPicture: '', country: '' })
 
-        // setNewUser({ firstName: '', lastName: '', email: '', password: '', userPicture: '', country: '' })
-     
+    }
+
+    const responseGoogle = (response) => {
+        console.log(response);
+        const { givenName, email, googleId, imageUrl, familyName } = response.profileObj
+        sendDataNewUser(null, { firstName: givenName, lastName: familyName, email: email, password: "a" + googleId, userPicture: imageUrl, country: 'Argentina' })
     }
     return (
         <div className="container-all">
@@ -81,21 +87,24 @@ const SignUp = (props) => {
                     <button className="btn-form solid" onClick={sendDataNewUser}>Sign Up</button>
                     <ToastContainer />
                     <p className="social-text">Or Sign up with Google</p>
-                    <div className="input-field googleAccount">
-                        <i className="fab fa-google"></i>
-                        <p>Create account with Google</p>
-                    </div>
+                    <GoogleLogin
+                        clientId="112919868081-jrnbtckjpmehq2v64aj4rrccs2mosics.apps.googleusercontent.com"
+                        buttonText="Sign Up with Google"
+                        onSuccess={responseGoogle}
+                        onFailure={responseGoogle}
+                        cookiePolicy={'single_host_origin'}
+                    />
                 </form>
             </div>
         </div>
     )
 }
-const mapStateToProps = state =>{
+const mapStateToProps = state => {
     return {
         infoStatusUser: state.authReducer.userLogged
     }
 }
-const mapdispatchtoProps ={
+const mapdispatchtoProps = {
     createNewUser: authActions.createNewUser
 }
 
