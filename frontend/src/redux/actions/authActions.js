@@ -33,8 +33,23 @@ const authActions={
         }
     },
     iniciarSesionLS: (userLS) =>{
-        return (dispatch, getState) =>{
-            dispatch({type: 'USER_LOG', payload: userLS})
+        return async (dispatch, getState) =>{
+            try {
+                const response = await axios.get('http://localhost:4000/api/user/logingLS', {
+                headers: {
+                    'Authorization': 'Bearer '+userLS.token
+                }
+            })
+            dispatch({type: 'USER_LOG', payload:{
+                ...response.data.respuesta,
+                token: userLS.token
+            }})
+            } catch (error) {
+                if (error.response.status === 401) {
+                    alert('necesito una linda alerta')
+                }
+            }
+       
         }
     }
 } 

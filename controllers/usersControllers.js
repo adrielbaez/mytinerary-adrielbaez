@@ -14,7 +14,7 @@ const usersControllers = {
                 await userSave.save()
                 const token = jwt.sign({...userSave}, process.env.SECRET_OR_KEY)
                 res.json({success: true, respuesta: {token, userPicture: userSave.userPicture, firstName: userSave.firstName, lastName: userSave.lastName }})
-                // , userPicture: userSave.userPicture, firstName: userSave.firstName, lastName: userSave.lastName}
+
             } catch (error) {
                 res.json({success: false, respuesta: error + 'There was an error saving user, please retry again'})
                 console.log(error);
@@ -47,6 +47,9 @@ const usersControllers = {
              respuesta:{ token: respuesta, userPicture: userExists.userPicture,  firstName: userExists.firstName, lastName: userExists.lastName },
              error: error
          })
+    },
+    loginForzado: (req, res) =>{
+       res.json({success: true, respuesta: {userPicture: req.user.userPicture,  firstName: req.user.firstName, lastName: req.user.lastName }})
     }
 }
 
