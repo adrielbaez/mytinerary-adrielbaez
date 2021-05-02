@@ -40,7 +40,6 @@ const SignUp = (props) => {
 
         setMensajeError({ ...mensajeError, success: false })
         let response = await props.createNewUser({ ...user, firstName: user.firstName.trim(), lastName: user.lastName.trim() })
-        console.log(response);
         if (response) {
             if (response.googleUser) {
                 return toast.error(response.respuesta)
@@ -53,7 +52,6 @@ const SignUp = (props) => {
                     })
                 })
             }
-            // setNewUser({ firstName: '', lastName: '', email: '', password: '', userPicture: '', country: '' })
         }
 
     }

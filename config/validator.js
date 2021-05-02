@@ -3,7 +3,7 @@ const joi = require('joi')
 const validator = (req, res, next) => {
 
     const schema = joi.object({
-        firstName: joi.string().trim().min(2).max(20).required().pattern(new RegExp('[a-zA-Z]$')).messages({
+        firstName: joi.string().trim().min(2).max(20).required().pattern(new RegExp(/^[a-z ']{2,}$/i)).messages({
             "string.base": "Your first name must not have numbers or special characters",
             "string.empty": "Your first name is a required field",
             "any.required": "Your first name is a required field",
@@ -11,7 +11,7 @@ const validator = (req, res, next) => {
             "string.min": "Your first name must contain at least 2 letters",
             "any.required": "Your first name is a required field"
         }),
-        lastName: joi.string().trim().min(2).max(20).required().pattern(new RegExp('[a-zA-Z]$')).messages({
+        lastName: joi.string().trim().min(2).max(20).required().pattern(new RegExp(/^[a-z ']{2,}$/i)).messages({
             "string.base": "Your last name must not have numbers or special characters",
             "string.empty": "Your last name is a required field",
             "any.required": "Your last name is a required field",

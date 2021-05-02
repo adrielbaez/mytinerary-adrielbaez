@@ -40,7 +40,7 @@ const SignIn = (props) => {
                 toast.success('welcome')
             }
         }
-        setUser({ email: '', password: '' })
+        
     }
     
     const responseGoogle = (response) => {
