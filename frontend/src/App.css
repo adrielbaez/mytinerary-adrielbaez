@@ -81,6 +81,7 @@ h3.signout:hover{
     width: 3rem;
     height: 3rem;
     background-size: cover;
+    border-radius: 3rem;
 }
 
 img.logo{
@@ -903,9 +904,6 @@ p.text-itinerary{
     .container-all{
         flex-direction: row;
     }
-    .googleAccount p{
-        margin-left: .4rem;
-    }  
 }
 .title {
     font-weight: bold;
@@ -925,29 +923,7 @@ p.text-itinerary{
     grid-template-columns: 15% 85%;
     padding: 0 0.4rem;
   }
-  .googleAccount{
-      display: flex;
-      align-items: center;
-  }
-  .googleAccount:hover{
-      background-color: #e7e5e5;
-      cursor: pointer;
-  }
-  .googleAccount p{
-      text-align: center;
-      width: 75%;
-      font-size: 1.1rem;
-      margin-left: 0;
-      margin-bottom: .3rem;
-  }
-  .googleAccount i{
-    text-align: center;
-    line-height: 55px;
-    color: #979797;
-    transition: 0.5s;
-    font-size: 1.1rem;
-    padding: 0 .5rem 0 1rem;
-  }
+
   .input-field i {
     text-align: center;
     line-height: 55px;
@@ -1033,4 +1009,27 @@ select{
     border: none;
     border-radius: 3.5rem;
     background-color: #d6d5d5;
+}
+.btn-google{
+    width: 20rem !important;
+    background-color: #d6d5d5 !important;
+    color: rgb(97, 96, 96) !important;
+    font-weight: 500 !important;
+    border-radius: 2rem !important;
+    height: 3.5rem !important;
+    font-size: 1.1rem !important;
+}
+.btn-google div {
+    background-color: #d6d5d5 !important;
+    border-radius: 2rem !important;
+}
+.mensaje-error{
+    width: 20rem;
+    border-radius: 2rem !important;
+    border: 1px solid red;
+    color: red;
+    text-align: center;
+    background-color: #ffffff;
+    padding: .5rem 0.5rem;
+    font-size: 1rem;
 }

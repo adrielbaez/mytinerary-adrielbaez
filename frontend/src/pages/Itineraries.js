@@ -16,7 +16,11 @@ class Intineraries extends React.Component {
         this.setState({
             cityDetails: cityFilter
         })
+        // if (!cityFilter) {
+        //     this.props.history.push('/cities')
+        // }
         this.props.loadItineraries(idCity,history)
+
     }
 
     render() {

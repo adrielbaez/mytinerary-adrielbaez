@@ -36,14 +36,14 @@ const usersControllers = {
                 const token = jwt.sign({ ...userExists }, process.env.SECRET_OR_KEY)
                 respuesta = token
             } else {
-                error = 'User and/or password failed'
+                error = 'Email address and password do not match'
             }
         } else {
-            error = 'User and/or password failed'
+            error = 'Email address and password do not match'
         }
         res.json({
             success: !error ? true : false,
-            respuesta: { token: respuesta, userPicture: userExists.userPicture, firstName: userExists.firstName, lastName: userExists.lastName },
+            respuesta: !error && { token: respuesta, userPicture: userExists.userPicture, firstName: userExists.firstName, lastName: userExists.lastName },
             error: error
         })
     },

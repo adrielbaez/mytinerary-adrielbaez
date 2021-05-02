@@ -4,19 +4,19 @@ const validator = (req, res, next) => {
 
     const schema = joi.object({
         firstName: joi.string().trim().min(2).max(20).required().pattern(new RegExp('[a-zA-Z]$')).messages({
-            "string.base": "Your first name should by a text type",
+            "string.base": "Your first name must not have numbers or special characters",
             "string.empty": "Your first name is a required field",
             "any.required": "Your first name is a required field",
             "string.pattern.base": "Your first name must contain letters",
-            "string.min": "Your password must contain at least 3 letters",
-            "any.required": "Your password is a required field"
+            "string.min": "Your first name must contain at least 3 letters",
+            "any.required": "Your first name is a required field"
         }),
-        lastName: joi.string().trim().min(2).max(15).required().messages({
-            "string.base": "Your last name should by a text type",
+        lastName: joi.string().trim().min(2).max(20).required().messages({
+            "string.base": "Your last name must not have numbers or special characters",
             "string.empty": "Your last name is a required field",
             "any.required": "Your last name is a required field",
-            "string.min": "Your password must contain at least 3 letters",
-            "any.required": "Your password is a required field"
+            "string.min": "last name must contain at least 3 letters",
+            "any.required": "last name is a required field"
         }),
         email: joi.string().trim().email().required().messages({
             "string.base": "Something went wrong. Please try again",
@@ -30,7 +30,7 @@ const validator = (req, res, next) => {
             "string.empty": "Your password is a required field",
             "any.required": "Your mail address is a required field",
             "string.pattern.base": "Your password must contain a letter and number",
-            "string.min": "Your password must contain at least 6 characters",
+            "string.min": "Your password minimum of 5 characters",
             "any.required": "Your password is a required field"
         }),
         userPicture: joi.string().trim().required().messages({

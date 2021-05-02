@@ -6,10 +6,10 @@ import { connect } from 'react-redux';
 import authActions from '../redux/actions/authActions'
 import GoogleLogin from 'react-google-login';
 
-
 const SignIn = (props) => {
 
     const [user, setUser] = useState({ email: '', password: '' })
+    const [mensajeError, setMensajeError] = useState({success: false, mensaje: ''})
 
     const readInput = (e) => {
         e.preventDefault()
@@ -25,12 +25,20 @@ const SignIn = (props) => {
         e && e.preventDefault();
         let loginUser = e ? user : googleUser
         if (!googleUser) {
-            if (user.email === '' || user.password === '') {
-                return toast.error(`All fields are required`, { position: toast.POSITION.TOP_CENTER })
+            if (loginUser.email === '' || loginUser.password === '') {
+                setMensajeError({success: true, mensaje: 'All fields are required'})
+                return 
             }
         }
-        props.iniciarSesion(loginUser)
-
+        setMensajeError(false)
+        let response = await props.iniciarSesion(loginUser)
+        if (response) {
+            if (!response.success) {
+                setMensajeError({success: true, mensaje: response.error})
+            } else{
+                toast.success('welcome')
+            }
+        }
         setUser({ email: '', password: '' })
     }
     const responseGoogle = (response) => {
@@ -42,6 +50,11 @@ const SignIn = (props) => {
             <div className="container-form">
                 <form action="#" className="sign-in-form">
                     <h2 className="title">Sign in</h2>
+                    {mensajeError.success 
+                        ?(
+                            <div className="mensaje-error">{mensajeError.mensaje}</div>
+                        ) 
+                        : null}
                     <div className="input-field">
                         <i className="fas fa-user"></i>
                         <input type="email" name="email" placeholder="Your Email" value={user.email} onChange={readInput} />
@@ -54,6 +67,7 @@ const SignIn = (props) => {
                     <ToastContainer />
                     <p className="social-text">Or Sign in with Google</p>
                     <GoogleLogin
+                        className="btn-google"
                         clientId="112919868081-jrnbtckjpmehq2v64aj4rrccs2mosics.apps.googleusercontent.com"
                         buttonText="Sign Up with Google"
                         onSuccess={responseGoogle}
@@ -64,7 +78,7 @@ const SignIn = (props) => {
             </div>
             <div className="call-to-action-form">
                 <div className="content">
-                    <h3>Hi! New here?</h3>
+                    <h3>New here?</h3>
                     <p>Don't have an account? please, go to Sign Up</p>
                     <Link to="/signup">
                         <button className="btn-redirect" id="sign-up-btn">Sign Up</button>

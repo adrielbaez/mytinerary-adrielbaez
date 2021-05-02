@@ -12,7 +12,6 @@ const authActions = {
             if (!response.data.success) {
                 return response.data.errores
             }
-            console.log(response.data);
             dispatch({
                 type: 'USER_LOG',
                 payload: response.data.success ? response.data.respuesta : null
@@ -22,6 +21,9 @@ const authActions = {
     iniciarSesion: (user) => {
         return async (dispatch, getState) => {
             let response = await axios.post('http://localhost:4000/api/user/signin', user)
+            if (!response.data.success) {
+                return response.data
+            }
             if (response.data.success) {
                 toast.success(`Welcome ${response.data.respuesta.firstName}`)
             }

@@ -11,6 +11,7 @@ const SignUp = (props) => {
 
     const [newUser, setNewUser] = useState({ firstName: '', lastName: '', email: '', password: '', userPicture: '', country: '' })
     const [countries, setCountries] = useState([])
+    const [mensajeError, setMensajeError] = useState({success: false, mensaje: '', error: false })
     useEffect(() => {
         axios.get('https://restcountries.eu/rest/v2/all')
             .then(response => setCountries(response.data))
@@ -28,10 +29,22 @@ const SignUp = (props) => {
     const sendDataNewUser = async (e = null, googleUser = null) => {
         e && e.preventDefault();
         let user = e ? newUser : googleUser
-        let respuesta = await props.createNewUser(user)
-        setNewUser({ firstName: '', lastName: '', email: '', password: '', userPicture: '', country: '' })
-
+        if (!googleUser) {
+            if (user.firstName === '',user.lastName === '' ,user.email === '' || user.password === '', user.userPicture === '', user.country === '') {
+                setMensajeError({...mensajeError,success: true, mensaje: 'All fields are required'})
+                return 
+            }
+        }
+        let response = await props.createNewUser({...user, firstName: user.firstName.trim(), lastName: user.lastName.trim()})
+       if (response) {
+        if (response.details) {
+            return setMensajeError({...mensajeError,error: true, mensaje: response.details})
+        }
     }
+    setNewUser({ firstName: '', lastName: '', email: '', password: '', userPicture: '', country: '' })
+    
+} 
+console.log(mensajeError);
 
     const responseGoogle = (response) => {
         console.log(response);
@@ -43,7 +56,7 @@ const SignUp = (props) => {
             <div className="call-to-action-form">
                 <div className="content">
                     <h3>One of us?</h3>
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis,ex ratione. Aliquid!</p>
+                    <p>You have an account? please, go to Sign In</p>
                     <Link to="/signin">
                         <button className="btn-redirect" id="sign-up-btn">Sign In</button>
                     </Link>
@@ -52,6 +65,17 @@ const SignUp = (props) => {
             <div className="container-form">
                 <form action="#" className="sign-in-form">
                     <h2 className="title">Sign Up</h2>
+                    {mensajeError.success 
+                        ?(
+                            <div className="mensaje-error">{mensajeError.mensaje}</div>
+                        ) 
+                        : mensajeError.error ?(
+                            mensajeError.mensaje.map((error, index) =>{
+                                return <h1>{error.message}</h1>
+                            })
+                        )
+
+                        :null}
                     <div className="input-field">
                         <i className="fas fa-user"></i>
                         <input type="text" name="firstName" value={newUser.firstName} placeholder="Your First Name" onChange={readDataNewUser} />
@@ -88,6 +112,7 @@ const SignUp = (props) => {
                     <ToastContainer />
                     <p className="social-text">Or Sign up with Google</p>
                     <GoogleLogin
+                        className="btn-google"
                         clientId="112919868081-jrnbtckjpmehq2v64aj4rrccs2mosics.apps.googleusercontent.com"
                         buttonText="Sign Up with Google"
                         onSuccess={responseGoogle}
