@@ -9,7 +9,7 @@ import GoogleLogin from 'react-google-login';
 const SignIn = (props) => {
 
     const [user, setUser] = useState({ email: '', password: '' })
-    const [mensajeError, setMensajeError] = useState({success: false, mensaje: ''})
+    const [mensajeError, setMensajeError] = useState({ success: false, mensaje: '' })
 
     const readInput = (e) => {
         e.preventDefault()
@@ -21,26 +21,28 @@ const SignIn = (props) => {
             [field]: value
         })
     }
+
     const sendDataUser = async (e = null, googleUser = null) => {
         e && e.preventDefault();
         let loginUser = e ? user : googleUser
         if (!googleUser) {
             if (loginUser.email === '' || loginUser.password === '') {
-                setMensajeError({success: true, mensaje: 'All fields are required'})
-                return 
+                setMensajeError({ success: true, mensaje: 'All fields are required' })
+                return
             }
         }
         setMensajeError(false)
         let response = await props.iniciarSesion(loginUser)
         if (response) {
             if (!response.success) {
-                setMensajeError({success: true, mensaje: response.error})
-            } else{
+                setMensajeError({ success: true, mensaje: response.error })
+            } else {
                 toast.success('welcome')
             }
         }
         setUser({ email: '', password: '' })
     }
+    
     const responseGoogle = (response) => {
         const { email, googleId } = response.profileObj
         sendDataUser(null, { email: email, password: "a" + googleId })
@@ -50,10 +52,10 @@ const SignIn = (props) => {
             <div className="container-form">
                 <form action="#" className="sign-in-form">
                     <h2 className="title">Sign in</h2>
-                    {mensajeError.success 
-                        ?(
+                    {mensajeError.success
+                        ? (
                             <h3 className="mensaje-error">{mensajeError.mensaje}</h3>
-                        ) 
+                        )
                         : null}
                     <div className="input-field">
                         <i className="fas fa-user"></i>

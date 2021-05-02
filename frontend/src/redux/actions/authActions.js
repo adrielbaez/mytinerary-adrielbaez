@@ -5,15 +5,23 @@ import Swal from 'sweetalert2'
 const authActions = {
     createNewUser: (newUser) => {
         return async (dispatch, getState) => {
+           try {
             let response = await axios.post('http://localhost:4000/api/user/signup', newUser)
-            console.log(response.data);
-            if (!response.data.success) {
-                return response.data.errores
+            console.log(response);
+            if (response.data.joinUs === false) {
+                return response.data
             }
+            if (!response.data.success) {
+                return response.data.errores 
+            }
+            console.log('llego al dispatch');
             dispatch({
                 type: 'USER_LOG',
                 payload: response.data.success ? response.data.respuesta : null
             })
+           } catch (error) {
+              console.log(error); 
+           }
         }
     },
     iniciarSesion: (user) => {
@@ -21,9 +29,6 @@ const authActions = {
             let response = await axios.post('http://localhost:4000/api/user/signin', user)
             if (!response.data.success) {
                 return response.data
-            }
-            if (response.data.success) {
-                toast.success(`Welcome ${response.data.respuesta.firstName}`)
             }
             dispatch({
                 type: 'USER_LOG',

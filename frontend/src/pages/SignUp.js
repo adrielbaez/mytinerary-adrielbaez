@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import axios from 'axios'
 import { connect } from 'react-redux';
 import authActions from '../redux/actions/authActions'
-import { ToastContainer } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import GoogleLogin from 'react-google-login';
 
@@ -27,6 +27,7 @@ const SignUp = (props) => {
             [field]: value
         })
     }
+
     const sendDataNewUser = async (e = null, googleUser = null) => {
         e && e.preventDefault();
         let user = e ? newUser : googleUser
@@ -36,12 +37,18 @@ const SignUp = (props) => {
                 return
             }
         }
+
         setMensajeError({ ...mensajeError, success: false })
         let response = await props.createNewUser({ ...user, firstName: user.firstName.trim(), lastName: user.lastName.trim() })
-        
+        console.log(response);
+        if (!response.joinUs) {
+            if (response.joinUs === false) {
+                return toast.error(response.respuesta)
+            }
+        }
         setErrores({ firstName: '', lastName: '', email: '', password: '', userPicture: '' })
-        if (response) {
-            response.details.forEach(error => { setErrores((erroresPrev) => {
+        if (!response.success) {
+            response.errores.details.map(error => { return setErrores((erroresPrev) => {
                     return { ...erroresPrev, [error.context.label]: error.message}
                 })
             })

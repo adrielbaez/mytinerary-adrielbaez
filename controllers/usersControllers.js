@@ -20,7 +20,7 @@ const usersControllers = {
                 console.log(error);
             }
         } else {
-            res.json({ success: false, respuesta: 'The email already exists in our databases'})
+            res.json({ success: false, respuesta: 'The email already exists in our databases' })
         }
 
     },
@@ -48,7 +48,11 @@ const usersControllers = {
         })
     },
     loginForzado: (req, res) => {
-        res.json({ success: true, respuesta: { userPicture: req.user.userPicture, firstName: req.user.firstName, lastName: req.user.lastName } })
+        try {
+            res.json({ success: true, respuesta: { userPicture: req.user.userPicture, firstName: req.user.firstName, lastName: req.user.lastName } })
+        } catch (error) {
+            res.json({ success: false, error: 'Something went wrong'+ error})
+        }
     }
 }
 
