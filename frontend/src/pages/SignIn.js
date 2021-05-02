@@ -52,7 +52,7 @@ const SignIn = (props) => {
                     <h2 className="title">Sign in</h2>
                     {mensajeError.success 
                         ?(
-                            <div className="mensaje-error">{mensajeError.mensaje}</div>
+                            <h3 className="mensaje-error">{mensajeError.mensaje}</h3>
                         ) 
                         : null}
                     <div className="input-field">

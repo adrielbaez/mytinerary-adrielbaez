@@ -6,9 +6,7 @@ const authActions = {
     createNewUser: (newUser) => {
         return async (dispatch, getState) => {
             let response = await axios.post('http://localhost:4000/api/user/signup', newUser)
-            if (response.data.success) {
-                toast.success('welcome to family MyTinerary bro')
-            }
+            console.log(response.data);
             if (!response.data.success) {
                 return response.data.errores
             }

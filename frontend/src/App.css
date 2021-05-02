@@ -916,7 +916,7 @@ p.text-itinerary{
     max-width: 380px;
     width: 100%;
     background-color: #d6d5d5;
-    margin: 10px 0;
+    margin: .5rem 0;
     height: 3.5rem;
     border-radius: 3.5rem;
     display: grid;
@@ -1023,13 +1023,14 @@ select{
     background-color: #d6d5d5 !important;
     border-radius: 2rem !important;
 }
-.mensaje-error{
+.mensaje-error,.mensaje-error-signup{
     width: 20rem;
     border-radius: 2rem !important;
-    border: 1px solid red;
     color: red;
-    text-align: center;
     background-color: #ffffff;
-    padding: .5rem 0.5rem;
     font-size: 1rem;
+}
+.mensaje-error-signup{
+    font-size: .9rem;
+    margin-left: 2rem;
 }

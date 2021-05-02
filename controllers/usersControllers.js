@@ -20,7 +20,7 @@ const usersControllers = {
                 console.log(error);
             }
         } else {
-            res.json({ success: false, respuesta: 'The email already exists in our databases' })
+            res.json({ success: false, respuesta: 'The email already exists in our databases'})
         }
 
     },
@@ -36,10 +36,10 @@ const usersControllers = {
                 const token = jwt.sign({ ...userExists }, process.env.SECRET_OR_KEY)
                 respuesta = token
             } else {
-                error = 'Email address and password do not match'
+                error = 'Email address or password do not match'
             }
         } else {
-            error = 'Email address and password do not match'
+            error = 'Email address or password do not match'
         }
         res.json({
             success: !error ? true : false,

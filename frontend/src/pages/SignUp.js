@@ -11,7 +11,8 @@ const SignUp = (props) => {
 
     const [newUser, setNewUser] = useState({ firstName: '', lastName: '', email: '', password: '', userPicture: '', country: '' })
     const [countries, setCountries] = useState([])
-    const [mensajeError, setMensajeError] = useState({success: false, mensaje: '', error: false })
+    const [mensajeError, setMensajeError] = useState({ success: false, mensaje: '' })
+    const [errores, setErrores] = useState({ firstName: '', lastName: '', email: '', password: '', userPicture: '' })
     useEffect(() => {
         axios.get('https://restcountries.eu/rest/v2/all')
             .then(response => setCountries(response.data))
@@ -30,24 +31,25 @@ const SignUp = (props) => {
         e && e.preventDefault();
         let user = e ? newUser : googleUser
         if (!googleUser) {
-            if (user.firstName === '',user.lastName === '' ,user.email === '' || user.password === '', user.userPicture === '', user.country === '') {
-                setMensajeError({...mensajeError,success: true, mensaje: 'All fields are required'})
-                return 
+            if (user.firstName === '' || user.lastName === '' || user.email === '' || user.password === '' || user.userPicture === '' || user.country === '') {
+                setMensajeError({ success: true, mensaje: 'All fields are required' })
+                return
             }
         }
-        let response = await props.createNewUser({...user, firstName: user.firstName.trim(), lastName: user.lastName.trim()})
-       if (response) {
-        if (response.details) {
-            return setMensajeError({...mensajeError,error: true, mensaje: response.details})
+        setMensajeError({ ...mensajeError, success: false })
+        let response = await props.createNewUser({ ...user, firstName: user.firstName.trim(), lastName: user.lastName.trim() })
+        
+        setErrores({ firstName: '', lastName: '', email: '', password: '', userPicture: '' })
+        if (response) {
+            response.details.forEach(error => { setErrores((erroresPrev) => {
+                    return { ...erroresPrev, [error.context.label]: error.message}
+                })
+            })
         }
+        // setNewUser({ firstName: '', lastName: '', email: '', password: '', userPicture: '', country: '' })
     }
-    setNewUser({ firstName: '', lastName: '', email: '', password: '', userPicture: '', country: '' })
-    
-} 
-console.log(mensajeError);
 
     const responseGoogle = (response) => {
-        console.log(response);
         const { givenName, email, googleId, imageUrl, familyName } = response.profileObj
         sendDataNewUser(null, { firstName: givenName, lastName: familyName, email: email, password: "a" + googleId, userPicture: imageUrl, country: 'Argentina' })
     }
@@ -65,37 +67,36 @@ console.log(mensajeError);
             <div className="container-form">
                 <form action="#" className="sign-in-form">
                     <h2 className="title">Sign Up</h2>
-                    {mensajeError.success 
-                        ?(
+                    {mensajeError.success
+                        ? (
                             <div className="mensaje-error">{mensajeError.mensaje}</div>
-                        ) 
-                        : mensajeError.error ?(
-                            mensajeError.mensaje.map((error, index) =>{
-                                return <h1>{error.message}</h1>
-                            })
                         )
-
-                        :null}
+                        : null}
                     <div className="input-field">
                         <i className="fas fa-user"></i>
                         <input type="text" name="firstName" value={newUser.firstName} placeholder="Your First Name" onChange={readDataNewUser} />
                     </div>
+                    {errores.firstName !== '' ? (<div className="mensaje-error-signup">{errores.firstName}</div>) : null}
                     <div className="input-field">
                         <i className="fas fa-user"></i>
                         <input type="text" name="lastName" value={newUser.lastName} placeholder="Your Last Name" onChange={readDataNewUser} />
                     </div>
+                    {errores.lastName !== '' ? (<div className="mensaje-error-signup">{errores.lastName}</div>) : null}
                     <div className="input-field">
                         <i className="fas fa-envelope"></i>
                         <input type="email" name="email" value={newUser.email} placeholder="Your Email" onChange={readDataNewUser} />
                     </div>
+                    {errores.email !== '' ? (<div className="mensaje-error-signup">{errores.email}</div>) : null}
                     <div className="input-field">
                         <i className="fas fa-lock"></i>
                         <input type="password" name="password" value={newUser.password} placeholder="Your Password" onChange={readDataNewUser} />
                     </div>
+                    {errores.password !== '' ? (<div className="mensaje-error-signup">{errores.password}</div>) : null}
                     <div className="input-field">
                         <i className="fas fa-image"></i>
                         <input type="text" name="userPicture" value={newUser.userPicture} placeholder="URL of Your Picture" onChange={readDataNewUser} />
                     </div>
+                    {errores.userPicture !== '' ? (<div className="mensaje-error-signup">{errores.userPicture}</div>) : null}
                     <div className="input-field">
                         <i className="fas fa-globe-americas"></i>
                         <select name="country" onChange={readDataNewUser} value={newUser.country}>
