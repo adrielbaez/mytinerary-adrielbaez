@@ -41,19 +41,21 @@ const SignUp = (props) => {
         setMensajeError({ ...mensajeError, success: false })
         let response = await props.createNewUser({ ...user, firstName: user.firstName.trim(), lastName: user.lastName.trim() })
         console.log(response);
-        if (!response.joinUs) {
-            if (response.joinUs === false) {
+        if (response) {
+            if (response.googleUser) {
                 return toast.error(response.respuesta)
             }
-        }
-        setErrores({ firstName: '', lastName: '', email: '', password: '', userPicture: '' })
-        if (!response.success) {
-            response.errores.details.map(error => { return setErrores((erroresPrev) => {
-                    return { ...erroresPrev, [error.context.label]: error.message}
+            setErrores({ firstName: '', lastName: '', email: '', password: '', userPicture: '' })
+            if (!response.success) {
+                response.details.map(error => {
+                    return setErrores((erroresPrev) => {
+                        return { ...erroresPrev, [error.context.label]: error.message }
+                    })
                 })
-            })
+            }
+            // setNewUser({ firstName: '', lastName: '', email: '', password: '', userPicture: '', country: '' })
         }
-        // setNewUser({ firstName: '', lastName: '', email: '', password: '', userPicture: '', country: '' })
+
     }
 
     const responseGoogle = (response) => {

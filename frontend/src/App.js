@@ -21,7 +21,6 @@ const App = (props) => {
     }
     props.iniciarSesionLS(userLS)
   }
-  console.log(props.userLogged);
   var imagen = {
     logo: 'logo.png'
   }

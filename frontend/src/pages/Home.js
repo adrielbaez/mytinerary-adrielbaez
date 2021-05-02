@@ -1,7 +1,7 @@
 import Carrusel from '../components/Carrusel';
 import CallToAction from '../components/CallToAction';
 import Hero from '../components/Hero'
-import { toast, ToastContainer } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 const Home = () => {
     var imagenes = {
         portada: 'portada3.jpg',

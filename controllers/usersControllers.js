@@ -17,10 +17,9 @@ const usersControllers = {
 
             } catch (error) {
                 res.json({ success: false, respuesta: error + 'There was an error saving user, please retry again' })
-                console.log(error);
             }
         } else {
-            res.json({ success: false, respuesta: 'The email already exists in our databases' })
+            res.json({ success: false, respuesta: 'The email already exists in our databases', googleUser: true })
         }
 
     },
