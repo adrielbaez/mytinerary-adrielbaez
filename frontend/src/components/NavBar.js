@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { connect } from 'react-redux';
 import authActions from '../redux/actions/authActions';
-
+import useDropdownMenu from 'react-accessible-dropdown-menu-hook';
 
 const NavBar = (props) => {
     const [click, setClick] = useState(false);
