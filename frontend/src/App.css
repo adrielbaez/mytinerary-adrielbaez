@@ -809,8 +809,15 @@ i.heart-icon{
     color: red;
     font-size: 2rem;
 }
+i.heart-icon:hover{
+    cursor: pointer;
+}
 p.likes{
     font-size: 1.5rem;
+}
+.money-icon{
+    margin-left: .5rem;
+    color: green;
 }
 /* itinerary content */
 .content-itinerary{

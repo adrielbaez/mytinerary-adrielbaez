@@ -4,6 +4,7 @@ import { Collapse, Button } from 'reactstrap';
 const CardItinerary = ({ itinerary }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [changeNameBtn, setChangeNameBtn] = useState('View More')
+    const [changeHeartIcon, setChangeHeartIcon] = useState(false)
 
     const toggle = () => {
         setIsOpen(!isOpen);
@@ -12,6 +13,10 @@ const CardItinerary = ({ itinerary }) => {
             return
         }
         setChangeNameBtn('View More')
+    }
+    let heart = !changeHeartIcon? "far fa-heart heart-icon": "fas fa-heart heart-icon"
+    const changeHeart = ()=>{
+        setChangeHeartIcon(!changeHeartIcon)
     }
 
     return (
@@ -23,8 +28,8 @@ const CardItinerary = ({ itinerary }) => {
                     <h3>{itinerary.authorName}</h3>
                 </div>
                 <div className="itinerary-details">
-                    <p><span>Price:</span>{'💵'.repeat(itinerary.price)}</p>
-                    <p className="likes"><i className="far fa-heart heart-icon"></i> {itinerary.likes}</p>
+                    <p><span>Price:</span>{new Array(itinerary.price).fill(0).map((elemento, index)=><i key={index} className="money-icon far fa-money-bill-alt"></i>)}</p>
+                    <p className="likes" onClick={changeHeart}><i className={heart}></i> {itinerary.likes}</p>
                     <p><span>Duration:</span> {itinerary.duration} hours</p>
                 </div>
                
