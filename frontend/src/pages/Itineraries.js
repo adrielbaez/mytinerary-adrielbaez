@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import CardItinerary from '../components/CardItinerary';
 import itinerariesActions from '../redux/actions/itinerariesActions';
+import SpinnerCube from '../components/helpers/Spinner';
 
 class Intineraries extends React.Component {
 
@@ -27,14 +28,7 @@ class Intineraries extends React.Component {
         return (
             <>
                 {this.state.cityDetails === null
-                    ? <div className="spinner-container">
-                        <div className="sk-folding-cube">
-                            <div className="sk-cube1 sk-cube"></div>
-                            <div className="sk-cube2 sk-cube"></div>
-                            <div className="sk-cube4 sk-cube"></div>
-                            <div className="sk-cube3 sk-cube"></div>
-                        </div>
-                    </div>
+                    ? <SpinnerCube />
                     :
                     <>
                         <div className="itineraries-hero d-flex flex-centrado" style={{ backgroundImage: `url('/assets/${this.state.cityDetails[0].src}')` }}>

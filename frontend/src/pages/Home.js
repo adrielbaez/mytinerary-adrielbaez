@@ -1,8 +1,8 @@
 import Carrusel from '../components/Carrusel';
 import CallToAction from '../components/CallToAction';
 import Hero from '../components/Hero'
-import { ToastContainer } from 'react-toastify';
-const Home = () => {
+import {connect} from 'react-redux';
+const Home = (props) => {
     var imagenes = {
         portada: 'portada3.jpg',
         imagenTravel: 'callToAction.PNG'
@@ -17,10 +17,15 @@ const Home = () => {
                 <div className="carrusel">
                     <Carrusel />
                 </div>
-                <ToastContainer />
             </div>
         </>
     )
 }
 
-export default Home;
+const mapStateToProps = state => {
+    return {
+      userLogged: state.authReducer.userLogged
+    }
+  }
+
+  export default connect(mapStateToProps, null)(Home);

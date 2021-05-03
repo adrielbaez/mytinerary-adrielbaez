@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import CardCity from '../components/CardCity';
+import SpinnerCube from '../components/helpers/Spinner';
 import citiesActions from '../redux/actions/citiesActions';
 class Cities extends React.Component {
    
@@ -19,14 +20,7 @@ class Cities extends React.Component {
                         <input onChange={(e)=>this.props.searchCities(e.target.value)} type="text" placeholder="Search Cities" />
                     </div>
                     {this.props.loading
-                        ? <div className="spinner-container">
-                            <div className="sk-folding-cube">
-                                <div className="sk-cube1 sk-cube"></div>
-                                <div className="sk-cube2 sk-cube"></div>
-                                <div className="sk-cube4 sk-cube"></div>
-                                <div className="sk-cube3 sk-cube"></div>
-                            </div>
-                        </div>
+                        ? <SpinnerCube />
                         : this.props.newCities.length === 0
                             ? <div className="mensajeErrorBusqueda" style={{ backgroundImage: `url('/assets/suitcase.jpg')` }}>
                                 <div className="mensajeContent">

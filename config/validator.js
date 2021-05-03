@@ -45,7 +45,6 @@ const validator = (req, res, next) => {
             "any.required": "Please, choose a country"
         })
     })
-
     const validation = schema.validate(req.body, { abortEarly: false })
     if (validation.error) {
         return res.json({ success: false, errores: validation.error })

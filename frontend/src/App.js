@@ -10,7 +10,8 @@ import ToTop from './components/ToTop';
 import SignUp from './pages/SignUp';
 import SignIn from './pages/SignIn';
 import {connect} from 'react-redux';
-import authActions from './redux/actions/authActions'
+import authActions from './redux/actions/authActions';
+import { ToastContainer, toast } from 'react-toastify';
 
 const App = (props) => {
   if (!props.userLogged && localStorage.getItem('token')) {
@@ -24,10 +25,14 @@ const App = (props) => {
   var imagen = {
     logo: 'logo.png'
   }
+  if (props.userLogged) {       
+    toast.success(`Welcome ${props.userLogged.firstName}`)
+}
   return (
     <BrowserRouter>
     <ToTop />
     <NavBar logo={imagen.logo}/>
+    <ToastContainer />
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/cities" component={Cities} />

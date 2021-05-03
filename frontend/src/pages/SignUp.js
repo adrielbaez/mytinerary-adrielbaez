@@ -7,6 +7,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import GoogleLogin from 'react-google-login';
 
+
 const SignUp = (props) => {
 
     const [newUser, setNewUser] = useState({ firstName: '', lastName: '', email: '', password: '', userPicture: '', country: '' })
@@ -32,9 +33,10 @@ const SignUp = (props) => {
         e && e.preventDefault();
         let user = e ? newUser : googleUser
         if (!googleUser) {
-            if (user.firstName === '' || user.lastName === '' || user.email === '' || user.password === '' || user.userPicture === '' || user.country === '') {
+            //evaluo si mi objeto user tiene campos vacios
+            if (Object.values(user).some(valor => valor ==="" )) {
                 setMensajeError({ success: true, mensaje: 'All fields are required' })
-                return
+                return false;
             }
         }
         setMensajeError({ ...mensajeError, success: false })

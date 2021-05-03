@@ -47,6 +47,7 @@ const SignIn = (props) => {
         sendDataUser(null, { email: email, password: "a" + googleId })
     }
     return (
+        <>
         <div className="container-all">
             <div className="container-form">
                 <form action="#" className="sign-in-form">
@@ -87,6 +88,7 @@ const SignIn = (props) => {
                 </div>
             </div>
         </div>
+        </>  
     )
 }
 
