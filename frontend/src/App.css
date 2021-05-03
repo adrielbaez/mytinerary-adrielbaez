@@ -893,7 +893,7 @@ p.text-itinerary{
 }
 
 .container-form form {
-    width: 20rem;
+    width: 22.5rem;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -1025,7 +1025,7 @@ select{
     border-radius: 2rem !important;
 }
 .mensaje-error,.mensaje-error-signup{
-    width: 20rem;
+    width: 22.5rem;
     border-radius: 2rem !important;
     color: red;
     background-color: #ffffff;
@@ -1033,5 +1033,4 @@ select{
 }
 .mensaje-error-signup{
     font-size: .9rem;
-    margin-left: 2rem;
 }

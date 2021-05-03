@@ -7,7 +7,7 @@ const validator = (req, res, next) => {
             "string.base": "Your first name must not have numbers or special characters",
             "string.empty": "Your first name is a required field",
             "any.required": "Your first name is a required field",
-            "string.pattern.base": "Your first name must contain letters",
+            "string.pattern.base": "Your first name must contain letters and at least 2 letters",
             "string.min": "Your first name must contain at least 2 letters",
             "any.required": "Your first name is a required field"
         }),
@@ -15,7 +15,7 @@ const validator = (req, res, next) => {
             "string.base": "Your last name must not have numbers or special characters",
             "string.empty": "Your last name is a required field",
             "any.required": "Your last name is a required field",
-            "string.pattern.base": "Your last name must contain letters",
+            "string.pattern.base": "Your first name must contain letters and at least 2 letters",
             "string.min": "Last name must contain at least 2 letters",
             "any.required": "Last name is a required field"
         }),
@@ -47,7 +47,6 @@ const validator = (req, res, next) => {
     })
 
     const validation = schema.validate(req.body, { abortEarly: false })
-    console.log(validation.error);
     if (validation.error) {
         return res.json({ success: false, errores: validation.error })
     }
