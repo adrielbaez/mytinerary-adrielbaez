@@ -40,7 +40,6 @@ const SignIn = (props) => {
                 toast.success('welcome')
             }
         }
-        
     }
     
     const responseGoogle = (response) => {
@@ -71,7 +70,7 @@ const SignIn = (props) => {
                     <GoogleLogin
                         className="btn-google"
                         clientId="112919868081-jrnbtckjpmehq2v64aj4rrccs2mosics.apps.googleusercontent.com"
-                        buttonText="Sign Up with Google"
+                        buttonText="Sign In with Google"
                         onSuccess={responseGoogle}
                         onFailure={responseGoogle}
                         cookiePolicy={'single_host_origin'}

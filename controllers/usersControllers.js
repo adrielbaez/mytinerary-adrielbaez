@@ -14,7 +14,6 @@ const usersControllers = {
                 await userSave.save()
                 const token = jwt.sign({ ...userSave }, process.env.SECRET_OR_KEY)
                 res.json({ success: true, respuesta: { token, userPicture: userSave.userPicture, firstName: userSave.firstName, lastName: userSave.lastName } })
-
             } catch (error) {
                 res.json({ success: false, respuesta: error + 'There was an error saving user, please retry again' })
             }
@@ -30,11 +29,14 @@ const usersControllers = {
 
         const userExists = await User.findOne({ email: email })
         if (userExists) {
-            const comparePassword = bcryptjs.compareSync(password, userExists.password)
-            if (comparePassword) {
-                const token = jwt.sign({ ...userExists }, process.env.SECRET_OR_KEY)
-                respuesta = token
-            } else {
+            try {
+                const comparePassword = bcryptjs.compareSync(password, userExists.password)
+                if (comparePassword) {
+                    const token = jwt.sign({ ...userExists }, process.env.SECRET_OR_KEY)
+                    respuesta = token
+                }
+
+            } catch (error) {
                 error = 'Email address or password do not match'
             }
         } else {
@@ -50,7 +52,7 @@ const usersControllers = {
         try {
             res.json({ success: true, respuesta: { userPicture: req.user.userPicture, firstName: req.user.firstName, lastName: req.user.lastName } })
         } catch (error) {
-            res.json({ success: false, error: 'Something went wrong'+ error})
+            res.json({ success: false, error: 'Something went wrong' + error })
         }
     }
 }

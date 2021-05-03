@@ -53,7 +53,6 @@ const SignUp = (props) => {
                 })
             }
         }
-
     }
 
     const responseGoogle = (response) => {
