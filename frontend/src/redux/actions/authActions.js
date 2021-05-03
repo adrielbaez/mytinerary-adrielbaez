@@ -4,34 +4,37 @@ import Swal from 'sweetalert2'
 const authActions = {
     createNewUser: (newUser) => {
         return async (dispatch, getState) => {
-           try {
-            let response = await axios.post('http://localhost:4000/api/user/signup', newUser)
-            if (response.data.googleUser) {
+            try {
+                let response = await axios.post('http://localhost:4000/api/user/signup', newUser)
+                if (response.data.googleUser) {
                     return response.data
                 }
                 if (!response.data.success) {
-                    return response.data.errores 
+                    return response.data.errores
                 }
-                console.log('llego al dispatch');
-            dispatch({
-                type: 'USER_LOG',
-                payload: response.data.success ? response.data.respuesta : null
-            })
-           } catch (error) {
-              console.log(error); 
-           }
+                dispatch({
+                    type: 'USER_LOG',
+                    payload: response.data.success ? response.data.respuesta : null
+                })
+            } catch (error) {
+                console.log(error);
+            }
         }
     },
     iniciarSesion: (user) => {
         return async (dispatch, getState) => {
-            let response = await axios.post('http://localhost:4000/api/user/signin', user)
-            if (!response.data.success) {
-                return response.data
+            try {
+                let response = await axios.post('http://localhost:4000/api/user/signin', user)
+                if (!response.data.success) {
+                    return response.data
+                }
+                dispatch({
+                    type: 'USER_LOG',
+                    payload: response.data.success ? response.data.respuesta : null
+                })
+            } catch (error) {
+                console.log(error);
             }
-            dispatch({
-                type: 'USER_LOG',
-                payload: response.data.success ? response.data.respuesta : null
-            })
         }
     },
     cerrarSesion: () => {

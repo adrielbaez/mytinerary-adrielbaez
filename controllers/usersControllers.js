@@ -7,9 +7,9 @@ const usersControllers = {
         let { firstName, lastName, email, password, userPicture, country } = req.body;
         let emailExists = await User.findOne({ email })
 
-        password = bcryptjs.hashSync(password, 10)
         if (!emailExists) {
             try {
+                password = bcryptjs.hashSync(password, 10)
                 const userSave = new User({ firstName, lastName, email, password, userPicture, country })
                 await userSave.save()
                 const token = jwt.sign({ ...userSave }, process.env.SECRET_OR_KEY)

@@ -37,7 +37,6 @@ const SignUp = (props) => {
                 return
             }
         }
-
         setMensajeError({ ...mensajeError, success: false })
         let response = await props.createNewUser({ ...user, firstName: user.firstName.trim(), lastName: user.lastName.trim() })
         if (response) {
@@ -47,8 +46,8 @@ const SignUp = (props) => {
             setErrores({ firstName: '', lastName: '', email: '', password: '', userPicture: '' })
             if (!response.success) {
                 response.details.map(error => {
-                    return setErrores((erroresPrev) => {
-                        return { ...erroresPrev, [error.context.label]: error.message }
+                    return setErrores((erroresAnteriores) => {
+                        return { ...erroresAnteriores, [error.context.label]: error.message }
                     })
                 })
             }
