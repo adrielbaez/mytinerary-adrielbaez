@@ -737,6 +737,11 @@ h1.tittle-cities{
         width: 80vw;
     }
 }
+@media (min-width: 1100px) {
+    .container-itinerary{
+        width: 70vw;
+    }
+}
 .container-itinerary h2{
     width: 90%;
     text-shadow: 1px 1px 1px black;
@@ -871,8 +876,8 @@ div.collapse{
 }
 /* content activities */
 .activities-container h2{
-    width: 100%;
-    color: white;
+  width: 100%;
+  color: white;
   font-weight: bold;
   background-color: rgba(0, 0, 0, 0.705);
   margin-bottom: 1rem;
@@ -885,12 +890,13 @@ div.collapse{
   gap: 1rem;
 }
 .activity-bgImage{
-  height: 10rem;    
+  height: 15rem;    
   background-size: cover;
   display: flex;
   align-items: flex-end;
-  border-radius: 5px 34px 5px;
+  border-radius: 5px 28px 5px;
 }
+
 .activity-bgImage h3{
   width: 100%;
   margin: 0;
@@ -898,6 +904,7 @@ div.collapse{
   text-align: center;
   background-color: rgba(0, 0, 0, 0.705);
   border-radius: 5px 80px 5px;
+  font-size: 1.4rem;
 }
 @media (max-width: 850px) {
 .activities-content{
@@ -907,7 +914,9 @@ div.collapse{
     grid-template-columns: repeat(1, 1fr);
 }
 }
-
+.activities-container h2{
+    font-size: 1.6rem;
+}
 .comment-form{
   width: 100%;
   display: flex;
@@ -916,22 +925,23 @@ div.collapse{
   margin-top: 2rem;
 }
 .comment-form h2{
-    color: white;
+color: white;
 font-weight: bold;
 width: 100%;
 background-color: rgba(0, 0, 0, 0.705);
 margin-bottom: 1rem;
 border-radius: 5px 80px 5px;
 padding: 1rem 0;
+font-size: 1.6rem;
 }
 .field-container{
-  background-color: red;
   width: 80%;
   display: flex;
   align-items: flex-start;
 }
 .field-container label{
-  font-size: .7rem;
+   font-weight: bold; 
+  font-size: 1.1rem;
 }
 .field-container textarea{
   margin-left: .4rem;

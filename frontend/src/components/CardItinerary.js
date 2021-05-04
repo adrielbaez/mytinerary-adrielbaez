@@ -10,14 +10,15 @@ const CardItinerary = ({ itinerary, loadActivities }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [changeNameBtn, setChangeNameBtn] = useState('View More')
     const [changeHeartIcon, setChangeHeartIcon] = useState(false)
+    const [activity, setActivity] = useState([])
 
     const toggle = async () => {
         setIsOpen(!isOpen);
         if (!isOpen) {
             setChangeNameBtn('View Less')
             let respuesta = await loadActivities(itinerary._id)
-            console.log(respuesta);
-            return
+            setActivity(respuesta)
+            return false
         }
         setChangeNameBtn('View More')
     }
@@ -25,7 +26,6 @@ const CardItinerary = ({ itinerary, loadActivities }) => {
     const changeHeart = () => {
         setChangeHeartIcon(!changeHeartIcon)
     }
-
     return (
         <div>
             <div className="container-itinerary">
@@ -48,7 +48,7 @@ const CardItinerary = ({ itinerary, loadActivities }) => {
                 </div>
                 <Collapse isOpen={isOpen}>
                     <div className="contenedor-section-hidden">
-                        <CardActivities />
+                        <CardActivities activity={activity} />
                         <Comment />
                     </div>
                 </Collapse>

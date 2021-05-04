@@ -1,5 +1,6 @@
 import axios from 'axios'
-import Swal from 'sweetalert2'
+import AlertSweetRedirect from '../../components/helpers/AlertSweetRedirect';
+
 
 const itinerariesActions = {
     loadItineraries: (idCity, history) => {
@@ -7,14 +8,7 @@ const itinerariesActions = {
             axios.get(`http://localhost:4000/api/city/itineraries/${idCity}`)
             .then(response => dispatch({type: 'FETCH_ITINERARIES', payload: response.data.respuesta}))
             .catch( error =>{ 
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: 'Something went wrong!',
-                  })
-                  .then( ()=> {
-                    history.push('/error')
-                  })
+                <AlertSweetRedirect histoty={history} />
             })
         }
     },
@@ -23,7 +17,6 @@ const itinerariesActions = {
         return async (dispatch) =>{
             try {
               let respuesta = await axios.get(`http://localhost:4000/api/activities/itinerary/${idItinerary}`)
-              console.log(respuesta);
               if (respuesta.data.success) {
                   return respuesta.data.respuesta
               }
