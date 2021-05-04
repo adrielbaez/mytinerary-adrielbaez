@@ -11,22 +11,23 @@ class Intineraries extends React.Component {
         cityDetails: null,
     }
     componentDidMount() {
-        let idCity = this.props.match.params.id
-        let history = this.props.history
-        let cityFilter = this.props.cities.filter(city => city._id === idCity)
-        this.setState({
-            cityDetails: cityFilter
-        })
-        // if (!cityFilter) {
-        //     this.props.history.push('/cities')
-        // }
-        this.props.loadItineraries(idCity,history)
+        if (!this.state.cityDetails) {
+            let idCity = this.props.match.params.id
+            let history = this.props.history
+            let cityFilter = this.props.cities.filter(city => city._id === idCity)
+            this.setState({
+                cityDetails: cityFilter
+            })
+            // this.props.history.push('/cities')
+            this.props.loadItineraries(idCity,history)
+        }
 
     }
 
     render() {
         return (
             <>
+            {console.log(this.props.itineraries)}
                 {this.state.cityDetails === null
                     ? <SpinnerCube />
                     :

@@ -3,13 +3,14 @@ const router = express.Router()
 const citiesControllers = require('../controllers/citiesControllers')
 const itinerariesControllers = require('../controllers/itinerariesControllers')
 const usersControllers = require('../controllers/usersControllers')
+const activitiesControllers = require('../controllers/activitiesControllers')
 const validator = require('../config/validator')
 const passport = require('../config/passport')
 
 const {getAllCities, addNewCity, updateCity, deleteCity, getCity} = citiesControllers
 
 const {addItenerary,deleteItinerary, updateItinerary, getAllItineraries,getItinerary, getItinerariesCity} = itinerariesControllers
-
+const {addActivity, deleteActivity, getActivitiesItinerary, getActivity, getAllActivities, updateActivity} = activitiesControllers
 const {createNewAccount, logInUser, loginForzado} = usersControllers
 
 // rutas para las ciudades-----------
@@ -44,5 +45,19 @@ router.route('/user/signin')
 
 router.route('/user/logingLS')
 .get(passport.authenticate('jwt', {session: false}) ,loginForzado)
+
+// routes for activities
+router.route('/activities')
+.get(getAllActivities) 
+.post(addActivity)
+
+router.route('/activity/:id')
+.get(getActivity)
+.delete(deleteActivity)
+.put(updateActivity)
+
+router.route('/activities/itinerary/:id')
+.get(getActivitiesItinerary)
+
 
 module.exports = router

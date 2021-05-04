@@ -17,6 +17,20 @@ const itinerariesActions = {
                   })
             })
         }
+    },
+    loadActivities:  (idItinerary) =>{
+        
+        return async (dispatch) =>{
+            try {
+              let respuesta = await axios.get(`http://localhost:4000/api/activities/itinerary/${idItinerary}`)
+              console.log(respuesta);
+              if (respuesta.data.success) {
+                  return respuesta.data.respuesta
+              }
+            } catch (error) {
+                console.log(error);
+            }
+        }
     }
 }
 

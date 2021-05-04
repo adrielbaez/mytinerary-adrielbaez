@@ -722,26 +722,34 @@ h1.tittle-cities{
     align-items: center;
     background-color: lightskyblue;
     border-radius: 5px 80px 5px;
-    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
-    -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
-    padding: 1rem;
+    box-shadow: 10px 6px 5px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 10px 6px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 6px 5px 0px rgba(0,0,0,0.75);
+    padding:0 0  1rem 0;
 }
 @media (min-width: 764px) {
     .container-itinerary{
-        width: 70vw;
+        width: 85vw;
     }
-    
+}
+@media (min-width: 1000px) {
+    .container-itinerary{
+        width: 80vw;
+    }
 }
 .container-itinerary h2{
-    font-size: 3rem;
+    width: 90%;
+    text-shadow: 1px 1px 1px black;
+    font-size: 2rem;
     margin: 0;
     font-weight: bold;
-    color: white;
     text-align: center;
+    color: white;
+    border-radius: 5px 80px 5px;
 }
 .container-itinerary h3{
     text-align: center;
+
 }
 .author{
     width: 80%;
@@ -840,6 +848,7 @@ p.text-itinerary{
     font-size: 1.3rem;
     text-align: center;
 }
+
 @media (min-width: 764px) {
     .content-itinerary{
         width: 80vw;
@@ -856,6 +865,84 @@ p.text-itinerary{
         align-items: center;
     }
 }
+/* secction hidden */
+div.collapse{
+    width: 95% !important;
+}
+/* content activities */
+.activities-container h2{
+    width: 100%;
+    color: white;
+  font-weight: bold;
+  background-color: rgba(0, 0, 0, 0.705);
+  margin-bottom: 1rem;
+  border-radius: 5px 80px 5px;
+  padding: 1rem 0;
+}
+.activities-content{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+.activity-bgImage{
+  height: 10rem;    
+  background-size: cover;
+  display: flex;
+  align-items: flex-end;
+  border-radius: 5px 34px 5px;
+}
+.activity-bgImage h3{
+  width: 100%;
+  margin: 0;
+  color: white;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.705);
+  border-radius: 5px 80px 5px;
+}
+@media (max-width: 850px) {
+.activities-content{
+    width: 80%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+}
+}
+
+.comment-form{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2rem;
+}
+.comment-form h2{
+    color: white;
+font-weight: bold;
+width: 100%;
+background-color: rgba(0, 0, 0, 0.705);
+margin-bottom: 1rem;
+border-radius: 5px 80px 5px;
+padding: 1rem 0;
+}
+.field-container{
+  background-color: red;
+  width: 80%;
+  display: flex;
+  align-items: flex-start;
+}
+.field-container label{
+  font-size: .7rem;
+}
+.field-container textarea{
+  margin-left: .4rem;
+  height: 6rem;
+  resize: none;
+  outline: none;
+  flex-grow: 1;
+}
+
+
+
 /* -------login */
 .container-all{
     display: flex;

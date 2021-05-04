@@ -6,7 +6,7 @@ import {BrowserRouter, Route, Redirect, Switch} from 'react-router-dom'
 import Footer from './components/Footer';
 import NavBar from './components/NavBar';
 import Itineraries from './pages/Itineraries'
-import ToTop from './components/ToTop';
+import ToTop from './components/helpers/ToTop';
 import SignUp from './pages/SignUp';
 import SignIn from './pages/SignIn';
 import {connect} from 'react-redux';
