@@ -53,7 +53,7 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = {
-  iniciarSesionLS: authActions.iniciarSesionLS
+  iniciarSesionLS: authActions.iniciarSesionLS,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)

@@ -55,6 +55,41 @@ const itinerariesControllers = {
         } catch (error) {
             res.json({success:true , respuesta: `error: ${error}`})
         }
+    },
+    updateLike: async (req, res) =>{
+        // let idUserLiked = req.body.idUser
+        let idUserLiked = req.user._id
+        let idItinerary = req.params.id 
+        try {
+            let userLiked = await Itinerary.findOne({_id: idItinerary, usersLiked:{$all: [idUserLiked]}})
+            if (!userLiked) {
+                let updateLikes = await Itinerary.findByIdAndUpdate({_id: idItinerary},{ $push: { usersLiked: idUserLiked}, $inc:{likes:1}}, {new: true})
+
+                res.json({success: true, respuesta: updateLikes})
+            } else {
+                res.json({success: false, respuesta: 'You already like it'})
+            }
+
+        } catch (error) {
+            console.log(error);
+        }
+    },
+    updateDislike: async (req, res) =>{
+          // let idUserLiked = req.body.idUser
+        let idUserLiked = req.user._id
+        let idItinerary = req.params.id 
+        try {
+            let userLiked = await Itinerary.findOne({_id: idItinerary, usersLiked:{$all: [idUserLiked]}})
+            if (userLiked) {
+                let updateLikes = await Itinerary.findByIdAndUpdate({_id: idItinerary},{ $pull: { usersLiked: idUserLiked},$inc:{likes: -1}}, {new: true})
+                res.json({success: true, respuesta: updateLikes})
+            } else {
+                res.json({success: false, respuesta: 'You already like it'})
+            }
+
+        } catch (error) {
+            console.log(error);
+        }
     }
 }
 module.exports = itinerariesControllers

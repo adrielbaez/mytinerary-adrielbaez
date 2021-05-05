@@ -4,8 +4,11 @@ import Comment from './Comment';
 import { connect } from 'react-redux';
 import itinerariesActions from '../redux/actions/itinerariesActions';
 import CardActivities from './CardActivities';
+import { toast,ToastContainer } from "react-toastify";
 
-const CardItinerary = ({ itinerary, loadActivities }) => {
+const CardItinerary = ({ itinerary, loadActivities, userLogged, loadLikes }) => {
+console.log(userLogged);
+console.log(loadLikes);
 
     const [isOpen, setIsOpen] = useState(false);
     const [changeNameBtn, setChangeNameBtn] = useState('View More')
@@ -23,11 +26,22 @@ const CardItinerary = ({ itinerary, loadActivities }) => {
         setChangeNameBtn('View More')
     }
     let heart = !changeHeartIcon ? "far fa-heart heart-icon" : "fas fa-heart heart-icon"
-    const changeHeart = () => {
+    const pressBtnLike = async () => {
+        if (!userLogged) {
+            toast.error('necesitas loguearte')
+            return false;
+        } 
+        try {
+            let respuesta = await loadLikes(itinerary._id, userLogged.token)
+        } catch (error) {
+            
+        }
         setChangeHeartIcon(!changeHeartIcon)
+
     }
     return (
         <div>
+            <ToastContainer />
             <div className="container-itinerary">
                 <h2>{itinerary.title}</h2>
                 <div className="author">
@@ -36,7 +50,7 @@ const CardItinerary = ({ itinerary, loadActivities }) => {
                 </div>
                 <div className="itinerary-details">
                     <p><span>Price:</span>{new Array(itinerary.price).fill(0).map((elemento, index) => <i key={index} className="money-icon far fa-money-bill-alt"></i>)}</p>
-                    <p className="likes" onClick={changeHeart}><i className={heart}></i> {itinerary.likes}</p>
+                    <p className="likes" onClick={pressBtnLike}><i className={heart}></i> {itinerary.likes}</p>
                     <p><span>Duration:</span> {itinerary.duration} hours</p>
                 </div>
 
@@ -57,7 +71,13 @@ const CardItinerary = ({ itinerary, loadActivities }) => {
         </div>
     );
 }
-const mapDispatchToProps = {
-    loadActivities: itinerariesActions.loadActivities
+const mapStateToProps = state =>{
+    return{
+        userLogged: state.authReducer.userLogged
+    }
 }
-export default connect(null, mapDispatchToProps)(CardItinerary)
+const mapDispatchToProps = {
+    loadActivities: itinerariesActions.loadActivities,
+    loadLikes: itinerariesActions.loadLikes
+}
+export default connect(mapStateToProps, mapDispatchToProps)(CardItinerary)
