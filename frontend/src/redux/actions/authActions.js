@@ -39,7 +39,23 @@ const authActions = {
     },
     cerrarSesion: () => {
         return (dispatch, getState) => {
-            dispatch({ type: 'LOGOUT_USER' })
+            Swal.fire({
+                title: 'Are you sure?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, Sign Out!'
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  Swal.fire(
+                    'We will miss you!',
+                    'Come back soon',
+                    'success'
+                  )
+                  dispatch({ type: 'LOGOUT_USER' })
+                }
+              })
         }
     },
     iniciarSesionLS: (userLS) => {

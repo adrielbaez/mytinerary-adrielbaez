@@ -1254,4 +1254,23 @@ h3.signout:hover{
       color: black;
     }
   }
-  
+/* comentario */
+.comentarios{
+    background-color: white;
+    height: 40vh;
+    overflow-y: auto;
+}
+.comentario{
+    background-color: red;
+    display: flex;
+}
+.profile{
+    background-color: yellow;
+    border-radius: 2rem;
+    width: 4rem;
+    height: 4rem;
+}
+.text-comment{
+    background-color: yellowgreen;
+    flex-grow: 1;
+}

@@ -56,40 +56,30 @@ const itinerariesControllers = {
             res.json({success:true , respuesta: `error: ${error}`})
         }
     },
-    updateLike: async (req, res) =>{
-        // let idUserLiked = req.body.idUser
+    changesLikes: async (req, res) =>{
         let idUserLiked = req.user._id
         let idItinerary = req.params.id 
+
         try {
             let userLiked = await Itinerary.findOne({_id: idItinerary, usersLiked:{$all: [idUserLiked]}})
-            if (!userLiked) {
-                let updateLikes = await Itinerary.findByIdAndUpdate({_id: idItinerary},{ $push: { usersLiked: idUserLiked}, $inc:{likes:1}}, {new: true})
-
-                res.json({success: true, respuesta: updateLikes})
-            } else {
-                res.json({success: false, respuesta: 'You already like it'})
-            }
-
+            let change = userLiked 
+                                ? ({ $pull: { usersLiked: idUserLiked},$inc:{likes: -1}})
+                                :({ $push: { usersLiked: idUserLiked}, $inc:{likes:1}})                                
+            let updateLikes = await Itinerary.findByIdAndUpdate({_id: idItinerary}, change, {new: true})
+            res.json({success: true, respuesta: updateLikes})
         } catch (error) {
-            console.log(error);
+            res.json({success: false, respuesta: 'You already like it'})
         }
     },
-    updateDislike: async (req, res) =>{
-          // let idUserLiked = req.body.idUser
-        let idUserLiked = req.user._id
-        let idItinerary = req.params.id 
-        try {
-            let userLiked = await Itinerary.findOne({_id: idItinerary, usersLiked:{$all: [idUserLiked]}})
-            if (userLiked) {
-                let updateLikes = await Itinerary.findByIdAndUpdate({_id: idItinerary},{ $pull: { usersLiked: idUserLiked},$inc:{likes: -1}}, {new: true})
-                res.json({success: true, respuesta: updateLikes})
-            } else {
-                res.json({success: false, respuesta: 'You already like it'})
-            }
-
-        } catch (error) {
-            console.log(error);
-        }
+    addComment: async(req, res) =>{
+        let idItinerary = req.params.id
+        let comment = req.body
+        console.log(comment);
+        // try {
+        //     let updateComment = await Itinerary.findByIdAndUpdate({_id: idItinerary},{ $pull: { comments: comment}}, {new: true})
+        // } catch (error) {
+        //     res.json({success: false, respuesta: error})
+        // }
     }
 }
 module.exports = itinerariesControllers

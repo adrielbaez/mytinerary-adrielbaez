@@ -6,7 +6,7 @@ const authReducer = (state = initialState, action) => {
     switch (action.type) {
         case 'USER_LOG':
             if (action.payload) {
-                localStorage.setItem('userLogged', JSON.stringify({ firstName: action.payload.firstName, lastName: action.payload.lastName, userPicture: action.payload.userPicture }))
+                localStorage.setItem('userLogged', JSON.stringify({ firstName: action.payload.firstName, idUser: action.payload.idUser, userPicture: action.payload.userPicture }))
                 localStorage.setItem('token', action.payload.token)
             }
             return {

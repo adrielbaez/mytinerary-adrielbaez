@@ -26,15 +26,32 @@ const itinerariesActions = {
         }
     },
     loadLikes: (idItinerary, userToken) =>{
+
         return async (dispatch, getState) => {
             try {
-                const response = await axios.get('http://localhost:4000/api/user/logingLS', {
-                    headers: {
-                        'Authorization': 'Bearer ' + userToken
-                    }
+                const response = await axios.put(`http://localhost:4000/api/likes/${idItinerary}`, {} , {
+                    headers: {'Authorization': 'Bearer ' + userToken}
                 })
-                console.log(response.data);
+                if (response) {
+                    return response.data.respuesta.likes     
+                }
           
+            } catch (error) {
+                console.log(error);
+            }
+        }
+    },
+    saveCommentDB: (comment,idItinerary, userToken)=>{
+        return async (dispatch)=>{
+            try {
+                const response = await axios.post(`http://localhost:4000/api/comments/itinerary/${idItinerary}`, comment , {
+                    headers: {'Authorization': 'Bearer ' + userToken}
+                })
+                console.log(response)
+                // if (response) {
+                //     return response.data.respuesta     
+                // }
+           
             } catch (error) {
                 console.log(error);
             }

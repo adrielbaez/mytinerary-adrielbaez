@@ -9,7 +9,7 @@ const passport = require('../config/passport')
 
 const {getAllCities, addNewCity, updateCity, deleteCity, getCity} = citiesControllers
 
-const {addItenerary,deleteItinerary, updateItinerary, getAllItineraries,getItinerary, getItinerariesCity , updateLike, updateDislike} = itinerariesControllers
+const {addItenerary,deleteItinerary, updateItinerary, getAllItineraries,getItinerary, getItinerariesCity , changesLikes, addComment} = itinerariesControllers
 const {addActivity, deleteActivity, getActivitiesItinerary, getActivity, getAllActivities, updateActivity} = activitiesControllers
 const {createNewAccount, logInUser, loginForzado} = usersControllers
 
@@ -37,9 +37,10 @@ router.route('/city/itineraries/:id')
 .get(getItinerariesCity)
 
 router.route('/likes/:id')
-.put(passport.authenticate('jwt', {session: false}),updateLike)
-router.route('/dislikes/:id')
-.put(passport.authenticate('jwt', {session: false}),updateDislike)
+.put(passport.authenticate('jwt', {session: false}),changesLikes)
+router.route('/comments/itinerary/:id')
+.post(passport.authenticate('jwt', {session: false}),addComment)
+
 // rutas para las users---------
 router.route('/user/signup')
 .post(validator, createNewAccount)

@@ -5,15 +5,14 @@ import { connect } from 'react-redux';
 import itinerariesActions from '../redux/actions/itinerariesActions';
 import CardActivities from './CardActivities';
 import { toast,ToastContainer } from "react-toastify";
+import Swal from 'sweetalert2'
 
 const CardItinerary = ({ itinerary, loadActivities, userLogged, loadLikes }) => {
-console.log(userLogged);
-console.log(loadLikes);
-
     const [isOpen, setIsOpen] = useState(false);
     const [changeNameBtn, setChangeNameBtn] = useState('View More')
     const [changeHeartIcon, setChangeHeartIcon] = useState(false)
     const [activity, setActivity] = useState([])
+    const [like, setLike] = useState(0)
 
     const toggle = async () => {
         setIsOpen(!isOpen);
@@ -27,17 +26,26 @@ console.log(loadLikes);
     }
     let heart = !changeHeartIcon ? "far fa-heart heart-icon" : "fas fa-heart heart-icon"
     const pressBtnLike = async () => {
-        if (!userLogged) {
-            toast.error('necesitas loguearte')
-            return false;
+        if (!userLogged ) {
+            Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: 'You must be logget in to like an itinerary',
+                showConfirmButton: false,
+                timer: 3000
+              })
+            return 
         } 
         try {
-            let respuesta = await loadLikes(itinerary._id, userLogged.token)
-        } catch (error) {
+                let respuesta = await loadLikes(itinerary._id, userLogged.token)
+                setLike(respuesta)
+                console.log(respuesta);          
+               
             
+        } catch (error) {
+            console.log(error);
         }
         setChangeHeartIcon(!changeHeartIcon)
-
     }
     return (
         <div>
@@ -50,7 +58,7 @@ console.log(loadLikes);
                 </div>
                 <div className="itinerary-details">
                     <p><span>Price:</span>{new Array(itinerary.price).fill(0).map((elemento, index) => <i key={index} className="money-icon far fa-money-bill-alt"></i>)}</p>
-                    <p className="likes" onClick={pressBtnLike}><i className={heart}></i> {itinerary.likes}</p>
+                    <p className="likes" onClick={pressBtnLike}><i className={heart}></i> {like}</p>
                     <p><span>Duration:</span> {itinerary.duration} hours</p>
                 </div>
 
@@ -63,7 +71,7 @@ console.log(loadLikes);
                 <Collapse isOpen={isOpen}>
                     <div className="contenedor-section-hidden">
                         <CardActivities activity={activity} />
-                        <Comment />
+                        <Comment userLogged={userLogged} idItinerary={itinerary._id} />
                     </div>
                 </Collapse>
                 <Button color="primary" onClick={toggle} style={{ marginBottom: '1rem' }}>{changeNameBtn}</Button>

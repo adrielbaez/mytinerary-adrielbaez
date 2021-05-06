@@ -44,13 +44,13 @@ const usersControllers = {
         }
         res.json({
             success: !error ? true : false,
-            respuesta: !error && { token: respuesta, userPicture: userExists.userPicture, firstName: userExists.firstName, lastName: userExists.lastName },
+            respuesta: !error && { token: respuesta, userPicture: userExists.userPicture, firstName: userExists.firstName, idUser: userExists._id },
             error: error
         })
     },
     loginForzado: (req, res) => {
         try {
-            res.json({ success: true, respuesta: { userPicture: req.user.userPicture, firstName: req.user.firstName, lastName: req.user.lastName } })
+            res.json({ success: true, respuesta: { userPicture: req.user.userPicture, firstName: req.user.firstName, idUser: req.user._id } })
         } catch (error) {
             res.json({ success: false, error: 'Something went wrong' + error })
         }
