@@ -1,7 +1,9 @@
 // import { connect } from 'react-redux';
 // import itinerariesActions from '../redux/actions/itinerariesActions';
-const BoxComments = ({ comment, userLogged, saveComment, deleteCommentBtn, editCommentBtn, flag }) => {
-
+const BoxComments = ({ comment, userLogged, saveComment, newComment, flag,setFlag,updateOrRemoveCommentBtn }) => {
+    if (!userLogged) {
+        return null
+    }
     return (
         <>
             <div key={userLogged._id} className="comentarios-box">
@@ -11,14 +13,15 @@ const BoxComments = ({ comment, userLogged, saveComment, deleteCommentBtn, editC
                     <div className="text-comment">
                         {flag
                             ? (<div className="editar">
-                                <input type="text" onChange={saveComment}></input> <button onClick={editCommentBtn} id={comment._id} data-userId={comment.userId} className="btn-update solid" >Update Comment</button>
+                                <input type="text" onChange={saveComment} value={newComment.comment}></input> <button onClick={updateOrRemoveCommentBtn} id={comment._id} data-userId={comment.userId} className="btn-update solid" >Update</button>
+                                <button onClick={e =>setFlag(false)} id={comment._id} data-userId={comment.userId} className="btn-cancel solid" >Cancel</button>
                             </div>)
                             :<> <p className="p">{userLogged.firstName}</p> 
                             <p>{comment.comment}</p></>}
                         
                         <div className="containter-btns">
-                            <button onClick={editCommentBtn} id={comment._id} data-userId={comment.userId} className="btn-comment solid" ><i class="fas fa-edit"></i></button>
-                            <button onClick={deleteCommentBtn} id={comment._id} data-userId={comment.userId} className="btn-comment solid" ><i class="fas fa-trash"></i></button>
+                            <button onClick={e =>setFlag(true)} id={comment._id} className="btn-comment solid" ><i class="fas fa-edit"></i></button>
+                            <button onClick={updateOrRemoveCommentBtn} id={comment._id} className="btn-comment solid" ><i class="fas fa-trash"></i></button>
                         </div>
                     </div>
                 </div>

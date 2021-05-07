@@ -10,9 +10,9 @@ import Swal from 'sweetalert2'
 const CardItinerary = ({ itinerary, loadActivities, userLogged, loadLikes, itineraries, idCity, history,loadItineraries }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [changeNameBtn, setChangeNameBtn] = useState('View More')
-    const [changeHeartIcon, setChangeHeartIcon] = useState(false)
     const [activity, setActivity] = useState([])
-    const [like, setLike] = useState(0)
+    const [likes, setlikes] = useState({liked:false,  count: 0})
+
 
     const toggle = async () => {
         setIsOpen(!isOpen);
@@ -25,7 +25,7 @@ const CardItinerary = ({ itinerary, loadActivities, userLogged, loadLikes, itine
         setChangeNameBtn('View More')
     }
     console.log(itineraries);
-    let heart = !changeHeartIcon ? "far fa-heart heart-icon" : "fas fa-heart heart-icon"
+    let heart = !likes.liked ? "far fa-heart heart-icon" : "fas fa-heart heart-icon"
     const pressBtnLike = async () => {
         if (!userLogged ) {
             Swal.fire({
@@ -37,15 +37,26 @@ const CardItinerary = ({ itinerary, loadActivities, userLogged, loadLikes, itine
               })
             return false
         } 
+        if(likes.liked === false){
+            setlikes({
+                count: itinerary.likes + 1,
+                liked: true
+            })
+        }else {
+            setlikes({
+                count: itinerary.likes - 1,
+                liked: false
+            })
+        }
+
+        console.log(likes)
         try {
                 let respuesta = await loadLikes(itinerary._id, userLogged.token)
-                setLike(respuesta)
                 loadItineraries(idCity, history)
                 console.log(respuesta);                   
         } catch (error) {
             console.log(error);
         }
-        setChangeHeartIcon(!changeHeartIcon)
     }
     console.log(itinerary)
     return (

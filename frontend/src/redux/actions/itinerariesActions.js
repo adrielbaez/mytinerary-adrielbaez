@@ -1,5 +1,4 @@
 import axios from 'axios'
-import AlertSweetRedirect from '../../components/helpers/AlertSweetRedirect';
 
 
 const itinerariesActions = {
@@ -8,7 +7,7 @@ const itinerariesActions = {
             axios.get(`http://localhost:4000/api/city/itineraries/${idCity}`)
             .then(response => dispatch({type: 'FETCH_ITINERARIES', payload: response.data.respuesta}))
             .catch( error =>{ 
-                <AlertSweetRedirect histoty={history} />
+                // <AlertSweetRedirect histoty={history} />
             })
         }
     },
@@ -47,9 +46,7 @@ const itinerariesActions = {
                 const response = await axios.post(`http://localhost:4000/api/comments/itinerary/${idItinerary}`, comment , {
                     headers: {'Authorization': 'Bearer ' + userToken}
                 })
-                // if (response) {
-                //     return response.data.respuesta     
-                // }
+
                 console.log(response.data.respuesta);
 
                 dispatch({ type: 'FETCH_ITINERARIES', payload: response.data.respuesta })
@@ -67,6 +64,7 @@ const itinerariesActions = {
                 const response = await axios.put(`http://localhost:4000/api/deletecomments/itinerary/${idItinerary}`, commentDelete, {
                     headers: {'Authorization': 'Bearer ' + userToken}
                 })
+                console.log(response.data);
                 dispatch({ type: 'FETCH_ITINERARIES', payload: response.data.respuesta })
            
             } catch (error) {
@@ -74,18 +72,14 @@ const itinerariesActions = {
             }
         }
     },
-    editComment: ( commentEdit, idItinerary, userToken)=>{
+    updateComment: ( commentEdit, idItinerary, userToken)=>{
         return async (dispatch) =>{
           
             try {
                 const response = await axios.put(`http://localhost:4000/api/editcomments/itinerary/${idItinerary}`, commentEdit, {
                     headers: {'Authorization': 'Bearer ' + userToken}
                 })
-                console.log(response);
-                // if (response) {
-                //     return response.data.respuesta     
-                // }
-           
+                dispatch({ type: 'FETCH_ITINERARIES', payload: response.data.respuesta })
             } catch (error) {
                 console.log(error);
             }

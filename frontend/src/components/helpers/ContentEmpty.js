@@ -1,6 +1,6 @@
 const ContentEmpty = ({texto}) => {
     return ( 
-        <div>
+        <div className="contenedor-vacio">
             <h4>{texto}</h4>
         </div>
      );

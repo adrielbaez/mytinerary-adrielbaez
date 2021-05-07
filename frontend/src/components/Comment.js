@@ -4,9 +4,8 @@ import itinerariesActions from '../redux/actions/itinerariesActions';
 import BoxComments from "./BoxComments";
 import ContentEmpty from "./helpers/ContentEmpty";
 
-const Comment = ({ userLogged, saveCommentDB, itinerary, deleteComment,editComment,idCity }) => {
+const Comment = ({ userLogged, saveCommentDB, itinerary, deleteComment,updateComment,idCity }) => {
     const [newComment, setNewComment] = useState({ comment: '', userId: '' })
-    const [comments, setComments] = useState([])
     const [flag, setFlag] = useState(false)
 
     const saveComment = e => {
@@ -29,40 +28,44 @@ const Comment = ({ userLogged, saveCommentDB, itinerary, deleteComment,editComme
     const deleteCommentBtn = async (e)=>{
         e.preventDefault()
         let commentDelete = {
-            idMongo: e.target.id,
+            commentId: e.target.id,
             userId: e.target.dataset.userid
         }
        await deleteComment( commentDelete, itinerary._id, userLogged.token)
     }
-    const editCommentBtn = async (e) =>{
+    const updateOrRemoveCommentBtn = async (e) =>{
         e.preventDefault()
         let commentEdit = {
-            newComment,
-            idMongo: e.target.id,
+            ...newComment,
+            commentId: e.target.id,
         }
-        let response = await editComment( commentEdit, itinerary._id, userLogged.token)
+        if (commentEdit.commentId === '') {
+            return false
+        }
+        let response = await updateComment( commentEdit, itinerary._id, userLogged.token)
+        setFlag(false)
+        setNewComment({ comment: '', userId: '' })
     }
+    let classNameComment = itinerary.comments.length === 0 ? "contenedor-vacio" :"comentarios"
     return (
         <>  
             <h2 className="comentarios-title">Comments</h2>
-            <div className="comentarios">
+            <div className={classNameComment}>
                 { itinerary.comments.length === 0
-                    ? <ContentEmpty texto={'Todavia no hay comments'} />            
+                    ? <ContentEmpty  texto={'Not comments'} />            
                     :itinerary.comments.length > 0
                     ? itinerary.comments.map((comment, index) =>{
-                        return <BoxComments key={index} flag={flag} comment={comment} userLogged={userLogged} idItinerary={itinerary._id} deleteCommentBtn={deleteCommentBtn} editCommentBtn={editCommentBtn}  saveComment={saveComment}/>
+                        return <BoxComments key={index} flag={flag} setFlag={setFlag} comment={comment} userLogged={userLogged} idItinerary={itinerary._id} deleteCommentBtn={deleteCommentBtn} updateOrRemoveCommentBtn={updateOrRemoveCommentBtn}  saveComment={saveComment }newComment={newComment} />
                     })
                     : null}
             </div>
-            <h2>Add a Comment</h2>
             {userLogged
                 ? <form className="comment-form">
                     <div className="field-container">
-                        <label>Comment</label>
                         <input onChange={saveComment} value={newComment.comment} name="comentario"></input>
                     </div>
                     <div className="field ">
-                        <button onClick={sendComment} className="btn-formone solid" >Comment</button>
+                        <button onClick={sendComment} className="btn-formone solid" ><i class="fas fa-location-arrow"></i></button>
                     </div>
                 </form>
                 : <p>Inicia Sesión para Agregar un Comentario</p>
@@ -79,6 +82,6 @@ const Comment = ({ userLogged, saveCommentDB, itinerary, deleteComment,editComme
 const mapDispatchToProps = {
     saveCommentDB: itinerariesActions.saveCommentDB,
     deleteComment: itinerariesActions.deleteComment,
-    editComment: itinerariesActions.editComment
+    updateComment: itinerariesActions.updateComment
 }
 export default connect(null, mapDispatchToProps)(Comment);

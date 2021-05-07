@@ -32,7 +32,7 @@ class Intineraries extends React.Component {
                     ? <SpinnerCube />
                     :
                     <>
-                    {console.log(this.props.itineraries)}
+                    
                         <div className="itineraries-hero d-flex flex-centrado" style={{ backgroundImage: `url('/assets/${this.state.cityDetails[0].src}')` }}>
                             <div className="content-hero-itineraries">
                                 <h1 className="text-center">Welcome to {this.state.cityDetails[0].city} </h1>
@@ -45,10 +45,14 @@ class Intineraries extends React.Component {
                                         <h1 className="text-center">We don't have itineraries for {this.state.cityDetails[0].city} </h1>
                                         <p className="text-itinerary">o back to see more cities!</p>
                                     </div>
+                                    {console.log(this.props.itineraries)}
                                 </div>
-                                : this.props.itineraries.map(itinerary => {
+                                : this.props.itineraries
+                                 ?this.props.itineraries.map(itinerary => {
                                     return (<CardItinerary key={itinerary._id} history = {this.props.history} idCity = {this.props.match.params.id} itinerary={itinerary} />)
-                                })}
+                                })
+                                 :null
+                            }
                         </div>
                         <div className="d-flex flex-centrado">
                             <NavLink exact to="/"><button className="btn-go-back"><i className="fas fa-arrow-left"></i>Home</button></NavLink>
