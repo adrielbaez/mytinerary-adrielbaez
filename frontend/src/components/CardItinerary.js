@@ -7,7 +7,7 @@ import CardActivities from './CardActivities';
 import { toast,ToastContainer } from "react-toastify";
 import Swal from 'sweetalert2'
 
-const CardItinerary = ({ itinerary, loadActivities, userLogged, loadLikes }) => {
+const CardItinerary = ({ itinerary, loadActivities, userLogged, loadLikes, itineraries, idCity, history,loadItineraries }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [changeNameBtn, setChangeNameBtn] = useState('View More')
     const [changeHeartIcon, setChangeHeartIcon] = useState(false)
@@ -24,6 +24,7 @@ const CardItinerary = ({ itinerary, loadActivities, userLogged, loadLikes }) => 
         }
         setChangeNameBtn('View More')
     }
+    console.log(itineraries);
     let heart = !changeHeartIcon ? "far fa-heart heart-icon" : "fas fa-heart heart-icon"
     const pressBtnLike = async () => {
         if (!userLogged ) {
@@ -34,19 +35,19 @@ const CardItinerary = ({ itinerary, loadActivities, userLogged, loadLikes }) => 
                 showConfirmButton: false,
                 timer: 3000
               })
-            return 
+            return false
         } 
         try {
                 let respuesta = await loadLikes(itinerary._id, userLogged.token)
                 setLike(respuesta)
-                console.log(respuesta);          
-               
-            
+                loadItineraries(idCity, history)
+                console.log(respuesta);                   
         } catch (error) {
             console.log(error);
         }
         setChangeHeartIcon(!changeHeartIcon)
     }
+    console.log(itinerary)
     return (
         <div>
             <ToastContainer />
@@ -58,7 +59,7 @@ const CardItinerary = ({ itinerary, loadActivities, userLogged, loadLikes }) => 
                 </div>
                 <div className="itinerary-details">
                     <p><span>Price:</span>{new Array(itinerary.price).fill(0).map((elemento, index) => <i key={index} className="money-icon far fa-money-bill-alt"></i>)}</p>
-                    <p className="likes" onClick={pressBtnLike}><i className={heart}></i> {like}</p>
+                    <p className="likes" onClick={pressBtnLike}><i className={heart}></i> {itinerary.likes}</p>
                     <p><span>Duration:</span> {itinerary.duration} hours</p>
                 </div>
 
@@ -66,12 +67,11 @@ const CardItinerary = ({ itinerary, loadActivities, userLogged, loadLikes }) => 
                     {itinerary.hashtags.map((hashtag, index) => {
                         return (<p key={index}>{hashtag}</p>)
                     })}
-
                 </div>
                 <Collapse isOpen={isOpen}>
                     <div className="contenedor-section-hidden">
                         <CardActivities activity={activity} />
-                        <Comment userLogged={userLogged} idItinerary={itinerary._id} />
+                        <Comment idCity={idCity} userLogged={userLogged} itinerary={itinerary} />
                     </div>
                 </Collapse>
                 <Button color="primary" onClick={toggle} style={{ marginBottom: '1rem' }}>{changeNameBtn}</Button>
@@ -81,11 +81,13 @@ const CardItinerary = ({ itinerary, loadActivities, userLogged, loadLikes }) => 
 }
 const mapStateToProps = state =>{
     return{
-        userLogged: state.authReducer.userLogged
+        userLogged: state.authReducer.userLogged,
+        itineraries: state.itinerariesReducer.intinerariesCity
     }
 }
 const mapDispatchToProps = {
     loadActivities: itinerariesActions.loadActivities,
-    loadLikes: itinerariesActions.loadLikes
+    loadLikes: itinerariesActions.loadLikes,
+    loadItineraries: itinerariesActions.loadItineraries
 }
 export default connect(mapStateToProps, mapDispatchToProps)(CardItinerary)

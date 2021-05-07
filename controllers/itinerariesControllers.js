@@ -73,13 +73,53 @@ const itinerariesControllers = {
     },
     addComment: async(req, res) =>{
         let idItinerary = req.params.id
-        let comment = req.body
-        console.log(comment);
+        let {comment, userId} = req.body
+        try {
+            let updateComment = await Itinerary.findByIdAndUpdate({_id: idItinerary},{ $push: { comments: {userId, comment}}}, {new: true})
+            const{cityId} = updateComment
+            let itineraries = await Itinerary.find({cityId}).populate('cityId')
+            res.json({success: true, respuesta: itineraries})
+        } catch (error) {
+            res.json({success: false, respuesta: error})
+        }
+    },
+    deleteComment: async (req, res) =>{
+        let idItinerary = req.params.id
+        let idMongo = req.body.idMongo
+        try {
+            let updateComment = await Itinerary.findByIdAndUpdate({_id: idItinerary},{ $pull: { comments: {_id: idMongo}}}, {new: true})
+            const{cityId} = updateComment
+            let itineraries = await Itinerary.find({cityId}).populate('cityId')
+            console.log(itineraries);
+            res.json({success: true, respuesta: itineraries})
+        } catch (error) {
+            res.json({success: false, respuesta: error})
+        }
+
+    },
+    editComment: async (req, res) =>{
+        let idItinerary = req.params.id
+        let {comment, userId} = req.body.newComment
+        let {idMongo} = req.body
+        console.log(comment, userId, idMongo);
+        try {
+            let buscarItinerario = await Itinerary.findOne({_id: idItinerary})
+            
+        } catch (error) {
+            console.log(error);
+        }
+
         // try {
-        //     let updateComment = await Itinerary.findByIdAndUpdate({_id: idItinerary},{ $pull: { comments: comment}}, {new: true})
+        //     let updateComment = await Itinerary.findByIdAndUpdate({_id: idItinerary},{ $pull: { comments: {_id: idMongo}}}, {new: true})
+
+
+        //     // let updateComment = await Itinerary.findByIdAndUpdate({_id: idItinerary},{ $push: { comments: {_id: idMongo}}}, {new: true})
+        //     res.json({success: true, respuesta: updateComment})
         // } catch (error) {
         //     res.json({success: false, respuesta: error})
         // }
+        // let {comment, userId} = req.body
+        // console.log(idItinerary);
     }
 }
 module.exports = itinerariesControllers

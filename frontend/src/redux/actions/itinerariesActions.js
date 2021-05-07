@@ -47,7 +47,41 @@ const itinerariesActions = {
                 const response = await axios.post(`http://localhost:4000/api/comments/itinerary/${idItinerary}`, comment , {
                     headers: {'Authorization': 'Bearer ' + userToken}
                 })
-                console.log(response)
+                // if (response) {
+                //     return response.data.respuesta     
+                // }
+                console.log(response.data.respuesta);
+
+                dispatch({ type: 'FETCH_ITINERARIES', payload: response.data.respuesta })
+
+           
+            } catch (error) {
+                console.log(error);
+            }
+        }
+    },
+    deleteComment: ( commentDelete, idItinerary, userToken)=>{
+        return async (dispatch) =>{
+
+            try {
+                const response = await axios.put(`http://localhost:4000/api/deletecomments/itinerary/${idItinerary}`, commentDelete, {
+                    headers: {'Authorization': 'Bearer ' + userToken}
+                })
+                dispatch({ type: 'FETCH_ITINERARIES', payload: response.data.respuesta })
+           
+            } catch (error) {
+                console.log(error);
+            }
+        }
+    },
+    editComment: ( commentEdit, idItinerary, userToken)=>{
+        return async (dispatch) =>{
+          
+            try {
+                const response = await axios.put(`http://localhost:4000/api/editcomments/itinerary/${idItinerary}`, commentEdit, {
+                    headers: {'Authorization': 'Bearer ' + userToken}
+                })
+                console.log(response);
                 // if (response) {
                 //     return response.data.respuesta     
                 // }

@@ -23,8 +23,8 @@ class Intineraries extends React.Component {
             })
             this.props.loadItineraries(idCity,history)
         }
-
     }
+    
     render() {
         return (
             <>
@@ -32,6 +32,7 @@ class Intineraries extends React.Component {
                     ? <SpinnerCube />
                     :
                     <>
+                    {console.log(this.props.itineraries)}
                         <div className="itineraries-hero d-flex flex-centrado" style={{ backgroundImage: `url('/assets/${this.state.cityDetails[0].src}')` }}>
                             <div className="content-hero-itineraries">
                                 <h1 className="text-center">Welcome to {this.state.cityDetails[0].city} </h1>
@@ -46,7 +47,7 @@ class Intineraries extends React.Component {
                                     </div>
                                 </div>
                                 : this.props.itineraries.map(itinerary => {
-                                    return (<CardItinerary key={itinerary._id} itinerary={itinerary} />)
+                                    return (<CardItinerary key={itinerary._id} history = {this.props.history} idCity = {this.props.match.params.id} itinerary={itinerary} />)
                                 })}
                         </div>
                         <div className="d-flex flex-centrado">

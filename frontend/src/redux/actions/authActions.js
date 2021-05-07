@@ -73,20 +73,21 @@ const authActions = {
                     }
                 })
             } catch (error) {
-                if (error.response.status === 401) {
-                    Swal.fire({
-                        title: 'No no no...Maybe another day',
-                        width: 600,
-                        padding: '3em',
-                        background: '#fff url(/images/trees.png)',
-                        backdrop: `
-                          rgba(0,0,123,0.4)
-                          url("/assets/giphy.webp")
-                          left top
-                          no-repeat
-                        `
-                    })
-                }
+                console.log(error);
+                // if (error.response.status === 401) {
+                //     Swal.fire({
+                //         title: 'No no no...Maybe another day',
+                //         width: 600,
+                //         padding: '3em',
+                //         background: '#fff url(/images/trees.png)',
+                //         backdrop: `
+                //           rgba(0,0,123,0.4)
+                //           url("/assets/giphy.webp")
+                //           left top
+                //           no-repeat
+                //         `
+                //     })
+                // }
             }
 
         }

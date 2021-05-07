@@ -875,6 +875,9 @@ div.collapse{
     width: 95% !important;
 }
 /* content activities */
+.activities-container{
+    margin-bottom: 2rem;
+}
 .activities-container h2{
   width: 100%;
   color: white;
@@ -920,7 +923,7 @@ div.collapse{
 .comment-form{
   width: 100%;
   display: flex;
-  flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
   margin-top: 2rem;
 }
@@ -943,12 +946,19 @@ font-size: 1.6rem;
    font-weight: bold; 
   font-size: 1.1rem;
 }
-.field-container textarea{
+.field-container input{
   margin-left: .4rem;
-  height: 6rem;
-  resize: none;
   outline: none;
-  flex-grow: 1;
+  border: none;
+  width: 95%;
+}
+.btn-formone{
+    background-color: #4d84e2;
+    border: none;
+    padding: 0.3rem .5rem;
+    margin-bottom: .5rem;
+    border-radius: 1rem;
+    color: white;
 }
 
 
@@ -1256,21 +1266,64 @@ h3.signout:hover{
   }
 /* comentario */
 .comentarios{
-    background-color: white;
     height: 40vh;
     overflow-y: auto;
 }
+.comentarios-box{
+    margin-bottom: .5rem;
+   
+}
 .comentario{
-    background-color: red;
     display: flex;
 }
 .profile{
-    background-color: yellow;
     border-radius: 2rem;
     width: 4rem;
     height: 4rem;
+    margin-right: 1rem;
+    background-size: cover;
 }
 .text-comment{
-    background-color: yellowgreen;
-    flex-grow: 1;
+    padding: .6rem;
+    background-color: rgb(233, 233, 233);
+    border-radius: 5px 30px 5px;
+    width: 100% ;
 }
+.text-comment p.p{
+    color: #4d84e2;
+    margin-bottom: 0;
+}
+h2.comentarios-title{
+    text-align: center;
+    margin-bottom: 1rem;
+}
+.btn-comment, .btn-update {
+    width: 4rem;
+    background-color: #e29b01;
+    border: none;
+    outline: none;
+    border-radius: 3rem;
+    color: #fff;
+    font-weight: 600;
+    padding: .3rem;
+    margin: .5rem 0;
+    cursor: pointer;
+    transition: 0.5s;
+  }
+  .btn-update{
+      width: 10rem;
+  }
+  .editar input{
+      width: 20rem;
+      outline: none;
+  }
+  .containter-btns{
+      display: flex;
+  }
+  .btn-comment:last-child{
+      margin-left: 1rem;
+    background-color: rgb(231, 66, 66);
+  } 
+  .btn-form:hover {
+    background-color: #4d84e2;
+  }

@@ -3,10 +3,13 @@ const initialState = {
 }
 
 const itinerariesReducer = (state = initialState, action) =>{
+    console.log('switch');
     switch(action.type) {
         case 'FETCH_ITINERARIES':
+            console.log('llegue al reducer');
+            console.log(action.payload);
             return {
-                ...state,
+                ...state, 
                 intinerariesCity: action.payload
             }
         default:
