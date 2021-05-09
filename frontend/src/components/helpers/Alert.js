@@ -10,22 +10,22 @@ export const alert = () => {
             timer: 1500
         })
 }
-// export const youSure = (confirmButton, yourFunction) =>{
-//     Swal.fire({
-//         title: 'Are you sure?',
-//         icon: 'warning',
-//         showCancelButton: true,
-//         confirmButtonColor: '#3085d6',
-//         cancelButtonColor: '#d33',
-//         confirmButtonText: confirmButton
-//       }).then((result) => {
-//         if (result.isConfirmed) {
-//           Swal.fire(
-//             'Comment delete!',
-//             'Come back soon',
-//             'success'
-//           )
-//           yourFunction()
-//         }
-//       })
+// export const alertYouSure = (title) => { Swal.fire({
+//     title: title,
+//     icon: 'warning',
+//     showCancelButton: true,
+//     confirmButtonColor: '#3085d6',
+//     cancelButtonColor: '#d33',
+//     confirmButtonText: 'Yes, Save changes!'
+//   }).then((result) => {
+//     if (result.isConfirmed) {
+//         updateCommentAction(updatedComment, comment._id, idItinerary, userLogged.token)
+//         setVisible(!visible)  
+//       Swal.fire(
+//         'Changes have been saved!',
+//         '',
+//         'success'
+//       )     
+//     }
+//   })
 // }

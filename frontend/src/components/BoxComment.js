@@ -22,8 +22,25 @@ const BoxComment = ({ comment, idItinerary, userLogged, updateCommentAction, del
             })
             return false
         }
-        await updateCommentAction(updatedComment, comment._id, idItinerary, userLogged.token)
-        setVisible(!visible)
+
+        Swal.fire({
+            title: 'Are you sure you want to save the changes?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6', 
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, Save changes!'
+          }).then((result) => {
+            if (result.isConfirmed) {
+                updateCommentAction(updatedComment, comment._id, idItinerary, userLogged.token)
+                setVisible(!visible)  
+              Swal.fire(
+                'Changes have been saved!',
+                '',
+                'success'
+              )     
+            }
+          })
     }
     const deleteComment = () => {
         Swal.fire({
@@ -37,7 +54,7 @@ const BoxComment = ({ comment, idItinerary, userLogged, updateCommentAction, del
             if (result.isConfirmed) {
             deleteCommentAction(comment._id, idItinerary, userLogged.token)  
               Swal.fire(
-                'your comment was deleted!',
+                'Your comment was deleted!',
                 '',
                 'success'
               )     
@@ -53,10 +70,10 @@ const BoxComment = ({ comment, idItinerary, userLogged, updateCommentAction, del
                 <>
                     <div className="input-field-comment update-cmt">
                         <input type="text" onChange={(e) => setUpdatedComment(e.target.value)} value={updatedComment} />
-                        <i className="fas fa-paper-plane " onClick={commentUpdate}></i>
+                        <i className="fas fa-paper-plane icon-up" onClick={commentUpdate}></i>
                     </div>
                     <div className="contenedor-icon">
-                        <i className="fas fa-times-circle red" onClick={() => setVisible(!visible)}></i>
+                        <i className="fas fa-times-circle red icon-up" onClick={() => setVisible(!visible)}></i>
                     </div>
                 </>
                 : <div className="text-comment">
@@ -65,8 +82,8 @@ const BoxComment = ({ comment, idItinerary, userLogged, updateCommentAction, del
                     {userLogged &&
                         userLogged.firstName === comment.firstName &&
                             <div className="contenedor-icon-update">
-                                <i className="fas fa-edit one" onClick={editComment}></i>
-                                <i className="fas fa-trash-alt"  onClick={deleteComment}></i>
+                                <i className="fas fa-edit one icon-up" onClick={editComment}></i>
+                                <i className="fas fa-trash-alt icon-up"  onClick={deleteComment}></i>
                             </div>
                     }
                 </div>

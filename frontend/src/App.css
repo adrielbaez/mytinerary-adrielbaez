@@ -1404,6 +1404,9 @@ h2.comentarios-title{
   div.update-cmt{
       max-width:45vw;
   }
+  .icon-up{
+      font-size: 1.5rem;
+  }
   @media (min-width: 764px) {
     div.update-cmt{
         max-width:30vw;

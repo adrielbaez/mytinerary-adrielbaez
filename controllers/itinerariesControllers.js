@@ -53,11 +53,10 @@ const itinerariesControllers = {
             let itineraries = await Itinerary.find({ cityId }).populate('cityId')
             res.json({ success: true, respuesta: itineraries })
         } catch (error) {
-            res.json({ success: true, respuesta: `error: ${error}` })
+            res.json({ success: false, respuesta: `error: ${error}` })
         }
     },
     like: async (req, res) => {
-        console.log('hola1');
         const itineraryId = req.body.id
         const userId = req.user._id
         try {
@@ -66,18 +65,17 @@ const itinerariesControllers = {
             res.json({ success: true, respuesta: updateLikes })
 
         } catch (error) {
-            console.log(error);
+            res.json({ success: false, respuesta: error })
         }
     },
     dislike: async (req, res) => {
-        console.log('hola2');
         const itineraryId = req.body.id
         const userId = req.user._id
         try {
             let updateLikes = await Itinerary.findOneAndUpdate({ _id: itineraryId }, { $pull: { usersLiked: userId } }, { new: true })
             res.json({ success: true, respuesta: updateLikes })
         } catch (error) {
-            console.log(error);
+            res.json({ success: false, respuesta: error })
         }
     },
     addComment: async (req, res) => {
@@ -87,19 +85,19 @@ const itinerariesControllers = {
             let addNewComment = await Itinerary.findOneAndUpdate({ _id: id }, { $push: { comments: { firstName, userPicture, comment } } }, { new: true })
             res.json({ success: true, respuesta: addNewComment })
         } catch (error) {
-            console.log(error);
+            res.json({ success: false, respuesta: error })
         }
     },
     updateComment: async (req, res) => {
         const {idComment, comment, idItinerary} = req.body
  
         try {
-             // comparo el _id que me otorga mongoose de el itinerario y del comentario con el que le mando desde el front.
+
             let updateComment = await Itinerary.findOneAndUpdate({ _id: idItinerary, 'comments._id': idComment },{ $set: { 'comments.$.comment': comment } },{ new: true })
 
             res.json({ success: true, respuesta: updateComment })
         } catch (error) {
-            console.log(error);
+            res.json({ success: false, respuesta: error })
         }
     },
       deleteComment: async (req, res) => {
@@ -109,7 +107,7 @@ const itinerariesControllers = {
            let deleteComment = await Itinerary.findOneAndUpdate({_id: idItinerary},{$pull: {comments: {_id: idComment}}},{new: true})
            res.json({ success: true, respuesta: deleteComment })
         } catch (error) {
-            console.log(error);
+            res.json({ success: false, respuesta: error })
         }
 
     }
