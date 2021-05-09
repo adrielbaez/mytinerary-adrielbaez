@@ -67,7 +67,7 @@ const SignIn = (props) => {
                     </div>
                     <button className="btn-form solid" onClick={sendDataUser}>Sign In</button>
                     <ToastContainer />
-                    <p className="social-text">Or Sign in with Google</p>
+                    <p className="social-text">Or</p>
                     <GoogleLogin
                         className="btn-google"
                         clientId="112919868081-jrnbtckjpmehq2v64aj4rrccs2mosics.apps.googleusercontent.com"

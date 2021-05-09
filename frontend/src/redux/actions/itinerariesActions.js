@@ -8,7 +8,7 @@ const itinerariesActions = {
             axios.get(`http://localhost:4000/api/city/itineraries/${idCity}`)
                 .then(response => dispatch({ type: 'FETCH_ITINERARIES', payload: response.data.respuesta }))
                 .catch(error => {
-                    // <AlertSweetRedirect histoty={history} />
+                   console.log(error);
                 })
         }
     },
@@ -49,7 +49,6 @@ const itinerariesActions = {
                         Authorization: `Bearer ${token}`
                     }
                 })
-                console.log(response.data.respuesta)
                 dispatch({ type: 'LIKE_ITINERARY', payload: response.data.respuesta })
             } catch (error) {
                 Swal.fire({
@@ -71,7 +70,6 @@ const itinerariesActions = {
                         Authorization: 'Bearer ' + token
                     }
                 })
-                console.log(response.data.respuesta)
                 dispatch({ type: 'LIKE_ITINERARY', payload: response.data.respuesta })
             } catch (error) {
                 Swal.fire({
@@ -86,7 +84,6 @@ const itinerariesActions = {
     },
     addComment: (comment, token, id) => {
         return async (dispatch, getState) => {
-            console.log('llegue');
           try {
             const response = await axios.post('http://localhost:4000/api/comments', {comment, token, id} , {
               headers: {

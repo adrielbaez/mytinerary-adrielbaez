@@ -1,13 +1,14 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import { connect } from 'react-redux';
 import authActions from '../redux/actions/authActions';
 
-const NavBar = (props) => {
+const NavBar = (props) => { 
     const [click, setClick] = useState(false);
     let picture = props.userLogged ? `${props.userLogged.userPicture}` : '/assets/userIcon.png'
-
     const handleClick = () => setClick(!click);
+    const history = useHistory()
+    
     return (
         <>
             <nav className="navbar">
@@ -39,7 +40,7 @@ const NavBar = (props) => {
                         {props.userLogged &&
                             <>
                                 <li className="nav-item">
-                                    <NavLink exact to="#" activeClassName="active" className="nav-links"><h3 className='signout' onClick={props.cerrarSesion}>Sign Out</h3></NavLink>
+                                    <NavLink exact to="#" activeClassName="active" className="nav-links"><h3 className='signout' onClick={()=> props.cerrarSesion(history)}>Sign Out</h3></NavLink>
                                 </li>
                             </>}
                     </ul>

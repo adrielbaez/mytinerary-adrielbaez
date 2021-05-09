@@ -1265,6 +1265,7 @@ h3.signout:hover{
 /* comentario */
 .comments-container{
     margin-bottom: 1.5rem;
+    
 }
 h2.comentarios-title{
     width: 100%;
@@ -1273,10 +1274,14 @@ h2.comentarios-title{
     text-align: center;
     background-color: rgba(0, 0, 0, 0.705);
     border-radius: 5px 80px 5px;
+    margin-bottom: 1rem;
+    padding: 1rem 0;
 }
 .comments-post{
     height: 40vh;
     overflow-y: auto;
+    border-bottom-right-radius: 3rem;
+     border-bottom-left-radius: 3rem;
 }
 .picture-user{
     width: 4rem;
@@ -1331,17 +1336,22 @@ h2.comentarios-title{
 }
 .contenedor-icon-update{
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
+  
+}
+.contenedor-icon-update > *:hover,.contenedor-icon> *:hover,div.update-cmt i:hover{
+    cursor: pointer;
 }
 .contenedor-icon-update i.one{
     color: #e9ce35;
 }
-.contenedor-icon-update:last-child{
+.contenedor-icon-update{
     color: red;
+
 }
 .contenedor-vacio{
-    width: 60%;
-    height: 20vh;
+    width: 100%;
+    height: 100%;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -1357,7 +1367,7 @@ h2.comentarios-title{
 .input-field-comment {
     width: 100%;
     background-color: #fff;
-    margin: .5rem 0;
+    margin: 0 0.5rem 0;
     height: 3.5rem;
     border-radius: 3.5rem;
     display: grid;
@@ -1374,6 +1384,7 @@ h2.comentarios-title{
   }
   .input-field-comment i:hover {
     color: #0a0a0a;
+    cursor: pointer;
   }
   
   .input-field-comment input {

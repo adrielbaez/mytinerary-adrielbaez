@@ -31,7 +31,7 @@ class Cities extends React.Component {
                             :
                             <div className={this.props.newCities.length >= 2 ? 'grid-card' : ''}>
                                 {this.props.newCities.map(city => {
-                                    return (<CardCity key={city._id} city={city} />)
+                                    return (<CardCity key={city._id} city={city} history={this.props.history}/>)
                                 })}
                             </div>
                     }

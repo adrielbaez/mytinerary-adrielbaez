@@ -7,7 +7,6 @@ const Home = (props) => {
         portada: 'portada3.jpg',
         imagenTravel: 'callToAction.PNG'
     }
-
     return (
         <>
             <Hero portada={imagenes.portada} />

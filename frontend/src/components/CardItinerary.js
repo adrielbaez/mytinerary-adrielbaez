@@ -16,6 +16,7 @@ const CardItinerary = ({ itinerary, loadActivities, userLogged, idCity, like, di
         if(userLogged){
           setLiked(userLogged.idUser)
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
       },[])
     const toggle = async () => {
         setIsOpen(!isOpen);
@@ -34,8 +35,6 @@ const CardItinerary = ({ itinerary, loadActivities, userLogged, idCity, like, di
     const dislikes =()=> {
         dislike(itinerary._id, userLogged.token)
     }
-
-
     return (
         <div>
             <div className="container-itinerary">
@@ -48,8 +47,8 @@ const CardItinerary = ({ itinerary, loadActivities, userLogged, idCity, like, di
                     <p><span>Price:</span>{new Array(itinerary.price).fill(0).map((elemento, index) => <i key={index} className="money-icon far fa-money-bill-alt"></i>)}</p>
                     <p className="likes">
                       {itinerary.usersLiked.includes(liked) 
-                      ?<i className="fas fa-heart heart-icon" style={{cursor: 'pointer'}} onClick={userLogged && dislikes}></i>
-                      :<i className="far fa-heart heart-icon" style={{cursor: 'pointer'}} onClick={userLogged ? addLike : ()=> Swal.fire({
+                      ?<i className="fas fa-heart heart-icon" onClick={userLogged && dislikes}></i>
+                      :<i className="far fa-heart heart-icon" onClick={userLogged ? addLike : ()=> Swal.fire({
                         position: 'top',
                         icon: 'warning',
                         title: 'You have to be logged to like it',

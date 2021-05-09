@@ -4,22 +4,20 @@ import itinerariesActions from '../redux/actions/itinerariesActions';
 import BoxComment from "./BoxComment";
 import ContentEmpty from "./helpers/ContentEmpty";
 import {alert} from "./helpers/Alert";
+import Swal from 'sweetalert2'
 
-const Comment = ({ userLogged, saveCommentDB, itinerary, addComment, idCity }) => {
-    const [newComment, setNewComment] = useState({ comment: '', userId: '' })
+const Comment = ({ userLogged, itinerary, addComment, idCity }) => {
     const [comment, setComment] = useState('')
 
-    const saveComment = e => {
-        setNewComment({
-            ...newComment,
-            comment: e.target.value,
-            userId: userLogged.idUser,
-            cityId: idCity
-        })
-    }
     const sendComment = async () => {
         if (comment === '') {
-            alert()
+            Swal.fire({
+                position: 'top',
+                icon: 'warning',
+                title: "You can't send an empty comment",
+                showConfirmButton: false,
+                timer: 2000
+            })
             return false
         }
         await addComment(comment, userLogged.token, itinerary._id)
@@ -38,7 +36,7 @@ const Comment = ({ userLogged, saveCommentDB, itinerary, addComment, idCity }) =
                 </div>
                 <div className="input-field-comment">
                     <input type="text"  placeholder={!userLogged ? "You need to be logged to comment!" : "Write a comment..."} value={comment} disabled={!userLogged && true} onChange={(e) => setComment(e.target.value)} />
-                    <i className="fas fa-paper-plane enter" style={{ cursor: 'pointer' }} id={itinerary._id} onClick={userLogged ? sendComment : () => alert()}></i>
+                    <i className="fas fa-paper-plane enter" id={itinerary._id} onClick={userLogged ? sendComment : () => alert()}></i>
                 </div>
             </div>
         </>

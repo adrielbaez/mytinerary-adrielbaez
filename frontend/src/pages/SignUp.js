@@ -118,7 +118,7 @@ const SignUp = (props) => {
 
                     <button className="btn-form solid" onClick={sendDataNewUser}>Sign Up</button>
                     <ToastContainer />
-                    <p className="social-text">Or Sign up with Google</p>
+                    <p className="social-text">Or</p>
                     <GoogleLogin
                         className="btn-google"
                         clientId="112919868081-jrnbtckjpmehq2v64aj4rrccs2mosics.apps.googleusercontent.com"

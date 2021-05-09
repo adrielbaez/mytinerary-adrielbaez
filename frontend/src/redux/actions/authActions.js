@@ -37,7 +37,7 @@ const authActions = {
             }
         }
     },
-    cerrarSesion: () => {
+    cerrarSesion: (history) => {
         return (dispatch, getState) => {
             Swal.fire({
                 title: 'Are you sure?',
@@ -54,6 +54,7 @@ const authActions = {
                     'success'
                   )
                   dispatch({ type: 'LOGOUT_USER' })
+                  history.push('/')  
                 }
               })
         }

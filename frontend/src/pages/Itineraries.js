@@ -45,7 +45,6 @@ class Intineraries extends React.Component {
                                         <h1 className="text-center">We don't have itineraries for {this.state.cityDetails[0].city} </h1>
                                         <p className="text-itinerary">o back to see more cities!</p>
                                     </div>
-                                    {console.log(this.props.itineraries)}
                                 </div>
                                 : this.props.itineraries
                                  ?this.props.itineraries.map(itinerary => {
