@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { connect } from 'react-redux';
 import itinerariesActions from '../redux/actions/itinerariesActions';
+import {alert} from './helpers/Alert';
 const BoxComment = ({ comment, idItinerary, idCity, userLogged, updateCommentAction, deleteCommentAction }) => {
     const [visible, setVisible] = useState(false)
     const [updatedComment, setUpdatedComment] = useState('')
@@ -11,11 +12,16 @@ const BoxComment = ({ comment, idItinerary, idCity, userLogged, updateCommentAct
     }
 
     const commentUpdate = async () => {
+        if (updatedComment === '') {
+           alert()
+            return false
+        }
         await updateCommentAction(updatedComment, comment._id, idItinerary, userLogged.token)
         setVisible(!visible)
     }
     console.log(comment);
     const deleteComment = async () => {
+        
         await deleteCommentAction(comment._id, idItinerary, userLogged.token)
     }
     return (

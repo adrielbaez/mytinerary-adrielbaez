@@ -1294,12 +1294,19 @@ h2.comentarios-title{
     background-color: #F6F6F6;
     border-radius: 7px 14px 21px 3.5px;
     padding: .5rem;
+    min-width: 40vw;
+}
+@media (min-width: 764px) {
+    .text-comment{
+        min-width: 20vw;
+    }
 }
 .text-comment h5{
     color: #4d84e2;
 }
 .text-comment p{
    font-size: 1.1rem;
+   margin-left: 2rem;
 }
 .send-comment input{
     width: 90%;

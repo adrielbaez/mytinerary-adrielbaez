@@ -4,10 +4,9 @@ import Comment from './Comment';
 import { connect } from 'react-redux';
 import itinerariesActions from '../redux/actions/itinerariesActions';
 import CardActivities from './CardActivities';
-import { toast,ToastContainer } from "react-toastify";
 import Swal from 'sweetalert2'
 
-const CardItinerary = ({ itinerary, loadActivities, userLogged, itineraries, idCity, like, dislike}) => {
+const CardItinerary = ({ itinerary, loadActivities, userLogged, idCity, like, dislike}) => {
     const [isOpen, setIsOpen] = useState(false);
     const [changeNameBtn, setChangeNameBtn] = useState('View More')
     const [activity, setActivity] = useState([])
@@ -39,7 +38,6 @@ const CardItinerary = ({ itinerary, loadActivities, userLogged, itineraries, idC
 
     return (
         <div>
-            <ToastContainer />
             <div className="container-itinerary">
                 <h2>{itinerary.title}</h2>
                 <div className="author">
@@ -80,7 +78,6 @@ const CardItinerary = ({ itinerary, loadActivities, userLogged, itineraries, idC
 const mapStateToProps = state =>{
     return{
         userLogged: state.authReducer.userLogged,
-        itineraries: state.itinerariesReducer.intinerariesCity
     }
 }
 const mapDispatchToProps = {
@@ -92,55 +89,3 @@ const mapDispatchToProps = {
 export default connect(mapStateToProps, mapDispatchToProps)(CardItinerary)
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // let heart = !likes.liked ? "far fa-heart heart-icon" : "fas fa-heart heart-icon"
-    // const pressBtnLike = async () => {
-    //     if (!userLogged ) {
-    //         Swal.fire({
-    //             position: 'top-end',
-    //             icon: 'error',
-    //             title: 'You must be logget in to like an itinerary',
-    //             showConfirmButton: false,
-    //             timer: 3000
-    //           })
-    //         return false
-    //     } 
-    //     if(likes.liked === false){
-    //         setlikes({
-    //             count: itinerary.likes + 1,
-    //             liked: true
-    //         })
-    //     }else {
-    //         setlikes({
-    //             count: itinerary.likes - 1,
-    //             liked: false
-    //         })
-    //     }
-    //     try {
-    //             let respuesta = await loadLikes(itinerary._id, userLogged.token)
-    //             loadItineraries(idCity, history)
-    //             console.log(respuesta);                   
-    //     } catch (error) {
-    //         console.log(error);
-    //     }
-    // }
