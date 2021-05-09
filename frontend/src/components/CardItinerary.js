@@ -28,9 +28,7 @@ const CardItinerary = ({ itinerary, loadActivities, userLogged, itineraries, idC
         }
         setChangeNameBtn('View More')
     }
-    console.log(userLogged);
-    console.log(itinerary);
-    console.log(itineraries);
+
     const addLike =()=> {
         like(itinerary._id, userLogged.token)
       }
@@ -92,6 +90,28 @@ const mapDispatchToProps = {
     loadItineraries: itinerariesActions.loadItineraries
 }
 export default connect(mapStateToProps, mapDispatchToProps)(CardItinerary)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     // let heart = !likes.liked ? "far fa-heart heart-icon" : "fas fa-heart heart-icon"
     // const pressBtnLike = async () => {

@@ -16,7 +16,7 @@ const itinerariesActions = {
 
         return async (dispatch) => {
             try {
-                let respuesta = await axios.get(`http://localhost:4000/api/activities/itinerary/${idItinerary}`)
+                const respuesta = await axios.get(`http://localhost:4000/api/activities/itinerary/${idItinerary}`)
                 if (respuesta.data.success) {
                     return respuesta.data.respuesta
                 }
@@ -52,14 +52,13 @@ const itinerariesActions = {
                 console.log(response.data.respuesta)
                 dispatch({ type: 'LIKE_ITINERARY', payload: response.data.respuesta })
             } catch (error) {
-                console.log(error);
-                // Swal.fire({
-                //     position: 'top',
-                //     icon: 'error',
-                //     title: 'Oops something went wrong, try again later!',
-                //     showConfirmButton: false,
-                //     timer: 1500
-                // })
+                Swal.fire({
+                    position: 'top',
+                    icon: 'error',
+                    title: 'Oops something went wrong, try again later!',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
             }
         }
     },
@@ -75,17 +74,80 @@ const itinerariesActions = {
                 console.log(response.data.respuesta)
                 dispatch({ type: 'LIKE_ITINERARY', payload: response.data.respuesta })
             } catch (error) {
-                console.log(error);
-                // Swal.fire({
-                //     position: 'top',
-                //     icon: 'error',
-                //     title: 'Oops something went wrong, try again later!',
-                //     showConfirmButton: false,
-                //     timer: 1500
-                // })
+                Swal.fire({
+                    position: 'top',
+                    icon: 'error',
+                    title: 'Oops something went wrong, try again later!',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
             }
         }
     },
+    addComment: (comment, token, id) => {
+        return async (dispatch, getState) => {
+            console.log('llegue');
+          try {
+            const response = await axios.post('http://localhost:4000/api/comments', {comment, token, id} , {
+              headers: {
+                Authorization: `Bearer ${token}`
+              }
+            })
+            dispatch({type: 'COMMENT', payload: response.data.respuesta})
+          }catch(error){
+            Swal.fire({
+              position: 'top',
+              icon: 'error',
+              title: 'Oops something went wrong, try again later!',
+              showConfirmButton: false,
+              timer: 1500
+            })
+          }
+        }
+      },
+      updateComment: (comment, idComment, idItinerary, token) => {
+        return async (dispatch, getState) => {
+          try {
+            const response = await axios.put('http://localhost:4000/api/comments/update', {comment, idComment, idItinerary, token}, {
+              headers: {
+                Authorization: `Bearer ${token}`
+              }
+            })
+            dispatch({type: 'COMMENT', payload: response.data.respuesta})
+          }
+          catch(error){
+            Swal.fire({
+              position: 'top',
+              icon: 'error',
+              title: 'Oops something went wrong, try again later!',
+              showConfirmButton: false,
+              timer: 1500
+            })
+          }
+        }
+      },
+    
+      deleteComment: (idComment, idItinerary, token) => {
+        return async (dispatch, getState) => {
+          try {
+            const response = await axios.put('http://localhost:4000/api/comments', {idComment, idItinerary, token}, {
+              headers: {
+                Authorization: 'Bearer '+ token
+              }
+            })
+            dispatch({type: 'COMMENT', payload: response.data.respuesta})
+          }
+          catch(error){
+            Swal.fire({
+              position: 'top',
+              icon: 'error',
+              title: 'Oops something went wrong, try again later!',
+              showConfirmButton: false,
+              timer: 1500
+            })
+          }
+        }
+      },
     saveCommentDB: (comment, idItinerary, userToken) => {
         return async (dispatch) => {
             try {
@@ -93,29 +155,29 @@ const itinerariesActions = {
                     headers: { 'Authorization': 'Bearer ' + userToken }
                 })
 
-                console.log(response.data.respuesta);
-
                 dispatch({ type: 'FETCH_ITINERARIES', payload: response.data.respuesta })
 
 
-            } catch (error) {
-                console.log(error);
-            }
-        }
-    },
-    updateComment: (commentEdit, idItinerary, userToken) => {
-        return async (dispatch) => {
-
-            try {
-                const response = await axios.put(`http://localhost:4000/api/editcomments/itinerary/${idItinerary}`, commentEdit, {
-                    headers: { 'Authorization': 'Bearer ' + userToken }
-                })
-                dispatch({ type: 'FETCH_ITINERARIES', payload: response.data.respuesta })
             } catch (error) {
                 console.log(error);
             }
         }
     }
+    
 }
 
 export default itinerariesActions
+
+// updateComment: (commentEdit, idItinerary, userToken) => {
+//     return async (dispatch) => {
+
+//         try {
+//             const response = await axios.put(`http://localhost:4000/api/editcomments/itinerary/${idItinerary}`, commentEdit, {
+//                 headers: { 'Authorization': 'Bearer ' + userToken }
+//             })
+//             dispatch({ type: 'FETCH_ITINERARIES', payload: response.data.respuesta })
+//         } catch (error) {
+//             console.log(error);
+//         }
+//     }
+// }
