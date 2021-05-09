@@ -16,7 +16,7 @@ const BoxComment = ({ comment, idItinerary, userLogged, updateCommentAction, del
             Swal.fire({
                 position: 'top',
                 icon: 'warning',
-                title: 'You must be logged to send a comment',
+                title: "You can't send an empty comment",
                 showConfirmButton: false,
                 timer: 1500
             })
