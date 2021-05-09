@@ -1,12 +1,13 @@
 import {  useState } from "react";
 import { connect } from 'react-redux';
 import itinerariesActions from '../redux/actions/itinerariesActions';
-import BoxComments from "./BoxComments";
+// import BoxComments from "./BoxComments";
+import Swal from 'sweetalert2'
 import ContentEmpty from "./helpers/ContentEmpty";
 
 const Comment = ({ userLogged, saveCommentDB, itinerary, deleteComment,updateComment,idCity }) => {
     const [newComment, setNewComment] = useState({ comment: '', userId: '' })
-    const [flag, setFlag] = useState(false)
+    const [comment, setComment] = useState('')
 
     const saveComment = e => {
         setNewComment({
@@ -16,46 +17,39 @@ const Comment = ({ userLogged, saveCommentDB, itinerary, deleteComment,updateCom
             cityId: idCity
         })
     }
-
-    const sendComment = async (e) => {
-        e.preventDefault()
-        if (Object.values(newComment).some(valor => valor ==="" )) {
-            return alert('llena tu mensaje')
+    const sendComment = async () => {
+        if(comment===""){
+          Swal.fire({
+            position: 'top',
+            icon: 'warning',
+            title: "You can't send an empty comment",
+            showConfirmButton: false,
+            timer: 1500
+          })
+          return false
         }
-        await saveCommentDB(newComment, itinerary._id, userLogged.token)
-        setNewComment({ comment: '', userId: '' })
-    }
-    const deleteCommentBtn = async (e)=>{
-        e.preventDefault()
-        let commentDelete = {
-            commentId: e.target.id,
-            userId: e.target.dataset.userid
-        }
-       await deleteComment( commentDelete, itinerary._id, userLogged.token)
-    }
-    const updateOrRemoveCommentBtn = async (e) =>{
-        e.preventDefault()
-        let commentEdit = {
-            ...newComment,
-            commentId: e.target.id,
-        }
-        if (commentEdit.commentId === '') {
-            return false
-        }
-        let response = await updateComment( commentEdit, itinerary._id, userLogged.token)
-        setFlag(false)
-        setNewComment({ comment: '', userId: '' })
-    }
-    let classNameComment = itinerary.comments.length === 0 ? "contenedor-vacio" :"comentarios"
+        await addComment(comment, userLogged.token, itinerary._id)
+        setComment('')
+      }
+   
     return (
         <>  
             <h2 className="comentarios-title">Comments</h2>
-            <div className={classNameComment}>
+            <div className=''>
                 { itinerary.comments.length === 0
                     ? <ContentEmpty  texto={'Not comments'} />            
                     :itinerary.comments.length > 0
                     ? itinerary.comments.map((comment, index) =>{
-                        return <BoxComments key={index} flag={flag} setFlag={setFlag} comment={comment} userLogged={userLogged} idItinerary={itinerary._id} deleteCommentBtn={deleteCommentBtn} updateOrRemoveCommentBtn={updateOrRemoveCommentBtn}  saveComment={saveComment }newComment={newComment} />
+                        return    <div className="inputDiv">
+                        <input type="text" id="inputComment" className="inputComment" placeholder={!userLogged ? "You need to be logged to comment!" : "Leave your comment"} value={comment}disabled={!userLogged && true}onChange={(e)=>setComment(e.target.value)}/>
+                        <i className="fas fa-paper-plane enter" style={{cursor: 'pointer'}} id={itinerary._id} onClick={userLogged ? sendComment :()=>Swal.fire({
+                        position: 'top',
+                        icon: 'warning',
+                        title: 'You must be logged to send a comment',
+                        showConfirmButton: false,
+                        timer: 1500
+                      })}></i> 
+                      </div>
                     })
                     : null}
             </div>
@@ -81,7 +75,38 @@ const Comment = ({ userLogged, saveCommentDB, itinerary, deleteComment,updateCom
 // }
 const mapDispatchToProps = {
     saveCommentDB: itinerariesActions.saveCommentDB,
-    deleteComment: itinerariesActions.deleteComment,
+    addComment: itinerariesActions.addComment,
     updateComment: itinerariesActions.updateComment
 }
 export default connect(null, mapDispatchToProps)(Comment);
+
+ // const sendComment = async (e) => {
+    //     e.preventDefault()
+    //     if (Object.values(newComment).some(valor => valor ==="" )) {
+    //         return alert('llena tu mensaje')
+    //     }
+    //     await saveCommentDB(newComment, itinerary._id, userLogged.token)
+    //     setNewComment({ comment: '', userId: '' })
+    // }
+    // const deleteCommentBtn = async (e)=>{
+    //     e.preventDefault()
+    //     let commentDelete = {
+    //         commentId: e.target.id,
+    //         userId: e.target.dataset.userid
+    //     }
+    //    await deleteComment( commentDelete, itinerary._id, userLogged.token)
+    // }
+    // const updateOrRemoveCommentBtn = async (e) =>{
+    //     e.preventDefault()
+    //     let commentEdit = {
+    //         ...newComment,
+    //         commentId: e.target.id,
+    //     }
+    //     if (commentEdit.commentId === '') {
+    //         return false
+    //     }
+    //     let response = await updateComment( commentEdit, itinerary._id, userLogged.token)
+    //     setFlag(false)
+    //     setNewComment({ comment: '', userId: '' })
+    // }
+    // let classNameComment = itinerary.comments.length === 0 ? "contenedor-vacio" :"comentarios"

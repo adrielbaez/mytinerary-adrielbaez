@@ -71,6 +71,30 @@ const itinerariesControllers = {
             res.json({success: false, respuesta: 'You already like it'})
         }
     },
+    like: async (req, res) => {
+        console.log('hola1');
+        const itineraryId = req.body.id
+        const userId = req.user._id
+        try {
+           let updateLikes = await Itinerary.findOneAndUpdate( {_id: itineraryId},{$addToSet: {usersLiked: userId}}, {new: true})
+
+           res.json({success: true, respuesta: updateLikes})
+
+        } catch (error) {
+            console.log(error);
+        }
+      },
+      dislike: async(req, res) => {
+          console.log('hola2');
+        const itineraryId = req.body.id
+        const userId = req.user._id
+        try {
+           let updateLikes= await Itinerary.findOneAndUpdate({_id: itineraryId},{$pull: {usersLiked: userId}},{new: true})
+            res.json({success: true, respuesta: updateLikes})
+        } catch (error) {
+            console.log(error);
+        }
+      },
     addComment: async(req, res) =>{
         let idItinerary = req.params.id
         let {comment, userId} = req.body

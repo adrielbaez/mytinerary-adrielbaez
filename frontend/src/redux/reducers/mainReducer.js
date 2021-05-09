@@ -6,7 +6,7 @@ import authReducer from './authReducer'
 const mainReducer = combineReducers({
     citiesReducer: citiesReducer,
     itinerariesReducer: itinerariesReducer,
-    authReducer: authReducer
+    authReducer: authReducer,
 })
 
 export default mainReducer
