@@ -29,7 +29,7 @@ const Comment = ({ userLogged, itinerary, addComment, idCity }) => {
             <div className="comments-container">
                 <div className="comments-post">
                     {itinerary.comments.length === 0
-                        ? <ContentEmpty texto={'Not comments'} />
+                        ? <ContentEmpty texto={'No comments yet'} />
                         : itinerary.comments.map((comment, index) => {
                             return <BoxComment key={index} comment={comment} userLogged={userLogged} idItinerary={itinerary._id} idCity={idCity} />
                         })}

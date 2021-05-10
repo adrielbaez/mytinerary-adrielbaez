@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import authActions from '../redux/actions/authActions';
 
 const NavBar = (props) => { 
+    
     const [click, setClick] = useState(false);
     let picture = props.userLogged ? `${props.userLogged.userPicture}` : '/assets/userIcon.png'
     const handleClick = () => setClick(!click);
