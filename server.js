@@ -25,6 +25,4 @@ const port = process.env.PORT
 
 app.listen(port, host, () => console.log("App listening on port "+port+" on "+host))
 
-app.listen(4000, () => console.log('App listening on port 4000'));
-
 
