@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { connect } from 'react-redux';
 import itinerariesActions from '../redux/actions/itinerariesActions';
 import Swal from 'sweetalert2'
+// import {alertYouSure} from './helpers/Alert'
 const BoxComment = ({ comment, idItinerary, userLogged, updateCommentAction, deleteCommentAction}) => {
     const [visible, setVisible] = useState(false)
     const [updatedComment, setUpdatedComment] = useState('')
@@ -10,7 +11,6 @@ const BoxComment = ({ comment, idItinerary, userLogged, updateCommentAction, del
         setVisible(!visible)
         setUpdatedComment(comment.comment)
     }
-
     const commentUpdate = async () => {
         if (updatedComment === '') {
             Swal.fire({
@@ -22,7 +22,6 @@ const BoxComment = ({ comment, idItinerary, userLogged, updateCommentAction, del
             })
             return false
         }
-
         Swal.fire({
             title: 'Are you sure you want to save the changes?',
             icon: 'warning',

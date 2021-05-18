@@ -10,7 +10,7 @@ export const alert = () => {
             timer: 1500
         })
 }
-// export const alertYouSure = (title) => { Swal.fire({
+// export const alertYouSure = (title, yourFunction, setState) => { Swal.fire({
 //     title: title,
 //     icon: 'warning',
 //     showCancelButton: true,
@@ -19,8 +19,8 @@ export const alert = () => {
 //     confirmButtonText: 'Yes, Save changes!'
 //   }).then((result) => {
 //     if (result.isConfirmed) {
-//         updateCommentAction(updatedComment, comment._id, idItinerary, userLogged.token)
-//         setVisible(!visible)  
+//         yourFunction
+//         setState  
 //       Swal.fire(
 //         'Changes have been saved!',
 //         '',

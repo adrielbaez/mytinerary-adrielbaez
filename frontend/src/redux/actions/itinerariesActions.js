@@ -82,10 +82,10 @@ const itinerariesActions = {
             }
         }
     },
-    addComment: (comment, token, id) => {
+    addComment: (comment, token, idItinerary) => {
         return async (dispatch, getState) => {
           try {
-            const response = await axios.post('http://localhost:4000/api/comments', {comment, token, id} , {
+            const response = await axios.post('http://localhost:4000/api/comments', {comment, token, idItinerary} , {
               headers: {
                 Authorization: `Bearer ${token}`
               }

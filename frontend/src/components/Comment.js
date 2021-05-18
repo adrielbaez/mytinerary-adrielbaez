@@ -44,9 +44,7 @@ const Comment = ({ userLogged, itinerary, addComment, idCity }) => {
 }
 
 const mapDispatchToProps = {
-    saveCommentDB: itinerariesActions.saveCommentDB,
     addComment: itinerariesActions.addComment,
-    updateComment: itinerariesActions.updateComment
 }
 export default connect(null, mapDispatchToProps)(Comment);
 

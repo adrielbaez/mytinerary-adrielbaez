@@ -61,9 +61,7 @@ const itinerariesControllers = {
         const userId = req.user._id
         try {
             let updateLikes = await Itinerary.findOneAndUpdate({ _id: itineraryId }, { $addToSet: { usersLiked: userId } }, { new: true })
-
             res.json({ success: true, respuesta: updateLikes })
-
         } catch (error) {
             res.json({ success: false, respuesta: error })
         }
@@ -79,39 +77,33 @@ const itinerariesControllers = {
         }
     },
     addComment: async (req, res) => {
-        const { id, comment } = req.body
+        const { idItinerary, comment } = req.body
         const { firstName, userPicture } = req.user
         try {
-            let addNewComment = await Itinerary.findOneAndUpdate({ _id: id }, { $push: { comments: { firstName, userPicture, comment } } }, { new: true })
+            let addNewComment = await Itinerary.findOneAndUpdate({ _id: idItinerary }, { $push: { comments: { firstName, userPicture, comment } } }, { new: true })
             res.json({ success: true, respuesta: addNewComment })
         } catch (error) {
             res.json({ success: false, respuesta: error })
         }
     },
-    updateComment: async (req, res) => {
+    updateComment: async (req, res) => { 
         const {idComment, comment, idItinerary} = req.body
- 
         try {
-
             let updateComment = await Itinerary.findOneAndUpdate({ _id: idItinerary, 'comments._id': idComment },{ $set: { 'comments.$.comment': comment } },{ new: true })
-
-            res.json({ success: true, respuesta: updateComment })
+            res.json({ success: true, respuesta: updateComment})
         } catch (error) {
             res.json({ success: false, respuesta: error })
         }
     },
       deleteComment: async (req, res) => {
         const {idComment,idItinerary} = req.body
-
         try {
            let deleteComment = await Itinerary.findOneAndUpdate({_id: idItinerary},{$pull: {comments: {_id: idComment}}},{new: true})
            res.json({ success: true, respuesta: deleteComment })
         } catch (error) {
             res.json({ success: false, respuesta: error })
         }
-
-    }
-    
+    }  
 }
 module.exports = itinerariesControllers
 
