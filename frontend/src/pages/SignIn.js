@@ -70,7 +70,7 @@ const SignIn = (props) => {
                     <p className="social-text">Or</p>
                     <GoogleLogin
                         className="btn-google"
-                        clientId="112919868081-jrnbtckjpmehq2v64aj4rrccs2mosics.apps.googleusercontent.com"
+                        clientId="604451500826-bkie06qvkn8v4ao3q0j0sar2754g6i0n.apps.googleusercontent.com"
                         buttonText="Sign In with Google"
                         onSuccess={responseGoogle}
                         onFailure={responseGoogle}
