@@ -1301,6 +1301,9 @@ h2.comentarios-title{
     padding: .5rem;
     min-width: 40vw;
 }
+.comment-user{
+    overflow-wrap: break-word
+}
 @media (min-width: 764px) {
     .text-comment{
         min-width: 20vw;

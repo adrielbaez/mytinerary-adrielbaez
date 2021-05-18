@@ -77,7 +77,7 @@ const BoxComment = ({ comment, idItinerary, userLogged, updateCommentAction, del
                 </>
                 : <div className="text-comment">
                     <h5>{comment.firstName}</h5>
-                    <p>{comment.comment}</p>
+                    <p className="comment-user">{comment.comment}</p>
                     {userLogged &&
                         userLogged.firstName === comment.firstName &&
                             <div className="contenedor-icon-update">
