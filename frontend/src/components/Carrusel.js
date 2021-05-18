@@ -44,7 +44,7 @@ const Carrusel = () => {
         id: 6
       },
       {
-        src: 'Shangai.jpg',
+        src: 'shangai.jpg',
         header: 'Shanghai',
         id: 8
       },
