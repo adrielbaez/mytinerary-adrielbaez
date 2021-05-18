@@ -5,7 +5,7 @@ import Swal from 'sweetalert2'
 const itinerariesActions = {
     loadItineraries: (idCity, history) => {
         return (dispatch) => {
-            axios.get(`http://localhost:4000/api/city/itineraries/${idCity}`)
+            axios.get(`https://mytinerary-adriel.herokuapp.com/api/city/itineraries/${idCity}`)
                 .then(response => dispatch({ type: 'FETCH_ITINERARIES', payload: response.data.respuesta }))
                 .catch(error => {
                    console.log(error);
@@ -16,7 +16,7 @@ const itinerariesActions = {
 
         return async (dispatch) => {
             try {
-                const respuesta = await axios.get(`http://localhost:4000/api/activities/itinerary/${idItinerary}`)
+                const respuesta = await axios.get(`https://mytinerary-adriel.herokuapp.com/api/activities/itinerary/${idItinerary}`)
                 if (respuesta.data.success) {
                     return respuesta.data.respuesta
                 }
@@ -29,7 +29,7 @@ const itinerariesActions = {
 
         return async (dispatch, getState) => {
             try {
-                const response = await axios.put(`http://localhost:4000/api/likes/${idItinerary}`, {}, {
+                const response = await axios.put(`https://mytinerary-adriel.herokuapp.com/api/likes/${idItinerary}`, {}, {
                     headers: { 'Authorization': 'Bearer ' + userToken }
                 })
                 if (response) {
@@ -44,7 +44,7 @@ const itinerariesActions = {
     like: (id, token) => {
         return async (dispatch, getState) => {
             try {
-                const response = await axios.post('http://localhost:4000/api/likes', { id, token }, {
+                const response = await axios.post('https://mytinerary-adriel.herokuapp.com/api/likes', { id, token }, {
                     headers: {
                         Authorization: `Bearer ${token}`
                     }
@@ -65,7 +65,7 @@ const itinerariesActions = {
     dislike: (id, token) => {
         return async (dispatch, getState) => {
             try {
-                const response = await axios.post('http://localhost:4000/api/dislike', { token, id }, {
+                const response = await axios.post('https://mytinerary-adriel.herokuapp.com/api/dislike', { token, id }, {
                     headers: {
                         Authorization: 'Bearer ' + token
                     }
@@ -85,7 +85,7 @@ const itinerariesActions = {
     addComment: (comment, token, idItinerary) => {
         return async (dispatch, getState) => {
           try {
-            const response = await axios.post('http://localhost:4000/api/comments', {comment, token, idItinerary} , {
+            const response = await axios.post('https://mytinerary-adriel.herokuapp.com/api/comments', {comment, token, idItinerary} , {
               headers: {
                 Authorization: `Bearer ${token}`
               }
@@ -105,7 +105,7 @@ const itinerariesActions = {
       updateComment: (comment, idComment, idItinerary, token) => {
         return async (dispatch, getState) => {
           try {
-            const response = await axios.put('http://localhost:4000/api/comments/update', {comment, idComment, idItinerary, token}, {
+            const response = await axios.put('https://mytinerary-adriel.herokuapp.com/api/comments/update', {comment, idComment, idItinerary, token}, {
               headers: {
                 Authorization: `Bearer ${token}`
               }
@@ -127,7 +127,7 @@ const itinerariesActions = {
       deleteComment: (idComment, idItinerary, token) => {
         return async (dispatch, getState) => {
           try {
-            const response = await axios.put('http://localhost:4000/api/comments', {idComment, idItinerary, token}, {
+            const response = await axios.put('https://mytinerary-adriel.herokuapp.com/api/comments', {idComment, idItinerary, token}, {
               headers: {
                 Authorization: 'Bearer '+ token
               }
@@ -148,7 +148,7 @@ const itinerariesActions = {
     saveCommentDB: (comment, idItinerary, userToken) => {
         return async (dispatch) => {
             try {
-                const response = await axios.post(`http://localhost:4000/api/comments/itinerary/${idItinerary}`, comment, {
+                const response = await axios.post(`https://mytinerary-adriel.herokuapp.com/api/comments/itinerary/${idItinerary}`, comment, {
                     headers: { 'Authorization': 'Bearer ' + userToken }
                 })
 
@@ -169,7 +169,7 @@ export default itinerariesActions
 //     return async (dispatch) => {
 
 //         try {
-//             const response = await axios.put(`http://localhost:4000/api/editcomments/itinerary/${idItinerary}`, commentEdit, {
+//             const response = await axios.put(`https://mytinerary-adriel.herokuapp.com/api/editcomments/itinerary/${idItinerary}`, commentEdit, {
 //                 headers: { 'Authorization': 'Bearer ' + userToken }
 //             })
 //             dispatch({ type: 'FETCH_ITINERARIES', payload: response.data.respuesta })

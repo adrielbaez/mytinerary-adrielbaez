@@ -5,7 +5,7 @@ const authActions = {
     createNewUser: (newUser) => {
         return async (dispatch, getState) => {
             try {
-                let response = await axios.post('http://localhost:4000/api/user/signup', newUser)
+                let response = await axios.post('https://mytinerary-adriel.herokuapp.com/api/user/signup', newUser)
                 if (response.data.googleUser) {
                     return response.data
                 }
@@ -24,7 +24,7 @@ const authActions = {
     iniciarSesion: (user) => {
         return async (dispatch, getState) => {
             try {
-                let response = await axios.post('http://localhost:4000/api/user/signin', user)
+                let response = await axios.post('https://mytinerary-adriel.herokuapp.com/api/user/signin', user)
                 if (!response.data.success) {
                     return response.data
                 }
@@ -62,7 +62,7 @@ const authActions = {
     iniciarSesionLS: (userLS) => {
         return async (dispatch, getState) => {
             try {
-                const response = await axios.get('http://localhost:4000/api/user/logingLS', {
+                const response = await axios.get('https://mytinerary-adriel.herokuapp.com/api/user/logingLS', {
                     headers: {
                         'Authorization': 'Bearer ' + userLS.token
                     }

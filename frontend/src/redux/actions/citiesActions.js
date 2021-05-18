@@ -5,7 +5,7 @@ const citiesActions = {
     loadCities: (history) => {
         return (dispatch, getState) => {
             //codigo asincrono
-            axios.get('http://localhost:4000/api/cities')
+            axios.get('https://mytinerary-adriel.herokuapp.com/api/cities')
                 .then(response => dispatch({
                     type: 'LOAD_CITIES', payload: response.data.respuesta
                 }))
