@@ -4,7 +4,7 @@ const CardCity = ({ city}) => {
         <>
             {<NavLink to={`/city/${city._id}`}>
                     <div key={city._id} className="card">
-                        <div className="city-image" style={{ backgroundImage: `url('./assets/${city.src}')` }}></div>
+                        <div className="city-image" style={{ backgroundImage: `url('${city.src}')` }}></div>
                         <div className="card-info">
                             <h3>{city.city}</h3>
                         </div>

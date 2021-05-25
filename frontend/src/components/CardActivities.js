@@ -8,7 +8,7 @@ const CardActivities = ({activity}) => {
                 <div className="activities-content">
                     {activity.map((activity, index) => {
                         return (
-                            <div key={index} className="activity-bgImage" style={{ backgroundImage: `url('/assets/${activity.image}')` }}>
+                            <div key={index} className="activity-bgImage" style={{ backgroundImage: `url('${activity.image}')` }}>
                                 <h3>{activity.title}</h3>
                             </div>
                         )

@@ -33,7 +33,7 @@ class Intineraries extends React.Component {
                     :
                     <>
                     
-                        <div className="itineraries-hero d-flex flex-centrado" style={{ backgroundImage: `url('/assets/${this.state.cityDetails[0].src}')` }}>
+                        <div className="itineraries-hero d-flex flex-centrado" style={{ backgroundImage: `url('${this.state.cityDetails[0].src}')` }}>
                             <div className="content-hero-itineraries">
                                 <h1 className="text-center">Welcome to {this.state.cityDetails[0].city} </h1>
                             </div>

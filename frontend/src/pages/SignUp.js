@@ -9,7 +9,6 @@ import GoogleLogin from 'react-google-login';
 
 
 const SignUp = (props) => {
-
     const [newUser, setNewUser] = useState({ firstName: '', lastName: '', email: '', password: '', userPicture: '', country: '' })
     const [countries, setCountries] = useState([])
     const [mensajeError, setMensajeError] = useState({ success: false, mensaje: '' })
@@ -17,6 +16,7 @@ const SignUp = (props) => {
     useEffect(() => {
         axios.get('https://restcountries.eu/rest/v2/all')
             .then(response => setCountries(response.data))
+        
     }, [])
 
     const readDataNewUser = (e) => {
