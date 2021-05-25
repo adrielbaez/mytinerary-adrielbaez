@@ -40,7 +40,7 @@ const CardItinerary = ({ itinerary, loadActivities, userLogged, idCity, like, di
             <div className="container-itinerary">
                 <h2>{itinerary.title}</h2>
                 <div className="author">
-                    <div className="img-itinerary" style={{ backgroundImage: `url('/assets/${itinerary.authorPicture}')` }}></div>
+                    <div className="img-itinerary" style={{ backgroundImage: `url('${itinerary.authorPicture}')` }}></div>
                     <h3>{itinerary.authorName}</h3>
                 </div>
                 <div className="itinerary-details">
