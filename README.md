@@ -1,6 +1,6 @@
 # MyTinerary
 
-Es una web de Viajes, focalizada en mostrar a traves de itinerarios las actividades que se pueden realizar en distintas ciudades. Es una Web App y cuenta con su respectiva Mobile App. Desarrollado con el Stack MERN y React Native
+Es una Web App de Viajes, focalizada en mostrar a traves de itinerarios las actividades que se pueden realizar en distintas ciudades y cuenta con su respectiva Mobile App. Desarrollado con el Stack MERN
 
 ## Trabajo realizado
 
