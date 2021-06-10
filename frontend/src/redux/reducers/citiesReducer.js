@@ -2,7 +2,7 @@ const initialState = {
     allCities: [],
     newCitiesCurrent:[],
     loading: true
-}
+} 
 const citiesReducer = (state = initialState, action) => {
     switch (action.type) {
         case 'LOAD_CITIES': 
